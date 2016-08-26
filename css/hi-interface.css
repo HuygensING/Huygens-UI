@@ -82,6 +82,7 @@
 	width:150px;
 	float:left;
 	margin-right:1em;
+	margin-bottom:.5em;
 	}
 
 .card-dataset .btn {
@@ -92,4 +93,13 @@
 	padding-top:2em ;
 	padding-bottom:2em ;
 	}
- 
+	
+ .btn .btn-primary {
+	 font-weight:500;
+	 }
+
+ .jumbotron .btn-primary {
+	 background-color:#ffffff;
+	 border-color:#595959;
+	 color:#595959;
+	 }
