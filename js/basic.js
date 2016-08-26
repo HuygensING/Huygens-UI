@@ -13,6 +13,8 @@ $( ".close-left-bar" ).click(function() {
     // Animation complete
   	});
   });
+  
+  
 
 
 });

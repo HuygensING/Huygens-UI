@@ -88,7 +88,7 @@
     "@input-bg": "#fff",
     "@input-bg-disabled": "@gray-lighter",
     "@input-color": "@gray",
-    "@input-border": "#ccc",
+    "@input-border": "lighten(@gray-base, 90%)",
     "@input-border-radius": "@border-radius-base",
     "@input-border-radius-large": "@border-radius-large",
     "@input-border-radius-small": "@border-radius-small",
@@ -431,5 +431,5 @@
     "scrollspy.js",
     "transition.js"
   ],
-  "customizerUrl": "http://getbootstrap.com/customize/?id=594ea30db4a258694ebc3ac169fcb184"
+  "customizerUrl": "http://getbootstrap.com/customize/?id=42cc179cb5c9bf69c329584b3fc01958"
 }

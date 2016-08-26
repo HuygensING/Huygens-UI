@@ -7,6 +7,10 @@
 	margin-bottom:3em;
 	}
 
+.small-margin {
+	margin-bottom:1em;
+	}
+
 
 
 .hit-canvas{
@@ -60,7 +64,7 @@
 }
 
 .footer {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */
@@ -94,7 +98,7 @@
 	padding-bottom:2em ;
 	}
 	
- .btn .btn-primary {
+ .btn-primary {
 	 font-weight:500;
 	 }
 
@@ -103,3 +107,40 @@
 	 border-color:#595959;
 	 color:#595959;
 	 }
+	 
+.btn-blank {
+	 background:none;
+	 color:#595959;
+	}
+	 
+.list-group {
+    list-style: decimal inside;
+	border:none;
+}
+
+.list-group-item {
+    display: list-item;
+	border-left:none;
+	border-right:none;
+	border-top:none;
+	border-bottom:2px solid #e6e6e6;
+	padding: 10px 0px;
+}
+
+.nav-tabs .active {
+	font-weight:500;
+	}
+	
+.names-form {
+	display:inline-block;
+	}
+
+.names-form ul{
+	padding: 0px;
+	}
+
+.names-form li{
+	list-style:none;
+	margin-bottom:2px;
+	padding: .2em 0px;
+	}
