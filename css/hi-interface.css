@@ -1,0 +1,95 @@
+@charset "UTF-8";
+/* CSS Document */
+
+
+
+.basic-margin {
+	margin-bottom:3em;
+	}
+
+
+
+.hit-canvas{
+	background-color:rgba(0,0,0,0.05);
+	top:75px;
+	left:20px;
+	bottom:75px;
+	right:20px;
+	position:absolute;
+	}
+
+.hit-right-bar {
+	width:320px;
+	border-bottom:1px solid rgba(0,0,0,0.10);
+	background-color:#FFFFFF;
+	top:75px;
+	bottom:75px;
+	right:0px;
+	position:absolute;
+	display:block;
+	
+	}
+
+
+.page-head {
+	margin:20px 20px 20px 20px;
+	}
+
+.card-head {
+	padding:20px;
+	}
+
+.card-title {
+	padding-top:50px;
+	}
+	
+.card-body {
+	padding:20px;
+	}
+
+.card-footer {
+	padding:20px;
+	}
+
+
+
+/* Bootstrap OVERRIDE */
+	
+.pagination {
+    margin: 0px 0;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  background-color: #f5f5f5;
+  padding:1.5em 0;
+}
+
+.transparent {
+	background:none !important;
+	}
+
+.navbar, .navbar a {
+	color:#FFFFFF;
+	font-family:"Roboto";
+	font-weight:300;
+	}
+	
+.card-dataset {
+	width:150px;
+	float:left;
+	margin-right:1em;
+	}
+
+.card-dataset .btn {
+	margin-bottom:.5em ;
+	}
+	
+.card-dataset .explore {
+	padding-top:2em ;
+	padding-bottom:2em ;
+	}
+ 
