@@ -103,58 +103,94 @@
               </ol>
             </div>
             <div class="col-sm-6 col-md-8">
+            <div class="basic-margin">  
               <button type="button" class="btn btn-primary pull-right">New Person</button>
+            </div>
               
-              <h4>Names</h4>
-              <div class="names-form"> 
-              <ul>
-              <li>
-
-                    <div class="input-group">
-      					<div class="input-group-btn">
-        					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Forename <span class="caret"></span></button>
-                                <ul class="dropdown-menu">
-                                  <li><a href="#">Forename</a></li>
-                                  <li><a href="#">Surname</a></li>
-                                  <li><a href="#">Role name</a></li>
-                                  <li><a href="#">Gen name</a></li>
-                                </ul>
-                        </div><!-- /btn-group -->
-      					<input type="text" class="form-control" placeholder="Forename" value="Sara">
-                        <span class="input-group-btn">
-                            <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-remove"></span></button>
-                          </span>
-    					</div><!-- /input-group -->
-                      			
-
+             <div class="basic-margin">
+                  <h4>Names</h4>
+                  <div class="names-form item-element">
+                  <div class="small-margin"><button class="btn btn-blank btn-xs pull-right" type="button"><span class="glyphicon glyphicon-remove"></span></button><strong class="">Sara Lomannus</strong></div>
+                  <ul>
+                  <li>
+    
+                        <div class="input-group">
+                            <div class="input-group-btn">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Forename <span class="caret"></span></button>
+                                    <ul class="dropdown-menu">
+                                      <li><a href="#">Forename</a></li>
+                                      <li><a href="#">Surname</a></li>
+                                      <li><a href="#">Role name</a></li>
+                                      <li><a href="#">Gen name</a></li>
+                                    </ul>
+                            </div><!-- /btn-group -->
+                            <input type="text" class="form-control" placeholder="Forename" value="Sara">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-remove"></span></button>
+                              </span>
+                            </div><!-- /input-group -->
+                                    
+    
+                       
+                        
+                        
                    
-                    
-                    
-               
-              </li>
-              
-              <li>
-              <div class="input-group">
-                  <div class="input-group-btn">
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Surename <span class="caret"></span></button>
-                                <ul class="dropdown-menu">
-                                  <li><a href="#">Forename</a></li>
-                                  <li><a href="#">Surname</a></li>
-                                  <li><a href="#">Role name</a></li>
-                                  <li><a href="#">Gen name</a></li>
-                                </ul>
-                  </div><!-- /btn-group -->
-                  <input type="text" class="form-control" placeholder="Forename" value="Lomannus">
-                  <span class="input-group-btn">
-                    <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-remove"></span></button>
-                  </span>
-                </div><!-- /input-group -->
-              
-              </li>
-              
-              
-              </ul>
+                  </li>
+                  
+                  <li>
+                  <div class="input-group">
+                      <div class="input-group-btn">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Surename <span class="caret"></span></button>
+                                    <ul class="dropdown-menu">
+                                      <li><a href="#">Forename</a></li>
+                                      <li><a href="#">Surname</a></li>
+                                      <li><a href="#">Role name</a></li>
+                                      <li><a href="#">Gen name</a></li>
+                                    </ul>
+                      </div><!-- /btn-group -->
+                      <input type="text" class="form-control" placeholder="Forename" value="Lomannus">
+                      <span class="input-group-btn">
+                        <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-remove"></span></button>
+                      </span>
+                    </div><!-- /input-group -->
+                    <br><button class="btn btn-default btn-xs" type="button">Add component</button>
+                  
+                  </li>
+                  
+                  
+                  </ul>
+                  </div>
               </div>
+              
+              <div class="basic-margin">
+                  <h4>Types</h4>
+                  <div class="item-element"><strong>Author</strong> <button class="btn btn-blank btn-xs pull-right" type="button"><span class="glyphicon glyphicon-remove"></span></button></div>
+                  
+                  
+    
+                  
+                  <div class="btn-group">
+                      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Add a type <span class="caret"></span>
+                      </button>
+                      <ul class="dropdown-menu">
+                        <li><a href="#">Archetype</a></li>
+                        <li><a href="#">Author</a></li>
+                        <li><a href="#">Pseunonym</a></li>
+                        <li><a href="#">Reader</a></li>
+                      </ul>
+                    </div>
+                </div>
+                
+                <div class="basic-margin">
+                  <h4>Birth date</h4>
+                  <input type="date" class="form-control"  placeholder="Brithdate">
+                </div>
+                
+                 <div class="basic-margin">
+                    <h4>Delete</h4>
+                    <button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete Person</button>
+                 </div>
+   
             </div>
           </div>
         </div>
@@ -169,7 +205,7 @@
 <div class="container small-margin">
           <div class="row">
             <div class="col-sm-6 col-md-4"><button type="button" class="btn btn-default"><span class="glyphicon glyphicon-chevron-left" ></span></button> 900 - 950 <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-chevron-right" ></span></button></div>
-            <div class="col-sm-6 col-md-8"><button type="button" class="btn btn-primary">Save</button></div>
+            <div class="col-sm-6 col-md-8"><button type="button" class="btn btn-primary">Save</button> or <button type="button" class="btn btn-link">Cancel</button></div>
        </div>
    </div>
   <div class="container">
