@@ -189,3 +189,10 @@
 .table-obtrusive th, .table-obtrusive td{
 	color:#a9a9a9;
 	}
+
+.upload-bg {
+	background-image:url(../images/bg-upload.gif);
+	background-position:right;
+	background-size:contain;
+	background-repeat:no-repeat;
+	}
