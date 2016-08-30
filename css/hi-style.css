@@ -16,6 +16,14 @@ strong {
 	background-color: #269075;
 	}
 
+.hi-light-grey {
+	color:#a9a9a9
+	}
+
+.hi-success {
+	color:#43ba6d
+	}
+
 .logo {
 	height:1.5em;
 	width:auto;

@@ -28,7 +28,7 @@
 <div class="container">
     <div class="jumbotron first-upload">
       <h2>Upload your first dataset</h2>
-      <p>Don't have a dataset handy? Here’s an <a href="#">example excel sheet</a></p>
+      <p>Don't have a dataset handy? Here’s an <a href="#">example excel sheet</a>.</p>
       <p><a class="btn btn-primary btn-lg" href="#" role="button"><span class="glyphicon glyphicon-cloud-upload"></span> Upload</a></p>
     </div>
 </div>
@@ -36,7 +36,7 @@
 
 <!--If user HAS datasets -->
 <div class="container">
-  <button type="button" class="btn btn-primary pull-right">New dataset</button>
+  <button type="button" class="btn btn-primary btn-lg pull-right">Upload new dataset</button>
   <h3>My datasets</h3>
   
 </div>
@@ -44,7 +44,7 @@
   <div class="card-dataset">
     <div class="card-dataset btn btn-default explore">Explore<br>
       <strong>Women Writers</strong></div>
-    <div class="card-dataset btn btn-default"><span class="glyphicon glyphicon-pencil"></span> Edit</div>
+    <div class="card-dataset btn btn-default" onClick="Tim-edit.html"><span class="glyphicon glyphicon-pencil"></span> Edit</div>
   </div>
   <div class="card-dataset">
     <div class="card-dataset btn btn-default explore">Explore<br>
@@ -91,10 +91,11 @@
 </div>
 <footer class="footer">
   <div class="container">
-    <p class="text-muted">Huygens ING   |   Clariah</p>
+    <p class="text-muted"><span><img src="images/logo-huygens-ing.svg" class="logo" alt=""/></span> [<a href="Tim-dashboard.html">dashboard</a> | upload <a href="Tim-upload1.html">1</a> <a href="Tim-upload2.html">2</a> | <a href="Tim-edit.html">edit</a>]<span class="pull-right"><img src="images/logo-clariah.svg" class="logo" alt=""/></span></p>
   </div>
+
 </footer>
-<script src="js/jquery-1.11.3.min.js"></script> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="js/bootstrap.js"></script>
 </body>
 </html>
