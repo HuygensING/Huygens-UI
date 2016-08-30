@@ -7,6 +7,10 @@
 	margin-bottom:3em;
 	}
 
+.big-margin {
+	margin-bottom:6em;
+	}
+
 .small-margin {
 	margin-bottom:1em;
 	}
@@ -163,3 +167,25 @@
 	height:1em;
 	width:auto;
 }
+
+
+.excel-tab {
+	display:block;
+	color:#a9a9a9;
+	font-size:.8em;
+	font-weight:300;
+	}
+
+.excel-tab img {
+	height:.8em;
+	width:auto;
+}
+
+.excel-icon {
+	
+	fill: #a9a9a9;
+		} 
+
+.table-obtrusive th, .table-obtrusive td{
+	color:#a9a9a9;
+	}
