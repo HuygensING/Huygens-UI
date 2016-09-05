@@ -1,0 +1,28 @@
+{
+  "name": "huygens-ui",
+  "version": "1.0.0",
+  "description": "huygens-ui",
+  "main": "index.js",
+  "dependencies": {
+    "react": "^15.3.1"
+  },
+  "devDependencies": {
+    "@kadira/storybook": "^2.11.0",
+    "eslint": "^1.5.1",
+    "eslint-plugin-react": "^3.16.1",
+    "getstorybook": "^1.4.4"
+  },
+  "scripts": {
+    "storybook": "start-storybook -s . -p 9001 -c .storybook"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Doppen/Huygens-UI.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Doppen/Huygens-UI/issues"
+  },
+  "homepage": "https://github.com/Doppen/Huygens-UI#readme"
+}
