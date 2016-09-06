@@ -13,7 +13,8 @@
     "getstorybook": "^1.4.4"
   },
   "scripts": {
-    "storybook": "start-storybook -s . -p 9001 -c .storybook"
+    "storybook": "start-storybook -s . -p 9001 -c .storybook",
+    "storybook-build": "build-storybook -s . -c .storybook -o ../storybookbuild"
   },
   "repository": {
     "type": "git",
