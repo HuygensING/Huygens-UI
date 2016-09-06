@@ -14,7 +14,20 @@ $( ".close-left-bar" ).click(function() {
   	});
   });
   
+$(".facet").hover(
+    function(e) {
+            e.stopPropagation();
+            $(".facet-extra", this).css("visibility", "visible");
+        },
+        function() {
+            $(".facet-extra", this).css("visibility", "hidden");
+        }
+);
+
+  
   
 
 
 });
+
+
