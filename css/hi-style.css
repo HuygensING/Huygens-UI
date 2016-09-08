@@ -20,8 +20,20 @@ strong {
 	color:#a9a9a9
 	}
 
+.hi-light-grey-bg {
+	background-color:#f9f9f9;
+	}
+
+.hi-half-transp {
+	opacity:.33;
+	}
+
 .hi-success {
 	color:#43ba6d
+	}
+
+.hi-italic {
+	font-style:italic;
 	}
 
 .logo {

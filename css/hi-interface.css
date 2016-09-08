@@ -72,7 +72,11 @@
   bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */
-  background-color: #ffffff;
+
+}
+
+.white-bar {
+	background-color: #ffffff;
   padding:1.5em 0 1.2em 0;
   border-top:1px solid #dddddd; 
 }
@@ -216,6 +220,11 @@
 .facet h2{
 	font-size:1em;
 	}
+
+.facet-items-box {
+	border-top:1px solid #eeeeee;
+	padding-top:.7em;
+	}
 	
 .facet-item {
 	margin-bottom:.5em;
@@ -233,9 +242,18 @@
 	}
 
 .facet-extra {
-	visibility:hidden;
-	}
+	display:none;
 	
+	}
+
+.facet-extra-space {
+	padding-top:10px;
+	height:40px;
+	}
+
+
+
+
 
 /* results */
 .result-list ol{
@@ -265,3 +283,15 @@
   display:inline-block;
   
 }
+
+/* detail page */
+
+.img-portrait  {
+	height:150px;
+	width:auto;
+	
+	}
+#born-died {
+	width:45px;
+	height:auto;
+	}
