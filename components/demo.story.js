@@ -3,11 +3,6 @@ import { storiesOf, action, linkTo } from '@kadira/storybook';
 import App from './app.jsx';
 
 
-const actions = {};
-[
-  "onDataSetUpload"
-].forEach(name => actions[name] = action(name));
-
 function override(orig, patch) {
   if (orig && typeof orig == "object") {
     if (patch && typeof patch == "object") {
@@ -24,9 +19,12 @@ function override(orig, patch) {
 function data(patch) {
   const baseData = {
     userdata: {
-      userId: "Bas Doppen",
+      userId: null,
       myVres: {},
       vres: {}
+    },
+    importData: {
+      isUploading: false
     }
   };
   if (patch) {
@@ -41,15 +39,35 @@ function demo(name) {
 }
 
 storiesOf('demo walkthrough', module)
-  .add('Initial upload', () => (
-    <App {...actions} onDataSetUpload={demo("upload 1")} {...data()} />
+  .add('Log in', () => (
+      <App onLogin={demo("Initial upload")} {...data()} />
   ))
-  .add('upload 1', () => (
-    <App
-      {...actions}
-      {...data({
+  .add('Initial upload', () => (
+    <App onDataSetUpload={demo("uploading")} {...data({
+      userdata: {
+        userId: "asd"
+      }
+    })} />
+  ))
+  .add('uploading', () => {
+    return (
+      <App {...data({
         userdata: {
           userId: "asd"
+        },
+        importData: {
+          isUploading: true
+        }
+      })} />
+    );
+  })
+  .add('connect', () => (
+      <App {...data({
+        userdata: {
+          userId: "asd"
+        },
+        importData: {
+          isUploading: false
         }
       })} />
   ));
