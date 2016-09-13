@@ -1,5 +1,5 @@
 import React from 'react';
-import DataSetCard from './datasetCard.jsx';
+import DatasetCards from './dataset-cards';
 import UploadButton from "./upload-button";
 
 // (renames from UploadSplashScreen)
@@ -32,18 +32,7 @@ function FirstUpload(props) {
               </button>
            </form>) }
       </div>
-
-      <div className="basic-margin">
-        <h3>Explore all datasets</h3>
-      </div>
-      <div className="big-margin">
-        <DataSetCard caption="Women Writers" />
-        <DataSetCard caption="CKCC" />
-        <DataSetCard caption="Charter Portaal" />
-        <DataSetCard caption="Women Writers" />
-        <DataSetCard caption="CKCC" />
-        <DataSetCard caption="Charter Portaal" />
-      </div>
+      <DatasetCards />
     </div>
   );
 }

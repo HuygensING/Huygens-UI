@@ -5,6 +5,7 @@ import FirstUpload from './firstUpload.jsx'
 
 function App(props) {
   const hasVres = Object.keys(props.userdata.myVres).length > 0;
+
   return (
     <Page username={props.userdata.userId}>
       {hasVres ? null :

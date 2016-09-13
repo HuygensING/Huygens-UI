@@ -60,14 +60,4 @@ storiesOf('demo walkthrough', module)
         }
       })} />
     );
-  })
-  .add('connect', () => (
-      <App {...data({
-        userdata: {
-          userId: "asd"
-        },
-        importData: {
-          isUploading: false
-        }
-      })} />
-  ));
+  });
