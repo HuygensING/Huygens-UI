@@ -7,7 +7,7 @@ function App(props) {
   const hasVres = Object.keys(props.userdata.myVres).length > 0;
   return (
     <Page username={props.userdata.userId}>
-      {hasVres ? null : <FirstUpload onUpload={props.onDataSetUpload} />}
+      {hasVres ? null : <FirstUpload onUploadFileSelect={props.onDataSetUpload} userId={props.userdata.userId} />}
     </Page>
   );
 }

@@ -3,9 +3,15 @@ import { storiesOf, action } from '@kadira/storybook';
 import FirstUpload from './firstUpload.jsx';
 
 storiesOf('first upload jumbotron', module)
-  .add('without example', () => (
-    <FirstUpload onUpload={action("onUpload")}/>
+  .add('not logged in', () => (
+    <FirstUpload __MockOnLogin={action('LOGGED IN VIA SAML')} />
   ))
-  .add('with example', () => (
-    <FirstUpload onUpload={action("onUpload")} exampleSheetUrl="/foo/bar.xls"/>
+  .add('without excel example', () => (
+    <FirstUpload onUploadFileSelect={action("onUpload")}  userId="user" isUploading={false} />
+  ))
+  .add('with excel example', () => (
+    <FirstUpload onUploadFileSelect={action("onUpload")} exampleSheetUrl="/foo/bar.xls" userId="user" isUploading={false}/>
+  ))
+  .add('uploading', () => (
+    <FirstUpload onUploadFileSelect={action("onUpload")} exampleSheetUrl="/foo/bar.xls" userId="user" isUploading={true}/>
   ));
