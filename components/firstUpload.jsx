@@ -32,7 +32,6 @@ function FirstUpload(props) {
               </button>
            </form>) }
       </div>
-      <DatasetCards />
     </div>
   );
 }

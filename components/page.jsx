@@ -1,6 +1,9 @@
 import React from 'react';
+import DatasetCards from "./dataset-cards";
 
 function Page(props) {
+  console.log(props);
+
   return (
     <div className="page">
       <div className="basic-margin hi-Green container-fluid">
@@ -16,6 +19,10 @@ function Page(props) {
         </nav>
       </div>
       {props.children}
+      {props.vres ? (
+        <div className="container">
+          <DatasetCards vres={props.vres} />
+        </div>) : null}
       <footer className="footer">
         <div className="container">
           <p className="text-muted">

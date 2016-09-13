@@ -13,4 +13,9 @@ storiesOf('Page', module)
     <Page>
       <img src="http://placekitten.com/g/1280/1024"/>
     </Page>
+  ))
+  .add('with vres', () => (
+    <Page vres={{'WomenWriters': {name: "WomenWriters"}, ckcc: {name: "CKCC"}}}>
+        <img src="http://placekitten.com/g/1280/1024"/>
+    </Page>
   ));
