@@ -7,7 +7,7 @@ function App(props) {
   const hasVres = Object.keys(props.userdata.myVres).length > 0;
 
   return (
-    <Page username={props.userdata.userId} vres={props.userdata.vres}>
+    <Page username={props.userdata.userId} vres={props.userdata.vres} showDatasets={!props.importData.isUploading}>
       {hasVres ? null :
           <FirstUpload
               __MockOnLogin={props.onLogin}

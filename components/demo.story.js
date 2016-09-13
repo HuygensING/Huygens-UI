@@ -21,7 +21,10 @@ function data(patch) {
     userdata: {
       userId: null,
       myVres: {},
-      vres: null
+      vres: {
+        'WomenWriters': {name: 'Women Writers'},
+        'CKCC': {name: 'CKCC'}
+      }
     },
     importData: {
       isUploading: false
@@ -45,11 +48,7 @@ storiesOf('demo walkthrough', module)
   .add('Initial upload', () => (
     <App onDataSetUpload={demo("uploading")} {...data({
       userdata: {
-        userId: "asd",
-        vres: {
-          'WomenWriters': {name: 'WomenWriters'},
-          'CKCC': {name: 'CKCC'}
-        }
+        userId: "asd"
       }
     })} />
   ))
@@ -58,10 +57,7 @@ storiesOf('demo walkthrough', module)
       <App {...data({
         userdata: {
           userId: "asd",
-          vres: {
-            'WomenWriters': {name: 'Women Writers'},
-            'CKCC': {name: 'CKCC'}
-          }
+
         },
         importData: {
           isUploading: true
