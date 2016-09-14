@@ -4,6 +4,7 @@
   "description": "huygens-ui",
   "main": "index.js",
   "dependencies": {
+    "classnames": "^2.2.5",
     "react": "^15.3.1"
   },
   "devDependencies": {
