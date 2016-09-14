@@ -29,9 +29,33 @@ const initialData = {
   }
 };
 
+const ignoreLocations = {
+  ...initialData,
+  mappings: {
+    ...initialData.mappings,
+    collections: {
+      ...initialData.mappings.collections,
+      locaties: {
+        ...initialData.mappings.collections.locaties,
+        ignoredColumns: ["naam", "land", "opmerkingen"]
+      }
+    }
+  }
+};
+
+const locationsActive = {
+  ...ignoreLocations,
+  activeCollection: 'locaties',
+};
 
 storiesOf('Connect data', module)
   .add('initially', () => (
     <ConnectData {...initialData} />
+  ))
+  .add('ignore all location columns', () => (
+    <ConnectData {...ignoreLocations} />
+  ))
+  .add('locations is active', () => (
+    <ConnectData {...locationsActive} />
   ));
 

@@ -80,6 +80,43 @@ function connectArchetypeStepData(patch) {
   }
 }
 
+function connectDataStepData(patch) {
+  const baseData = connectArchetypeStepData();
+
+  baseData.location = {
+    pathname: "/mapdata"
+  };
+
+  baseData.importData = {
+    activeCollection: 'migranten',
+    isUploading: false,
+    sheets: [
+      {collection: 'migranten', variables: ["ID", "Voornaam", "tussenvoegsel", "Achternaam", "GeschrevenDocument", "Genoemd in", "Is getrouwd met"]},
+      {collection: 'locaties', variables: ["naam", "land", "opmerkingen"]}
+    ],
+    uploadedFileName: "data.xls",
+  };
+  baseData.mappings = {
+    collections: {
+      migranten: {
+        archetypeName: 'persons',
+        mappings: [{confirmed: false}, {confirmed: false}],
+        ignoredColumns: [],
+      },
+      locaties: {
+        archetypeName: 'locations',
+        mappings: [{confirmed: false}, {confirmed: false}],
+        ignoredColumns: [],
+      }
+    }
+  };
+  if (patch) {
+    return override(baseData, patch)
+  } else {
+    return baseData;
+  }
+}
+
 function demo(name) {
   return linkTo("demo walkthrough", name);
 }
@@ -131,5 +168,5 @@ storiesOf('demo walkthrough', module)
     />
   ))
   .add('connect data 1', () => (
-    <div>TODO</div>
+    <App {...connectDataStepData()} />
   ));
