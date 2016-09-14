@@ -51,7 +51,7 @@ const twoConnected = {
 };
 
 
-storiesOf('Connect', module)
+storiesOf('Connect to archetype', module)
   .add('initially', () => (
     <ConnectToArchetype {...initialData} onMapCollectionArchetype={action('Connects ["collection", "archetype"]')} />
   ))
