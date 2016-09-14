@@ -3,9 +3,10 @@ import { storiesOf, action } from "@kadira/storybook";
 import ConnectData from "./connect-data";
 
 const initialData = {
+  activeCollection: 'migranten',
   sheets: [
-    {collection: 'migranten'},
-    {collection: 'locaties'}
+    {collection: 'migranten', variables: ["ID", "Voornaam", "tussenvoegsel", "Achternaam", "GeschrevenDocument", "Genoemd in", "Is getrouwd met"]},
+    {collection: 'locaties', variables: ["naam", "land", "opmerkingen"]}
   ],
   uploadedFileName: "data.xls",
   archetype: {
@@ -15,10 +16,14 @@ const initialData = {
   mappings: {
     collections: {
       migranten: {
-        archetypeName: 'persons'
+        archetypeName: 'persons',
+        mappings: [{confirmed: false}, {confirmed: false}],
+        ignoredColumns: [],
       },
       locaties: {
-        archetypeName: 'locations'
+        archetypeName: 'locations',
+        mappings: [{confirmed: false}, {confirmed: false}],
+        ignoredColumns: [],
       }
     }
   }

@@ -14,10 +14,36 @@ class ConnectData extends React.Component {
     this.setState({messageClosed: true});
   }
 
+  mappingsAreComplete(sheet) {
+    const { mappings } = this.props;
+
+    const confirmedColCount = mappings.collections[sheet.collection].mappings
+      .filter((m) => m.confirmed)
+      .map((m) => m.variable.map((v) => v.variableName))
+      .reduce((a, b) => a.concat(b), [])
+      .filter((x, idx, self) => self.indexOf(x) === idx)
+      .length;
+
+    return confirmedColCount + mappings.collections[sheet.collection].ignoredColumns.length === sheet.variables.length;
+  }
+
   render() {
+/*
+[{
+  active: false,
+  archetypeName: "",
+  complete: false,
+  collectionName: ""
+}]
+*/
+    const { uploadedFileName, sheets, activeCollection, mappings } = this.props;
 
-    const { uploadedFileName, sheets } = this.props;
-
+    const collectionTabs = sheets.map((sheet) => ({
+      collectionName: sheet.collection,
+      archetypeName: mappings.collections[sheet.collection].archetypeName,
+      active: activeCollection === sheet.collection,
+      complete: this.mappingsAreComplete(sheet)
+    }));
     const message = this.state.messageClosed ? null : (
       <div className="alert alert-info alert-dismissible" role="alert">
         <button type="button" className="close" onClick={this.closeMessage.bind(this)}><span>&times;</span></button>
@@ -33,7 +59,7 @@ class ConnectData extends React.Component {
         {message}
         <p>Connect the excel columns to the properties of the Archetypes</p>
       </div>
-      <CollectionIndex />
+      <CollectionIndex collectionTabs={collectionTabs} />
 
       <CollectionForm />
       <CollectionTable />
