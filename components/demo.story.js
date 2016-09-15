@@ -91,8 +91,30 @@ function connectDataStepData(patch) {
     activeCollection: 'migranten',
     isUploading: false,
     sheets: [
-      {collection: 'migranten', variables: ["ID", "Voornaam", "tussenvoegsel", "Achternaam", "GeschrevenDocument", "Genoemd in", "Is getrouwd met"]},
-      {collection: 'locaties', variables: ["naam", "land", "opmerkingen"]}
+      {
+        collection: 'migranten',
+        variables: ["ID", "Voornaam", "tussenvoegsel", "Achternaam", "Geboren in"],
+        rows: [
+          [
+            {value: "1"},
+            {value: "Hans"},
+            {value: ""},
+            {value: "Achterberg"},
+            {value: "Den Hoorn", error: "niet correct"}
+          ]
+        ]
+      },
+      {
+        collection: 'locaties',
+        variables: ["naam", "land", "opmerkingen"],
+        rows: [
+          [
+            {value: "Den Hoorn"},
+            {value: "Nederland"},
+            {value: "correct"}
+          ]
+        ]
+      }
     ],
     uploadedFileName: "data.xls",
   };

@@ -5,10 +5,32 @@ import ConnectData from "./connect-data";
 const initialData = {
   activeCollection: 'migranten',
   sheets: [
-    {collection: 'migranten', variables: ["ID", "Voornaam", "tussenvoegsel", "Achternaam", "GeschrevenDocument", "Genoemd in", "Is getrouwd met"]},
-    {collection: 'locaties', variables: ["naam", "land", "opmerkingen"]}
+    {
+      collection: 'migranten',
+      variables: ["ID", "Voornaam", "tussenvoegsel", "Achternaam", "Geboren in"],
+      rows: [
+        [
+          {value: "1"},
+          {value: "Hans"},
+          {value: ""},
+          {value: "Achterberg"},
+          {value: "Den Hoorn", error: "niet correct"}
+        ]
+      ]
+    },
+    {
+      collection: 'locaties',
+      variables: ["naam", "land", "opmerkingen"],
+      rows: [
+        [
+          {value: "Den Hoorn"},
+          {value: "Nederland"},
+          {value: "correct"}
+        ]
+      ]
+    }
   ],
-  uploadedFileName: "data.xls",
+  uploadedFileName: "data.xlsx",
   archetype: {
     persons: {},
     locations: {}
@@ -18,12 +40,12 @@ const initialData = {
       migranten: {
         archetypeName: 'persons',
         mappings: [{confirmed: false}, {confirmed: false}],
-        ignoredColumns: [],
+        ignoredColumns: []
       },
       locaties: {
         archetypeName: 'locations',
         mappings: [{confirmed: false}, {confirmed: false}],
-        ignoredColumns: [],
+        ignoredColumns: []
       }
     }
   }
@@ -50,12 +72,18 @@ const locationsActive = {
 
 storiesOf('Connect data', module)
   .add('initially', () => (
-    <ConnectData {...initialData} />
+    <ConnectData {...initialData}
+                 onIgnoreColumnToggle={action("toggling ignore on column")}
+                 onSelectCollection={action("selecting collection")} />
   ))
   .add('ignore all location columns', () => (
-    <ConnectData {...ignoreLocations} />
+    <ConnectData {...ignoreLocations}
+                 onIgnoreColumnToggle={action("toggling ignore on column")}
+                 onSelectCollection={action("selecting collection")} />
   ))
   .add('locations is active', () => (
-    <ConnectData {...locationsActive} />
+    <ConnectData {...locationsActive}
+                 onIgnoreColumnToggle={action("toggling ignore on column")}
+                 onSelectCollection={action("selecting collection")} />
   ));
 

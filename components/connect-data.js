@@ -39,47 +39,6 @@ class ConnectData extends React.Component {
       ).map((colSpec) => colSpec.index);
   }
 
-  transformProps() {
-    const { sheets, activeCollection, mappings } = this.props;
-    const collectionData = sheets.find((sheet) => sheet.collection === activeCollection);
-    const { rows, collection, variables } = collectionData;
-
-    const confirmedCols = this.getConfirmedCols(variables);
-    const { ignoredColumns } = mappings.collections[activeCollection];
-
-    /*
-     rows: [[
-      {value: "Boschker", ignored: false},
-      {value: "1932", ignored: false, error: "test error"},
-      {value: "Oosbaan", ignored: true},
-     ], [
-      {value: "Mahler", ignored: false},
-      {value: "1922", ignored: false},
-      {value: "Vlissingen", ignored: true},
-     ]],
-     headers: [
-      {name: "achternaam", isConfirmed: false, isIgnored: false},
-      {name: "geboortejaar", isConfirmed: true, isIgnored: false},
-      {name: "hasBirthPlace", isConfirmed: false, isIgnored: true}
-     ]
-     */
-
-    return {
-      collectionTabs: sheets.map((sheet) => ({
-        collectionName: sheet.collection,
-        archetypeName: mappings.collections[sheet.collection].archetypeName,
-        active: activeCollection === sheet.collection,
-        complete: this.mappingsAreComplete(sheet)
-      })),
-      rows: [],
-      headers: variables.map((variable, i) => ({
-        name: variable,
-        isConfirmed: confirmedCols.indexOf(i) > -1,
-        isIgnored: ignoredColumns.indexOf(variable) > -1
-      }))
-    };
-  }
-
   mappingsAreComplete(sheet) {
     const { mappings } = this.props;
 
@@ -93,8 +52,38 @@ class ConnectData extends React.Component {
     return confirmedColCount + mappings.collections[sheet.collection].ignoredColumns.length === sheet.variables.length;
   }
 
+  transformProps() {
+    const { sheets, activeCollection, mappings } = this.props;
+    const collectionData = sheets.find((sheet) => sheet.collection === activeCollection);
+    const { rows, variables } = collectionData;
+
+    const confirmedCols = this.getConfirmedCols(variables);
+    const { ignoredColumns } = mappings.collections[activeCollection];
+
+    return {
+      collectionTabs: sheets.map((sheet) => ({
+        collectionName: sheet.collection,
+        archetypeName: mappings.collections[sheet.collection].archetypeName,
+        active: activeCollection === sheet.collection,
+        complete: this.mappingsAreComplete(sheet)
+      })),
+      rows: rows.map((row) => row.map((cell, i) => ({
+        value: cell.value,
+        error: cell.error || null,
+        ignored: ignoredColumns.indexOf(variables[i]) > -1
+      }))),
+      headers: variables.map((variable, i) => ({
+        name: variable,
+        isConfirmed: confirmedCols.indexOf(i) < 0 && confirmedCols.indexOf(i) > -1,
+        isIgnored: ignoredColumns.indexOf(variable) > -1
+      }))
+    };
+  }
+
+
   render() {
-    const { activeCollection, onIgnoreColumnToggle } = this.props;
+    const { activeCollection, uploadedFileName } = this.props;
+    const { onIgnoreColumnToggle, onSelectCollection } = this.props;
     const { collectionTabs, rows, headers } = this.transformProps();
 
     return (
@@ -104,11 +93,16 @@ class ConnectData extends React.Component {
           {this.renderMessage()}
           <p>Connect the excel columns to the properties of the Archetypes</p>
         </div>
-        <CollectionIndex collectionTabs={collectionTabs} />
+        <CollectionIndex collectionTabs={collectionTabs} onSelectCollection={onSelectCollection} />
 
         <CollectionForm />
 
         <div className="container big-margin">
+          <p className="from-excel">
+            <img src="images/icon-excel.svg" alt=""/>{" "}
+            <em>{activeCollection}</em> from {uploadedFileName}
+          </p>
+
           <CollectionTable
             rows={rows}
             headers={headers}
