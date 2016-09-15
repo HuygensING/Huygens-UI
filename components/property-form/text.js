@@ -6,22 +6,16 @@ class Form extends React.Component {
 
 
   render() {
-    const {collectionData, onSetFieldMapping, onClearFieldMapping, onSetDefaultValue, mappings, name} = this.props;
-
-    const mapping = mappings.collections[collectionData.collection].mappings;
-    const propertyMapping = mapping.find((m) => m.property === name) || {};
-    const selectedVariable = propertyMapping.variable && propertyMapping.variable.length ? propertyMapping.variable[0] : {};
-    const defaultValue = propertyMapping.defaultValue && propertyMapping.defaultValue.length ? propertyMapping.defaultValue[0] : {};
+    const { columns, propertyMapping } = this.props;
+    const selectedColumn = propertyMapping && propertyMapping.variable[0] ? propertyMapping.variable[0].variableName : null;
 
     return (
-      <span>
-        <SelectField
-          onChange={(value) => onSetFieldMapping(collectionData.collection, name, [{variableName: value}])}
-          onClear={() => onClearFieldMapping(collectionData.collection, name, 0)}
-          options={collectionData.variables} placeholder="Select a column..."
-          value={selectedVariable.variableName || null} />
-
-      </span>
+      <SelectField value={selectedColumn}>
+        <span type="placeholder" className="from-excel"><img src="images/icon-excel.svg" alt=""/> Select an excel column</span>
+        {columns.filter((col) => col.name === selectedColumn || (!col.isConfirmed && !col.isIgnored) ).map((col) => (
+          <span key={col.name} value={col.name} className="from-excel"><img src="images/icon-excel.svg" alt=""/> {col.name}</span>
+        ))}
+      </SelectField>
     );
   }
 }

@@ -132,6 +132,18 @@ function connectDataStepData(patch) {
       }
     }
   };
+  baseData.archetype = {
+    persons: [
+      {name: "givenName", type: "text"},
+      {name: "surname", type: "text"},
+      {name: "birthDate", type: "datable"}
+    ],
+    locations: [
+      {name: "name", type: "text"},
+      {name: "country", type: "text"},
+    ]
+  };
+
   if (patch) {
     return override(baseData, patch)
   } else {

@@ -32,19 +32,35 @@ const initialData = {
   ],
   uploadedFileName: "data.xlsx",
   archetype: {
-    persons: {},
-    locations: {}
+    persons: [
+      {name: "givenName", type: "text"},
+      {name: "surname", type: "text"},
+      {name: "birthDate", type: "datable"}
+    ],
+    locations: [
+      {name: "name", type: "text"},
+      {name: "country", type: "text"},
+    ]
   },
   mappings: {
     collections: {
       migranten: {
         archetypeName: 'persons',
-        mappings: [{confirmed: false}, {confirmed: false}],
+        mappings: [],
         ignoredColumns: []
       },
       locaties: {
         archetypeName: 'locations',
-        mappings: [{confirmed: false}, {confirmed: false}],
+        mappings: [{
+          property: "name",
+          variable: [{variableName: "naam"}],
+          confirmed: true
+        }, {
+            property: "country",
+            variable: [{variableName: "land"}],
+            confirmed: false
+          }
+        ],
         ignoredColumns: []
       }
     }
@@ -59,14 +75,15 @@ const ignoreLocations = {
       ...initialData.mappings.collections,
       locaties: {
         ...initialData.mappings.collections.locaties,
-        ignoredColumns: ["naam", "land", "opmerkingen"]
+        ignoredColumns: ["naam", "land", "opmerkingen"],
+        mappings: []
       }
     }
   }
 };
 
 const locationsActive = {
-  ...ignoreLocations,
+  ...initialData,
   activeCollection: 'locaties',
 };
 

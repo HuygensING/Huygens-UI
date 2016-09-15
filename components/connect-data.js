@@ -53,9 +53,10 @@ class ConnectData extends React.Component {
   }
 
   transformProps() {
-    const { sheets, activeCollection, mappings } = this.props;
+    const { sheets, activeCollection, mappings, archetype } = this.props;
     const collectionData = sheets.find((sheet) => sheet.collection === activeCollection);
     const { rows, variables } = collectionData;
+
 
     const confirmedCols = this.getConfirmedCols(variables);
     const { ignoredColumns } = mappings.collections[activeCollection];
@@ -74,9 +75,11 @@ class ConnectData extends React.Component {
       }))),
       headers: variables.map((variable, i) => ({
         name: variable,
-        isConfirmed: confirmedCols.indexOf(i) < 0 && confirmedCols.indexOf(i) > -1,
+        isConfirmed: ignoredColumns.indexOf(i) < 0 && confirmedCols.indexOf(i) > -1,
         isIgnored: ignoredColumns.indexOf(variable) > -1
-      }))
+      })),
+      archetypeFields: archetype[mappings.collections[activeCollection].archetypeName],
+      propertyMappings: mappings.collections[activeCollection].mappings
     };
   }
 
@@ -84,7 +87,7 @@ class ConnectData extends React.Component {
   render() {
     const { activeCollection, uploadedFileName } = this.props;
     const { onIgnoreColumnToggle, onSelectCollection } = this.props;
-    const { collectionTabs, rows, headers } = this.transformProps();
+    const { collectionTabs, rows, headers, archetypeFields, propertyMappings } = this.transformProps();
 
     return (
       <div>
@@ -95,7 +98,7 @@ class ConnectData extends React.Component {
         </div>
         <CollectionIndex collectionTabs={collectionTabs} onSelectCollection={onSelectCollection} />
 
-        <CollectionForm />
+        <CollectionForm columns={headers} archetypeFields={archetypeFields} propertyMappings={propertyMappings} />
 
         <div className="container big-margin">
           <p className="from-excel">
