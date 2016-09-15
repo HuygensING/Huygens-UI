@@ -1,6 +1,5 @@
 import React from "react";
 import SelectField from "./fields/select-field";
-import Option from "./fields/select-field/option";
 
 class ConnectToArchetype extends React.Component {
   constructor(props) {
@@ -49,11 +48,11 @@ class ConnectToArchetype extends React.Component {
                   onChange={(value) => onMapCollectionArchetype(sheet.collection, value)}
                   onClear={() => onMapCollectionArchetype(sheet.collection, null) }
                   value={mappings.collections[sheet.collection].archetypeName}>
-                    <Option type="placeholder">
+                    <span type="placeholder">
                       Connect <em>{sheet.collection}</em> to a Timbuctoo archetype.
-                    </Option>
+                    </span>
                     {Object.keys(archetype).filter((domain) => domain !== "relations").sort().map((option) => (
-                      <Option value={option}>{option}</Option>
+                      <span value={option}>{option}</span>
                     ))}
                 </SelectField>
               </div>
