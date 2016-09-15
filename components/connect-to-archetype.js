@@ -47,9 +47,13 @@ class ConnectToArchetype extends React.Component {
                 <SelectField
                   onChange={(value) => onMapCollectionArchetype(sheet.collection, value)}
                   onClear={() => onMapCollectionArchetype(sheet.collection, null) }
-                  options={Object.keys(archetype).filter((domain) => domain !== "relations").sort()}
                   value={mappings.collections[sheet.collection].archetypeName}>
-                    Connect <em>{sheet.collection}</em> to a Timbuctoo archetype.
+                    <span type="placeholder">
+                      Connect <em>{sheet.collection}</em> to a Timbuctoo archetype.
+                    </span>
+                    {Object.keys(archetype).filter((domain) => domain !== "relations").sort().map((option) => (
+                      <span value={option}>{option}</span>
+                    ))}
                 </SelectField>
               </div>
               { mappings.collections[sheet.collection].archetypeName ? (
