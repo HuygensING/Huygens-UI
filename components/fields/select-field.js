@@ -73,7 +73,6 @@ class SelectField extends React.Component {
 SelectField.propTypes = {
   onChange: React.PropTypes.func,
   onClear: React.PropTypes.func,
-  placeholder: React.PropTypes.string,
   value: React.PropTypes.string
 };
 
