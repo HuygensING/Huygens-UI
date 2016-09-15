@@ -211,6 +211,10 @@
 	}
 	
 
+table .ignored {
+	opacity: 0.2;
+}
+
 /* Facets */
 	
 .facet {
