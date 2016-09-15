@@ -38,13 +38,17 @@ class SelectField extends React.Component {
   }
 
   render() {
-    const { options, onChange, onClear, value } = this.props;
+    const { onChange, onClear, value } = this.props;
+
+    const selectedOption = React.Children.toArray(this.props.children).filter((opt) => opt.props.value === value);
+    const placeholder = React.Children.toArray(this.props.children).filter((opt) => opt.props.type === "placeholder");
+    const otherOptions = React.Children.toArray(this.props.children).filter((opt) => opt.props.value && opt.props.value !== value);
 
     return (
 
       <div className={cx("dropdown", {open: this.state.isOpen})}>
         <button className="btn btn-blank dropdown-toggle" onClick={this.toggleSelect.bind(this)}>
-          {value || this.props.children} <span className="caret" />
+          {selectedOption.length ? selectedOption : placeholder} <span className="caret" />
         </button>
 
         <ul className="dropdown-menu">
@@ -55,9 +59,9 @@ class SelectField extends React.Component {
               </a>
             </li>
           ) : null}
-          {options.map((option, i) => (
+          {otherOptions.map((option, i) => (
             <li key={i}>
-              <a style={{cursor: "pointer"}} onClick={() => { onChange(option); this.toggleSelect(); }}>{option}</a>
+              <a style={{cursor: "pointer"}} onClick={() => { onChange(option.props.value); this.toggleSelect(); }}>{option}</a>
             </li>
           ))}
         </ul>
@@ -69,7 +73,6 @@ class SelectField extends React.Component {
 SelectField.propTypes = {
   onChange: React.PropTypes.func,
   onClear: React.PropTypes.func,
-  options: React.PropTypes.array,
   placeholder: React.PropTypes.string,
   value: React.PropTypes.string
 };
