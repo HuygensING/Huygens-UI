@@ -25,17 +25,20 @@ class PropertyForm extends React.Component {
   }
 
   render() {
-    const { name, type, custom, collectionName, propertyMapping } = this.props;
-    const { onRemoveCustomProperty, onConfirmFieldMappings, onUnconfirmFieldMappings } = this.props;
+    const { name, type, custom, propertyMapping } = this.props;
+    const { onRemoveCustomProperty, onConfirmFieldMappings, onUnconfirmFieldMappings, onSetFieldMapping } = this.props;
 
     const confirmed = propertyMapping && propertyMapping.confirmed;
 
     const confirmButton = propertyMapping && this.canConfirm(propertyMapping.variable) && !confirmed ?
-      <button className="btn btn-success" onClick={() => onConfirmFieldMappings(collectionName, name)}>Confirm</button> : confirmed ?
-      <button className="btn btn-blank" onClick={() => onUnconfirmFieldMappings(collectionName, name)}>
+      <button className="btn btn-success" onClick={() => onConfirmFieldMappings(name)}>Confirm</button> : confirmed ?
+      <button className="btn btn-blank" onClick={() => onUnconfirmFieldMappings(name)}>
         <span className="hi-success glyphicon glyphicon-ok" /></button> : null;
 
-    const formComponent = typeMap[type](this.props);
+    const formComponent = typeMap[type]({
+      ...this.props,
+      onColumnSelect: (value) => onSetFieldMapping(name, value)
+    });
 
     return (
       <div className="row small-margin">
@@ -46,7 +49,7 @@ class PropertyForm extends React.Component {
         </div>
         <div className="col-sm-1">
           { custom
-            ? (<button className="btn btn-blank pull-right" type="button" onClick={() => onRemoveCustomProperty(collectionName, name)}>
+            ? (<button className="btn btn-blank pull-right" type="button" onClick={() => onRemoveCustomProperty(name)}>
             <span className="glyphicon glyphicon-remove"/>
           </button>)
             : null }

@@ -86,7 +86,7 @@ class ConnectData extends React.Component {
 
   render() {
     const { activeCollection, uploadedFileName } = this.props;
-    const { onIgnoreColumnToggle, onSelectCollection } = this.props;
+    const { onIgnoreColumnToggle, onSelectCollection, onSetFieldMapping } = this.props;
     const { collectionTabs, rows, headers, archetypeFields, propertyMappings } = this.transformProps();
 
     return (
@@ -98,7 +98,11 @@ class ConnectData extends React.Component {
         </div>
         <CollectionIndex collectionTabs={collectionTabs} onSelectCollection={onSelectCollection} />
 
-        <CollectionForm columns={headers} archetypeFields={archetypeFields} propertyMappings={propertyMappings} />
+        <CollectionForm columns={headers}
+                        collectionName={activeCollection}
+                        archetypeFields={archetypeFields}
+                        propertyMappings={propertyMappings}
+                        onSetFieldMapping={onSetFieldMapping} />
 
         <div className="container big-margin">
           <p className="from-excel">

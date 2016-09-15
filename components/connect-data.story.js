@@ -91,16 +91,19 @@ storiesOf('Connect data', module)
   .add('initially', () => (
     <ConnectData {...initialData}
                  onIgnoreColumnToggle={action("toggling ignore on column")}
-                 onSelectCollection={action("selecting collection")} />
+                 onSelectCollection={action("selecting collection")}
+                 onSetFieldMapping={action("setting field map")} />
   ))
   .add('ignore all location columns', () => (
     <ConnectData {...ignoreLocations}
                  onIgnoreColumnToggle={action("toggling ignore on column")}
-                 onSelectCollection={action("selecting collection")} />
+                 onSelectCollection={action("selecting collection")}
+                 onSetFieldMapping={action("setting field map")}/>
   ))
   .add('locations is active', () => (
     <ConnectData {...locationsActive}
                  onIgnoreColumnToggle={action("toggling ignore on column")}
-                 onSelectCollection={action("selecting collection")} />
+                 onSelectCollection={action("selecting collection")}
+                 onSetFieldMapping={action("setting field map")}/>
   ));
 

@@ -6,11 +6,12 @@ class Form extends React.Component {
 
 
   render() {
-    const { columns, propertyMapping } = this.props;
+    const { columns, propertyMapping, onColumnSelect } = this.props;
+
     const selectedColumn = propertyMapping && propertyMapping.variable[0] ? propertyMapping.variable[0].variableName : null;
 
     return (
-      <SelectField value={selectedColumn}>
+      <SelectField value={selectedColumn} onChange={(column) => onColumnSelect([{variableName: column}])}>
         <span type="placeholder" className="from-excel"><img src="images/icon-excel.svg" alt=""/> Select an excel column</span>
         {columns.filter((col) => col.name === selectedColumn || (!col.isConfirmed && !col.isIgnored) ).map((col) => (
           <span key={col.name} value={col.name} className="from-excel"><img src="images/icon-excel.svg" alt=""/> {col.name}</span>
@@ -25,7 +26,6 @@ Form.propTypes = {
   mappings: React.PropTypes.object,
   name: React.PropTypes.string,
   onClearFieldMapping: React.PropTypes.func,
-  onSetDefaultValue: React.PropTypes.func,
   onSetFieldMapping: React.PropTypes.func
 };
 
