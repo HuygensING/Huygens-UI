@@ -47,7 +47,8 @@ const initialData = {
       migranten: {
         archetypeName: 'persons',
         mappings: [],
-        ignoredColumns: []
+        ignoredColumns: [],
+        customProperties: [],
       },
       locaties: {
         archetypeName: 'locations',
@@ -56,11 +57,19 @@ const initialData = {
           variable: [{variableName: "naam"}],
           confirmed: true
         }, {
-            property: "country",
-            variable: [{variableName: "land"}],
-            confirmed: false
-          }
+          property: "country",
+          variable: [{variableName: "land"}],
+          confirmed: false
+        }, {
+          property: "remarks",
+          confirmed: false,
+          variable: [{variableName: "opmerkingen"}]
+        }
         ],
+        customProperties: [{
+          name: "remarks",
+          type: "text"
+        }],
         ignoredColumns: []
       }
     }
@@ -145,28 +154,29 @@ function transformProps(props) {
       isIgnored: ignoredColumns.indexOf(variable) > -1
     })),
     archetypeFields: archetype[mappings.collections[activeCollection].archetypeName],
-    propertyMappings: mappings.collections[activeCollection].mappings
+    propertyMappings: mappings.collections[activeCollection].mappings,
+    customPropertyMappings: mappings.collections[activeCollection].customProperties
   };
 }
+
+const actions = {
+  onConfirmFieldMappings: action("confirming field mappings"),
+  onRemoveCustomProperty: action("removing custom property"),
+  onSetFieldMapping: action("setting field mapping"),
+  onUnconfirmFieldMappings: action("unconfirming field mappings"),
+  onIgnoreColumnToggle: action("toggling ignore on column"),
+  onSelectCollection: action("selecting collection"),
+};
 
 
 storiesOf('Connect data', module)
   .add('initially', () => (
-    <ConnectData {...transformProps(initialData)}
-                 onIgnoreColumnToggle={action("toggling ignore on column")}
-                 onSelectCollection={action("selecting collection")}
-                 onSetFieldMapping={action("setting field map")} />
+    <ConnectData {...transformProps(initialData)} {...actions} />
   ))
   .add('ignore all location columns', () => (
-    <ConnectData {...transformProps(ignoreLocations)}
-                 onIgnoreColumnToggle={action("toggling ignore on column")}
-                 onSelectCollection={action("selecting collection")}
-                 onSetFieldMapping={action("setting field map")}/>
+    <ConnectData {...transformProps(ignoreLocations)} {...actions} />
   ))
   .add('locations is active', () => (
-    <ConnectData {...transformProps(locationsActive)}
-                 onIgnoreColumnToggle={action("toggling ignore on column")}
-                 onSelectCollection={action("selecting collection")}
-                 onSetFieldMapping={action("setting field map")}/>
+    <ConnectData {...transformProps(locationsActive)} {...actions} />
   ));
 

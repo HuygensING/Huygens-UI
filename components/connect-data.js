@@ -27,9 +27,25 @@ class ConnectData extends React.Component {
   }
 
   render() {
-    const { activeCollection, uploadedFileName } = this.props;
-    const { onIgnoreColumnToggle, onSelectCollection, onSetFieldMapping } = this.props;
-    const { collectionTabs, rows, headers, archetypeFields, propertyMappings } = this.props;
+    const {
+      activeCollection,
+      uploadedFileName,
+      collectionTabs,
+      rows,
+      headers,
+      archetypeFields,
+      propertyMappings,
+      customPropertyMappings
+    } = this.props;
+
+    const {
+      onIgnoreColumnToggle,
+      onSelectCollection,
+      onSetFieldMapping,
+      onRemoveCustomProperty,
+      onConfirmFieldMappings,
+      onUnconfirmFieldMappings
+    } = this.props;
     return (
       <div>
         <div className="container basic-margin">
@@ -43,7 +59,11 @@ class ConnectData extends React.Component {
                         collectionName={activeCollection}
                         archetypeFields={archetypeFields}
                         propertyMappings={propertyMappings}
-                        onSetFieldMapping={onSetFieldMapping} />
+                        customPropertyMappings={customPropertyMappings}
+                        onSetFieldMapping={onSetFieldMapping}
+                        onRemoveCustomProperty={onRemoveCustomProperty}
+                        onConfirmFieldMappings={onConfirmFieldMappings}
+                        onUnconfirmFieldMappings={onUnconfirmFieldMappings} />
 
         <div className="container big-margin">
           <p className="from-excel">
