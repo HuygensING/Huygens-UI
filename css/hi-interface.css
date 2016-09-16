@@ -15,7 +15,15 @@
 	margin-bottom:1em;
 	}
 
+.basic-padding {
+	margin-top:3em;
+	margin-bottom:3em;
+	}
 
+
+.h100 {
+	height:100%;
+	}
 
 .hit-canvas{
 	background-color:rgba(0,0,0,0.05);
@@ -62,6 +70,8 @@
 
 
 /* Bootstrap OVERRIDE */
+
+
 	
 .pagination {
     margin: 0px 0;
@@ -93,11 +103,22 @@
 	background:none !important;
 	}
 
+.navbar-brand img {
+	margin-top:-5px;
+	}
+
+
 .navbar, .navbar a {
 	color:#FFFFFF;
 	font-family:"Roboto";
 	font-weight:300;
 	}
+
+.nav li a:hover {
+	background:none;
+	font-weight:500;
+	}
+
 	
 .card-dataset {
 	width:150px;
@@ -303,3 +324,4 @@ table .ignored {
 	width:45px;
 	height:auto;
 	}
+
