@@ -200,7 +200,7 @@ storiesOf('demo walkthrough', module)
     })} onMapCollectionArchetype={demo('connect archetype 2')}
         onConfirmCollectionArchetypeMappings={demo('connect data 1')}
     />
-  ))
+  ))/*
   .add('connect data 1', () => (
     <App {...connectDataStepData()} />
-  ));
+  ))*/;

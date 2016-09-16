@@ -87,21 +87,84 @@ const locationsActive = {
   activeCollection: 'locaties',
 };
 
+// Helper function for react-redux connect
+function getConfirmedCols(props, variables) {
+  const { mappings, activeCollection } = props;
+
+  return variables
+    .map((value, i) => ({value: value, index: i}))
+    .filter((colSpec) => mappings.collections[activeCollection].mappings
+      .filter((m) => m.confirmed)
+      .map((m) => m.variable.map((v) => v.variableName))
+      .reduce((a, b) => a.concat(b), [])
+      .indexOf(colSpec.value) > -1
+    ).map((colSpec) => colSpec.index);
+}
+
+// Helper function for react-redux connect
+function mappingsAreComplete(props, sheet) {
+  const { mappings } = props;
+
+  const confirmedColCount = mappings.collections[sheet.collection].mappings
+    .filter((m) => m.confirmed)
+    .map((m) => m.variable.map((v) => v.variableName))
+    .reduce((a, b) => a.concat(b), [])
+    .filter((x, idx, self) => self.indexOf(x) === idx)
+    .length;
+
+  return confirmedColCount + mappings.collections[sheet.collection].ignoredColumns.length === sheet.variables.length;
+}
+
+// Moves to react-redux connect
+function transformProps(props) {
+  const { sheets, activeCollection, mappings, archetype } = props;
+  const collectionData = sheets.find((sheet) => sheet.collection === activeCollection);
+  const { rows, variables } = collectionData;
+
+
+  const confirmedCols = getConfirmedCols(props, variables);
+  const { ignoredColumns } = mappings.collections[activeCollection];
+
+  return {
+    sheets: sheets,
+    activeCollection: activeCollection,
+    collectionTabs: sheets.map((sheet) => ({
+      collectionName: sheet.collection,
+      archetypeName: mappings.collections[sheet.collection].archetypeName,
+      active: activeCollection === sheet.collection,
+      complete: mappingsAreComplete(props, sheet)
+    })),
+    rows: rows.map((row) => row.map((cell, i) => ({
+      value: cell.value,
+      error: cell.error || null,
+      ignored: ignoredColumns.indexOf(variables[i]) > -1
+    }))),
+    headers: variables.map((variable, i) => ({
+      name: variable,
+      isConfirmed: ignoredColumns.indexOf(i) < 0 && confirmedCols.indexOf(i) > -1,
+      isIgnored: ignoredColumns.indexOf(variable) > -1
+    })),
+    archetypeFields: archetype[mappings.collections[activeCollection].archetypeName],
+    propertyMappings: mappings.collections[activeCollection].mappings
+  };
+}
+
+
 storiesOf('Connect data', module)
   .add('initially', () => (
-    <ConnectData {...initialData}
+    <ConnectData {...transformProps(initialData)}
                  onIgnoreColumnToggle={action("toggling ignore on column")}
                  onSelectCollection={action("selecting collection")}
                  onSetFieldMapping={action("setting field map")} />
   ))
   .add('ignore all location columns', () => (
-    <ConnectData {...ignoreLocations}
+    <ConnectData {...transformProps(ignoreLocations)}
                  onIgnoreColumnToggle={action("toggling ignore on column")}
                  onSelectCollection={action("selecting collection")}
                  onSetFieldMapping={action("setting field map")}/>
   ))
   .add('locations is active', () => (
-    <ConnectData {...locationsActive}
+    <ConnectData {...transformProps(locationsActive)}
                  onIgnoreColumnToggle={action("toggling ignore on column")}
                  onSelectCollection={action("selecting collection")}
                  onSetFieldMapping={action("setting field map")}/>
