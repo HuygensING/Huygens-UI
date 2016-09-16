@@ -44,8 +44,10 @@ class ConnectData extends React.Component {
       onSetFieldMapping,
       onRemoveCustomProperty,
       onConfirmFieldMappings,
-      onUnconfirmFieldMappings
+      onUnconfirmFieldMappings,
+      onAddCustomProperty
     } = this.props;
+
     return (
       <div>
         <div className="container basic-margin">
@@ -63,7 +65,8 @@ class ConnectData extends React.Component {
                         onSetFieldMapping={onSetFieldMapping}
                         onRemoveCustomProperty={onRemoveCustomProperty}
                         onConfirmFieldMappings={onConfirmFieldMappings}
-                        onUnconfirmFieldMappings={onUnconfirmFieldMappings} />
+                        onUnconfirmFieldMappings={onUnconfirmFieldMappings}
+                        onAddCustomProperty={onAddCustomProperty} />
 
         <div className="container big-margin">
           <p className="from-excel">

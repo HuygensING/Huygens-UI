@@ -1,5 +1,4 @@
 import React from "react";
-import SelectField from "../fields/select-field";
 
 import Text from "./text";
 // import Relation from "./relation";
@@ -43,7 +42,7 @@ class PropertyForm extends React.Component {
     return (
       <div className="row small-margin">
         <div className="col-sm-2"><strong>{name}</strong></div>
-        <div className="col-sm-1" ><span className="pull-right">({type})</span></div>
+        <div className="col-sm-2" ><span className="pull-right">({type})</span></div>
         <div className="col-sm-5">
           {formComponent}
         </div>
@@ -54,7 +53,7 @@ class PropertyForm extends React.Component {
           </button>)
             : null }
         </div>
-        <div className="col-sm-3 hi-success">
+        <div className="col-sm-2 hi-success">
 
           <span className="pull-right">
             {confirmButton}

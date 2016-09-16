@@ -46,6 +46,7 @@ const actions = {
   onRemoveCustomProperty: action("removing custom property"),
   onSetFieldMapping: action("setting field mapping"),
   onUnconfirmFieldMappings: action("unconfirming field mappings"),
+  onAddCustomProperty: action("adding custom property")
 };
 
 

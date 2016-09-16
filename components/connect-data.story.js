@@ -166,6 +166,7 @@ const actions = {
   onUnconfirmFieldMappings: action("unconfirming field mappings"),
   onIgnoreColumnToggle: action("toggling ignore on column"),
   onSelectCollection: action("selecting collection"),
+  onAddCustomProperty: action("adding custom property")
 };
 
 

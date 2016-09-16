@@ -1,11 +1,18 @@
 import React from "react";
 import PropertyForm from "./property-form/property-form";
+import AddProperty from "./property-form/add-property";
 
 class CollectionForm extends React.Component {
 
   render() {
     const { columns, archetypeFields, propertyMappings, customPropertyMappings, collectionName } = this.props;
-    const { onRemoveCustomProperty, onSetFieldMapping, onConfirmFieldMappings, onUnconfirmFieldMappings } = this.props;
+    const {
+      onRemoveCustomProperty,
+      onSetFieldMapping,
+      onConfirmFieldMappings,
+      onUnconfirmFieldMappings,
+      onAddCustomProperty
+    } = this.props;
 
     const archeTypePropFields = archetypeFields.filter((af) => af.type !== "relation");
 
@@ -34,6 +41,7 @@ class CollectionForm extends React.Component {
       <div className="container basic-margin">
         {propertyForms}
         {customPropertyForms}
+        <AddProperty onAddCustomProperty={(name, type) => onAddCustomProperty(collectionName, name, type)} />
       </div>
     );
   }
