@@ -1,6 +1,7 @@
 import React from 'react';
 import { storiesOf, action, linkTo } from '@kadira/storybook';
 import App from './app.jsx';
+import transformConnectDataProps from "./react-redux-connect/connect-data";
 
 
 function override(orig, patch) {
@@ -124,11 +125,13 @@ function connectDataStepData(patch) {
         archetypeName: 'persons',
         mappings: [{confirmed: false}, {confirmed: false}],
         ignoredColumns: [],
+        customProperties: []
       },
       locaties: {
         archetypeName: 'locations',
         mappings: [{confirmed: false}, {confirmed: false}],
         ignoredColumns: [],
+        customProperties: []
       }
     }
   };
@@ -154,6 +157,25 @@ function connectDataStepData(patch) {
 function demo(name) {
   return linkTo("demo walkthrough", name);
 }
+
+/*
+renderMessage() {
+  const { uploadedFileName, sheets } = this.props;
+  return this.state.messageClosed ? null : (
+    <div className="alert alert-info alert-dismissible" role="alert">
+      <button type="button" className="close" onClick={this.closeMessage.bind(this)}><span>&times;</span></button>
+      {sheets.map((sheet) => <em key={sheet.collection}>{sheet.collection}</em>)
+        .reduce((accu, elem) => accu === null ? [elem] : [...accu, ' and ', elem], null)
+      } from <em>{uploadedFileName}</em> are connected to the Timbuctoo Archetypes.
+    </div>
+  );
+}
+  <div className="container basic-margin">
+    <h2 className="small-margin">Upload and connect your dataset</h2>
+    {message}
+    <p>We found {sheets.length} collections in the file. Connect the tabs to the Timbuctoo Archetypes.</p>
+  </div>
+ */
 
 storiesOf('demo walkthrough', module)
   .add('Log in', () => (
@@ -200,7 +222,7 @@ storiesOf('demo walkthrough', module)
     })} onMapCollectionArchetype={demo('connect archetype 2')}
         onConfirmCollectionArchetypeMappings={demo('connect data 1')}
     />
-  ))/*
+  ))
   .add('connect data 1', () => (
-    <App {...connectDataStepData()} />
-  ))*/;
+    <App {...connectDataStepData()} {...transformConnectDataProps(connectDataStepData())} />
+  ));
