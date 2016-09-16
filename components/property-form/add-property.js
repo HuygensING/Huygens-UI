@@ -15,18 +15,32 @@ class AddProperty extends React.Component {
 
   render() {
     const { newName, newType } = this.state;
-    const { onAddCustomProperty } = this.props;
+    const { onAddCustomProperty, archetypeFields, availableArchetypes } = this.props;
+
+    const relationTypeOptions = archetypeFields
+      .filter((prop) => prop.type === "relation")
+      .filter((prop) => availableArchetypes.indexOf(prop.relation.targetCollection) > -1)
+      .map((prop) => <span key={prop.name} value={prop.name}>{prop.name}</span>);
 
     return (
       <div className="row small-margin">
         <div className="col-sm-2">
           {newType === "relation"
-            ? <span>RELAATION</span>
-            : (<input className="form-control"
+            ? (
+              <SelectField
+                value={newName}
+                onChange={(value) => this.setState({newName: value})}
+                onClear={() => this.setState({newName: null})}>
+                <span type="placeholder">Choose a relation type...</span>
+                {relationTypeOptions}
+              </SelectField>
+            ) : (
+              <input className="form-control"
                       onChange={(ev) => this.setState({newName: ev.target.value})}
                       placeholder="Property name"
                       value={newName}
-                      disabled={newType !== "text"}/>)
+                      disabled={newType !== "text"}/>
+            )
           }
         </div>
         <div className="col-sm-2" >

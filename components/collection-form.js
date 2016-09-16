@@ -5,7 +5,15 @@ import AddProperty from "./property-form/add-property";
 class CollectionForm extends React.Component {
 
   render() {
-    const { columns, archetypeFields, propertyMappings, customPropertyMappings, collectionName } = this.props;
+    const {
+      columns,
+      archetypeFields,
+      propertyMappings,
+      customPropertyMappings,
+      collectionName,
+      availableArchetypes
+    } = this.props;
+
     const {
       onRemoveCustomProperty,
       onSetFieldMapping,
@@ -41,7 +49,10 @@ class CollectionForm extends React.Component {
       <div className="container basic-margin">
         {propertyForms}
         {customPropertyForms}
-        <AddProperty onAddCustomProperty={(name, type) => onAddCustomProperty(collectionName, name, type)} />
+        <AddProperty
+          archetypeFields={archetypeFields}
+          availableArchetypes={availableArchetypes}
+          onAddCustomProperty={(name, type) => onAddCustomProperty(collectionName, name, type)} />
       </div>
     );
   }

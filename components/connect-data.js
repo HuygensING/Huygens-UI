@@ -34,6 +34,7 @@ class ConnectData extends React.Component {
       rows,
       headers,
       archetypeFields,
+      availableArchetypes,
       propertyMappings,
       customPropertyMappings
     } = this.props;
@@ -60,6 +61,7 @@ class ConnectData extends React.Component {
         <CollectionForm columns={headers}
                         collectionName={activeCollection}
                         archetypeFields={archetypeFields}
+                        availableArchetypes={availableArchetypes}
                         propertyMappings={propertyMappings}
                         customPropertyMappings={customPropertyMappings}
                         onSetFieldMapping={onSetFieldMapping}

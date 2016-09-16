@@ -12,7 +12,29 @@ const initialData = {
   archetypeFields: [
     {name: "givenName", type: "text"},
     {name: "surname", type: "text"},
-    {name: "birthDate", type: "datable"}
+    {name: "birthDate", type: "datable"},
+    {
+      name: "hasDeathPlace",
+      type: "relation",
+      relation: {
+        targetCollection: "locations",
+      }
+    }, {
+      name: "hasSibling",
+      type: "relation",
+      relation: {
+        targetCollection: "persons",
+      }
+    }, {
+      name: "hasFoo",
+      type: "relation",
+      relation: {
+        targetCollection: "fooz",
+      }
+    },
+  ],
+  availableArchetypes: [
+    "locations", "persons"
   ],
   propertyMappings: [
     {

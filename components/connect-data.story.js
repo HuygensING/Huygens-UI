@@ -35,11 +35,49 @@ const initialData = {
     persons: [
       {name: "givenName", type: "text"},
       {name: "surname", type: "text"},
-      {name: "birthDate", type: "datable"}
+      {name: "birthDate", type: "datable"},
+      {
+        name: "hasDeathPlace",
+        type: "relation",
+        relation: {
+          targetCollection: "locations",
+        }
+      }, {
+        name: "hasSibling",
+        type: "relation",
+        relation: {
+          targetCollection: "persons",
+        }
+      }, {
+        name: "hasFoo",
+        type: "relation",
+        relation: {
+          targetCollection: "fooz",
+        }
+      }
     ],
     locations: [
       {name: "name", type: "text"},
       {name: "country", type: "text"},
+      {
+        name: "isDeathPlaceOf",
+        type: "relation",
+        relation: {
+          targetCollection: "persons",
+        }
+      }, {
+        name: "isBirthPlaceOf",
+        type: "relation",
+        relation: {
+          targetCollection: "persons",
+        }
+      }, {
+        name: "hasFoo",
+        type: "relation",
+        relation: {
+          targetCollection: "fooz",
+        }
+      }
     ]
   },
   mappings: {
@@ -154,6 +192,7 @@ function transformProps(props) {
       isIgnored: ignoredColumns.indexOf(variable) > -1
     })),
     archetypeFields: archetype[mappings.collections[activeCollection].archetypeName],
+    availableArchetypes: Object.keys(mappings.collections).map((key) => mappings.collections[key].archetypeName),
     propertyMappings: mappings.collections[activeCollection].mappings,
     customPropertyMappings: mappings.collections[activeCollection].customProperties
   };
