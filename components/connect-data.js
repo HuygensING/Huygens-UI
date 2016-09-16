@@ -51,7 +51,8 @@ class ConnectData extends React.Component {
       onClearFieldMapping
     } = this.props;
 
-    console.log(availableCollectionColumnsPerArchetype);
+    const allMappingsAreComplete = collectionTabs.filter((tab) => tab.complete).length === collectionTabs.length;
+
     return (
       <div>
         <div className="container basic-margin">
@@ -74,6 +75,12 @@ class ConnectData extends React.Component {
                         onConfirmFieldMappings={onConfirmFieldMappings}
                         onUnconfirmFieldMappings={onUnconfirmFieldMappings}
                         onAddCustomProperty={onAddCustomProperty} />
+
+        <div className="container big-margin">
+          <button className="btn btn-warning btn-lg pull-right" type="button" disabled={!allMappingsAreComplete}>
+            Publish dataset
+          </button>
+        </div>
 
         <div className="container big-margin">
           <p className="from-excel">

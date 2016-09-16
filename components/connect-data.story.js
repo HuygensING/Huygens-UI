@@ -45,6 +45,12 @@ const initialData = {
           targetCollection: "locations",
         }
       }, {
+        name: "hasBirthPlace",
+        type: "relation",
+        relation: {
+          targetCollection: "locations",
+        }
+      }, {
         name: "hasSibling",
         type: "relation",
         relation: {
@@ -143,6 +149,70 @@ const locationsActive = {
   ...initialData,
   activeCollection: 'locaties',
 };
+
+const allMappingsComplete = {
+  ...initialData,
+  mappings: {
+    collections: {
+      migranten: {
+        archetypeName: 'persons',
+        mappings: [{
+          property: "givenName",
+          variable: [{variableName: "Voornaam"}],
+          confirmed: true
+        }, {
+          property: "surname",
+          variable: [{variableName: "Achternaam"}],
+          confirmed: true
+        }, {
+          property: "hasSibling",
+          variable: [{variableName: "familie ID", targetCollection: "migranten", targetVariableName: "ID"}],
+          confirmed: true
+        }, {
+          property: "hasBirthPlace",
+          variable: [{variableName: "Geboren in", targetCollection: "locaties", targetVariableName: "naam"}],
+          confirmed: true
+        }],
+        ignoredColumns: ["tussenvoegsel", "ID"],
+        customProperties: [{
+          name: "hasSibling",
+          type: "relation"
+        }, {
+          name: "hasBirthPlace",
+          type: "relation"
+        }],
+      },
+      locaties: {
+        archetypeName: 'locations',
+        mappings: [{
+          property: "name",
+          variable: [{variableName: "naam"}],
+          confirmed: true
+        }, {
+          property: "country",
+          variable: [{variableName: "land"}],
+          confirmed: true
+        }, {
+          property: "remarks",
+          confirmed: true,
+          variable: [{variableName: "opmerkingen"}]
+        }, {
+          property: "isBirthPlaceOf",
+          confirmed: true,
+          variable: [{variableName: "persId", targetCollection: "migranten", targetVariableName: "ID"}]
+        }],
+        customProperties: [{
+          name: "remarks",
+          type: "text"
+        }, {
+          name: "isBirthPlaceOf",
+          type: "relation"
+        }],
+        ignoredColumns: []
+      }
+    }
+  }
+}
 
 // Helper function for react-redux connect
 function getConfirmedCols(props, variables) {
@@ -244,5 +314,7 @@ storiesOf('Connect data', module)
   ))
   .add('locations is active', () => (
     <ConnectData {...transformProps(locationsActive)} {...actions} />
+  ))
+  .add('all mappings are complete', () => (
+    <ConnectData {...transformProps(allMappingsComplete)} {...actions} />
   ));
-
