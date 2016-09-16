@@ -164,7 +164,7 @@ function mappingsAreComplete(props, sheet) {
 
 // Moves to react-redux connect
 function transformProps(props) {
-  const { sheets, activeCollection, mappings, archetype } = props;
+  const { sheets, activeCollection, mappings, archetype, uploadedFileName } = props;
   const collectionData = sheets.find((sheet) => sheet.collection === activeCollection);
   const { rows, variables } = collectionData;
 
@@ -175,6 +175,7 @@ function transformProps(props) {
   return {
     sheets: sheets,
     activeCollection: activeCollection,
+    uploadedFileName: uploadedFileName,
     collectionTabs: sheets.map((sheet) => ({
       collectionName: sheet.collection,
       archetypeName: mappings.collections[sheet.collection].archetypeName,
