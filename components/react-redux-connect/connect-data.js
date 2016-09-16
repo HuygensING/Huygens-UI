@@ -29,7 +29,7 @@ function mappingsAreComplete(props, sheet) {
 // Moves to react-redux connect
 function transformProps(props) {
 
-  const { importData: { sheets, activeCollection }, mappings, archetype, uploadedFileName } = props;
+  const { importData: { sheets, activeCollection, uploadedFileName }, mappings, archetype } = props;
   const collectionData = sheets.find((sheet) => sheet.collection === activeCollection);
   const { rows, variables } = collectionData;
 

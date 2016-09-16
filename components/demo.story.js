@@ -32,7 +32,7 @@ function uploadStepsData(patch) {
     },
     location: {
       pathname: "/"
-    }
+    },
   };
   if (patch) {
     return override(baseData, patch)
@@ -43,36 +43,37 @@ function uploadStepsData(patch) {
 
 function connectArchetypeStepData(patch) {
   const baseData = {...uploadStepsData({
-      userdata: {
-        userId: "asd",
+    userdata: {
+      userId: "asd",
 
-      },
-      importData: {
-        isUploading: false,
-        sheets: [
-          {collection: 'migranten'},
-          {collection: 'locaties'}
-        ],
-        uploadedFileName: "data.xls",
-      },
-      location: {
-        pathname: "/maparchetypes"
-      },
-      archetype: {
-        persons: {},
-        locations: {}
-      },
-      mappings: {
-        collections: {
-          migranten: {
-            archetypeName: null
-          },
-          locaties: {
-            archetypeName: null
-          }
+    },
+    importData: {
+      isUploading: false,
+      sheets: [
+        {collection: 'migranten'},
+        {collection: 'locaties'}
+      ],
+      uploadedFileName: "data.xls",
+    },
+    location: {
+      pathname: "/maparchetypes"
+    },
+    archetype: {
+      persons: {},
+      locations: {}
+    },
+    mappings: {
+      collections: {
+        migranten: {
+          archetypeName: null
+        },
+        locaties: {
+          archetypeName: null
         }
       }
-    })
+    },
+    showFileIsUploadedMessage: true
+  })
   };
   if (patch) {
     return override(baseData, patch)
@@ -83,6 +84,8 @@ function connectArchetypeStepData(patch) {
 
 function connectDataStepData(patch) {
   const baseData = connectArchetypeStepData();
+
+  baseData.showCollectionsAreConnectedMessage = true;
 
   baseData.location = {
     pathname: "/mapdata"
@@ -158,24 +161,16 @@ function demo(name) {
   return linkTo("demo walkthrough", name);
 }
 
-/*
-renderMessage() {
-  const { uploadedFileName, sheets } = this.props;
-  return this.state.messageClosed ? null : (
-    <div className="alert alert-info alert-dismissible" role="alert">
-      <button type="button" className="close" onClick={this.closeMessage.bind(this)}><span>&times;</span></button>
-      {sheets.map((sheet) => <em key={sheet.collection}>{sheet.collection}</em>)
-        .reduce((accu, elem) => accu === null ? [elem] : [...accu, ' and ', elem], null)
-      } from <em>{uploadedFileName}</em> are connected to the Timbuctoo Archetypes.
-    </div>
-  );
-}
-  <div className="container basic-margin">
-    <h2 className="small-margin">Upload and connect your dataset</h2>
-    {message}
-    <p>We found {sheets.length} collections in the file. Connect the tabs to the Timbuctoo Archetypes.</p>
-  </div>
- */
+const connectDataActions = {
+  onConfirmFieldMappings: action("confirming field mappings"),
+  onRemoveCustomProperty: action("removing custom property"),
+  onSetFieldMapping: action("setting field mapping"),
+  onUnconfirmFieldMappings: action("unconfirming field mappings"),
+  onIgnoreColumnToggle: action("toggling ignore on column"),
+  onSelectCollection: action("selecting collection"),
+  onAddCustomProperty: action("adding custom property"),
+  onClearFieldMapping: action("clearing field mapping")
+};
 
 storiesOf('demo walkthrough', module)
   .add('Log in', () => (
@@ -200,7 +195,8 @@ storiesOf('demo walkthrough', module)
     })} />
   ))
   .add('connect archetype 1', () => (
-    <App {...connectArchetypeStepData()} onMapCollectionArchetype={demo('connect archetype 2')} />
+    <App {...connectArchetypeStepData()} onMapCollectionArchetype={demo('connect archetype 2')}
+      onCloseMessage={action("closing message")} />
   ))
   .add('connect archetype 2', () => (
     <App {...connectArchetypeStepData({
@@ -208,8 +204,10 @@ storiesOf('demo walkthrough', module)
         collections: {
           migranten: { archetypeName: 'persons' }
         }
-      }
-    })} onMapCollectionArchetype={demo('connect archetype 3')} />
+      },
+      showFileIsUploadedMessage: false
+    })} onMapCollectionArchetype={demo('connect archetype 3')}
+         onCloseMessage={action("closing message")}/>
   ))
   .add('connect archetype 3', () => (
     <App {...connectArchetypeStepData({
@@ -218,11 +216,14 @@ storiesOf('demo walkthrough', module)
           migranten: { archetypeName: 'persons' },
           locaties:  { archetypeName: 'locations' }
         }
-      }
+      },
+      showFileIsUploadedMessage: false
     })} onMapCollectionArchetype={demo('connect archetype 2')}
         onConfirmCollectionArchetypeMappings={demo('connect data 1')}
+        onCloseMessage={action("closing message")}
     />
   ))
   .add('connect data 1', () => (
-    <App {...connectDataStepData()} {...transformConnectDataProps(connectDataStepData())} />
+    <App {...connectDataStepData()} {...transformConnectDataProps(connectDataStepData())} {...connectDataActions}
+         onCloseMessage={action("closing message")}/>
   ));
