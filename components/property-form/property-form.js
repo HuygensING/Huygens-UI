@@ -1,16 +1,13 @@
 import React from "react";
-import SelectField from "../fields/select-field";
 
 import Text from "./text";
-// import Relation from "./relation";
+import Relation from "./relation";
 
 
 const typeMap = {
   text: (props) => <Text {...props} />,
   datable: (props) => <Text {...props} />,
-/*
   relation: (props) => <Relation {...props} />
-*/
 };
 
 class PropertyForm extends React.Component {
@@ -26,7 +23,8 @@ class PropertyForm extends React.Component {
 
   render() {
     const { name, type, custom, propertyMapping } = this.props;
-    const { onRemoveCustomProperty, onConfirmFieldMappings, onUnconfirmFieldMappings, onSetFieldMapping } = this.props;
+    const { onRemoveCustomProperty, onConfirmFieldMappings,
+      onUnconfirmFieldMappings, onSetFieldMapping, onClearFieldMapping } = this.props;
 
     const confirmed = propertyMapping && propertyMapping.confirmed;
 
@@ -37,13 +35,14 @@ class PropertyForm extends React.Component {
 
     const formComponent = typeMap[type]({
       ...this.props,
-      onColumnSelect: (value) => onSetFieldMapping(name, value)
+      onColumnSelect: (value) => onSetFieldMapping(name, value),
+      onClearColumn: (valueIdx) => onClearFieldMapping(name, valueIdx)
     });
 
     return (
       <div className="row small-margin">
-        <div className="col-sm-2"><strong>{name}</strong></div>
-        <div className="col-sm-1" ><span className="pull-right">({type})</span></div>
+        <div className="col-sm-2 pad-6-12"><strong>{name}</strong></div>
+        <div className="col-sm-2 pad-6-12" ><span className="pull-right">({type})</span></div>
         <div className="col-sm-5">
           {formComponent}
         </div>
@@ -54,7 +53,7 @@ class PropertyForm extends React.Component {
           </button>)
             : null }
         </div>
-        <div className="col-sm-3 hi-success">
+        <div className="col-sm-2 hi-success">
 
           <span className="pull-right">
             {confirmButton}

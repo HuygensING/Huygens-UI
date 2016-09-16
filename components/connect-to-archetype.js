@@ -2,16 +2,6 @@ import React from "react";
 import SelectField from "./fields/select-field";
 
 class ConnectToArchetype extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = { messageClosed: false };
-  }
-
-  closeMessage() {
-    this.setState({messageClosed: true});
-  }
-
   render() {
     const { onMapCollectionArchetype, onConfirmCollectionArchetypeMappings,
       sheets, archetype, mappings, uploadedFileName} = this.props;
@@ -19,21 +9,9 @@ class ConnectToArchetype extends React.Component {
     const collectionsAreMapped = Object.keys(mappings.collections).length > 0 &&
       Object.keys(mappings.collections).map((key) => mappings.collections[key].archetypeName).indexOf(null) < 0;
 
-    const message = this.state.messageClosed ? null : (
-      <div className="alert alert-info alert-dismissible" role="alert">
-        <button type="button" className="close" onClick={this.closeMessage.bind(this)}><span>&times;</span></button>
-        {uploadedFileName} is uploaded.
-      </div>
-    );
-
     return (
       <div>
 
-        <div className="container basic-margin">
-          <h2 className="small-margin">Upload and connect your dataset</h2>
-          {message}
-          <p>We found {sheets.length} collections in the file. Connect the tabs to the Timbuctoo Archetypes.</p>
-        </div>
 
         <div className="container basic-margin">
           {sheets.map((sheet) => (
