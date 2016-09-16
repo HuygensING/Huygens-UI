@@ -18,6 +18,7 @@ class CollectionForm extends React.Component {
       onRemoveCustomProperty,
       onSetFieldMapping,
       onConfirmFieldMappings,
+      onClearFieldMapping,
       onUnconfirmFieldMappings,
       onAddCustomProperty
     } = this.props;
@@ -40,6 +41,7 @@ class CollectionForm extends React.Component {
                       propertyMapping={propertyMappings.find((m) => m.property === customProp.name)}
                       onRemoveCustomProperty={(field) => onRemoveCustomProperty(collectionName, field)}
                       onSetFieldMapping={(field, value) => onSetFieldMapping(collectionName, field, value)}
+                      onClearFieldMapping={(field, valueIdx) => onClearFieldMapping(collectionName, field, valueIdx) }
                       onConfirmFieldMappings={(field) => onConfirmFieldMappings(collectionName, field)}
                       onUnconfirmFieldMappings={(field) => onUnconfirmFieldMappings(collectionName, field)}
         />

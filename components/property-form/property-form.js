@@ -25,7 +25,8 @@ class PropertyForm extends React.Component {
 
   render() {
     const { name, type, custom, propertyMapping } = this.props;
-    const { onRemoveCustomProperty, onConfirmFieldMappings, onUnconfirmFieldMappings, onSetFieldMapping } = this.props;
+    const { onRemoveCustomProperty, onConfirmFieldMappings,
+      onUnconfirmFieldMappings, onSetFieldMapping, onClearFieldMapping } = this.props;
 
     const confirmed = propertyMapping && propertyMapping.confirmed;
 
@@ -36,7 +37,8 @@ class PropertyForm extends React.Component {
 
     const formComponent = typeMap[type]({
       ...this.props,
-      onColumnSelect: (value) => onSetFieldMapping(name, value)
+      onColumnSelect: (value) => onSetFieldMapping(name, value),
+      onClearColumn: (valueIdx) => onClearFieldMapping(name, valueIdx)
     });
 
     return (

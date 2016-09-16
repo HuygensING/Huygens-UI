@@ -46,7 +46,8 @@ class ConnectData extends React.Component {
       onRemoveCustomProperty,
       onConfirmFieldMappings,
       onUnconfirmFieldMappings,
-      onAddCustomProperty
+      onAddCustomProperty,
+      onClearFieldMapping
     } = this.props;
 
     return (
@@ -65,6 +66,7 @@ class ConnectData extends React.Component {
                         propertyMappings={propertyMappings}
                         customPropertyMappings={customPropertyMappings}
                         onSetFieldMapping={onSetFieldMapping}
+                        onClearFieldMapping={onClearFieldMapping}
                         onRemoveCustomProperty={onRemoveCustomProperty}
                         onConfirmFieldMappings={onConfirmFieldMappings}
                         onUnconfirmFieldMappings={onUnconfirmFieldMappings}
