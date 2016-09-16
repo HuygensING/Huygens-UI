@@ -2,7 +2,7 @@ import React from "react";
 import { storiesOf, action } from "@kadira/storybook";
 import CollectionForm from "./collection-form";
 
-const initialData = {
+const data = {
   columns: [
     {name: "Voornaam", isConfirmed: true},
     {name: "Achternaam"},
@@ -95,6 +95,6 @@ const actions = {
 
 storiesOf('CollectionForm', module)
   .add('all supported types of mappings/state in a row', () => (
-    <CollectionForm {...initialData} {...actions} />
+    <CollectionForm {...data} {...actions} />
   ));
 

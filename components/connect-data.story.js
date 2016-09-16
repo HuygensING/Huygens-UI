@@ -7,25 +7,27 @@ const initialData = {
   sheets: [
     {
       collection: 'migranten',
-      variables: ["ID", "Voornaam", "tussenvoegsel", "Achternaam", "Geboren in"],
+      variables: ["ID", "Voornaam", "tussenvoegsel", "Achternaam", "Geboren in", "familie ID"],
       rows: [
         [
           {value: "1"},
           {value: "Hans"},
           {value: ""},
           {value: "Achterberg"},
-          {value: "Den Hoorn", error: "niet correct"}
+          {value: "Den Hoorn", error: "niet correct"},
+          {value: "2"}
         ]
       ]
     },
     {
       collection: 'locaties',
-      variables: ["naam", "land", "opmerkingen"],
+      variables: ["naam", "land", "opmerkingen", "persId"],
       rows: [
         [
           {value: "Den Hoorn"},
           {value: "Nederland"},
-          {value: "correct"}
+          {value: "correct"},
+          {value: "1"}
         ]
       ]
     }
@@ -84,9 +86,15 @@ const initialData = {
     collections: {
       migranten: {
         archetypeName: 'persons',
-        mappings: [],
+        mappings: [{
+          property: "hasSibling",
+          variable: [{variableName: "familie ID", targetCollection: "migranten"}]
+        }],
         ignoredColumns: [],
-        customProperties: [],
+        customProperties: [{
+          name: "hasSibling",
+          type: "relation"
+        }],
       },
       locaties: {
         archetypeName: 'locations',
@@ -102,11 +110,13 @@ const initialData = {
           property: "remarks",
           confirmed: false,
           variable: [{variableName: "opmerkingen"}]
-        }
-        ],
+        }],
         customProperties: [{
           name: "remarks",
           type: "text"
+        }, {
+          name: "isBirthPlaceOf",
+          type: "relation"
         }],
         ignoredColumns: []
       }
@@ -122,7 +132,7 @@ const ignoreLocations = {
       ...initialData.mappings.collections,
       locaties: {
         ...initialData.mappings.collections.locaties,
-        ignoredColumns: ["naam", "land", "opmerkingen"],
+        ignoredColumns: ["naam", "land", "opmerkingen", "persId"],
         mappings: []
       }
     }
@@ -172,6 +182,8 @@ function transformProps(props) {
   const confirmedCols = getConfirmedCols(props, variables);
   const { ignoredColumns } = mappings.collections[activeCollection];
 
+  const availableArchetypes = Object.keys(mappings.collections).map((key) => mappings.collections[key].archetypeName);
+
   return {
     sheets: sheets,
     activeCollection: activeCollection,
@@ -193,9 +205,21 @@ function transformProps(props) {
       isIgnored: ignoredColumns.indexOf(variable) > -1
     })),
     archetypeFields: archetype[mappings.collections[activeCollection].archetypeName],
-    availableArchetypes: Object.keys(mappings.collections).map((key) => mappings.collections[key].archetypeName),
     propertyMappings: mappings.collections[activeCollection].mappings,
-    customPropertyMappings: mappings.collections[activeCollection].customProperties
+    customPropertyMappings: mappings.collections[activeCollection].customProperties,
+    availableArchetypes: availableArchetypes,
+    availableCollectionColumnsPerArchetype: availableArchetypes.map((archetypeName) => ({
+      key: archetypeName,
+      values: Object.keys(mappings.collections)
+        .filter((collectionName) => mappings.collections[collectionName].archetypeName === archetypeName)
+        .map((collectionName) => ({
+          collectionName: collectionName,
+          columns: sheets.find((sheet) => sheet.collection === collectionName).variables
+        }))
+    })).reduce((archetypeToCollectionColumnMapping, currentArchetypeAndCols) => {
+      archetypeToCollectionColumnMapping[currentArchetypeAndCols.key] = currentArchetypeAndCols.values;
+      return archetypeToCollectionColumnMapping;
+    }, {})
   };
 }
 

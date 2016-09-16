@@ -36,7 +36,8 @@ class ConnectData extends React.Component {
       archetypeFields,
       availableArchetypes,
       propertyMappings,
-      customPropertyMappings
+      customPropertyMappings,
+      availableCollectionColumnsPerArchetype
     } = this.props;
 
     const {
@@ -50,6 +51,7 @@ class ConnectData extends React.Component {
       onClearFieldMapping
     } = this.props;
 
+    console.log(availableCollectionColumnsPerArchetype);
     return (
       <div>
         <div className="container basic-margin">
@@ -63,6 +65,7 @@ class ConnectData extends React.Component {
                         collectionName={activeCollection}
                         archetypeFields={archetypeFields}
                         availableArchetypes={availableArchetypes}
+                        availableCollectionColumnsPerArchetype={availableCollectionColumnsPerArchetype}
                         propertyMappings={propertyMappings}
                         customPropertyMappings={customPropertyMappings}
                         onSetFieldMapping={onSetFieldMapping}
