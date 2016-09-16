@@ -7,7 +7,7 @@ class AddProperty extends React.Component {
     super(props);
 
     this.state = {
-      newName: null,
+      newName: "",
       newType: null
     };
   }
@@ -30,7 +30,7 @@ class AddProperty extends React.Component {
               <SelectField
                 value={newName}
                 onChange={(value) => this.setState({newName: value})}
-                onClear={() => this.setState({newName: null})}>
+                onClear={() => this.setState({newName: ""})}>
                 <span type="placeholder">Choose a relation type...</span>
                 {relationTypeOptions}
               </SelectField>

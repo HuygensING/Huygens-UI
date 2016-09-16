@@ -1,15 +1,13 @@
 import React from "react";
 
 import Text from "./text";
-// import Relation from "./relation";
+import Relation from "./relation";
 
 
 const typeMap = {
   text: (props) => <Text {...props} />,
   datable: (props) => <Text {...props} />,
-/*
   relation: (props) => <Relation {...props} />
-*/
 };
 
 class PropertyForm extends React.Component {
@@ -43,8 +41,8 @@ class PropertyForm extends React.Component {
 
     return (
       <div className="row small-margin">
-        <div className="col-sm-2"><strong>{name}</strong></div>
-        <div className="col-sm-2" ><span className="pull-right">({type})</span></div>
+        <div className="col-sm-2 pad-6-12"><strong>{name}</strong></div>
+        <div className="col-sm-2 pad-6-12" ><span className="pull-right">({type})</span></div>
         <div className="col-sm-5">
           {formComponent}
         </div>

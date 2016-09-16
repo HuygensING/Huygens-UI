@@ -7,6 +7,7 @@ const initialData = {
     {name: "Voornaam", isConfirmed: true},
     {name: "Achternaam"},
     {name: "Alternatief"},
+    {name: "Sterfplaats"},
     {name: "ignored", isIgnored: true}
   ],
   archetypeFields: [
@@ -36,6 +37,15 @@ const initialData = {
   availableArchetypes: [
     "locations", "persons"
   ],
+  availableCollectionColumnsPerArchetype: {
+    locations: [
+      {collectionName: "Lokaties", columns: ["naam", "land", "lat", "lon"]},
+      {collectionName: "Alternatieve Lokaties", columns: ["naam", "land", "opmerkingen"]},
+    ],
+    persons: [
+      {collectionName: "Migranten", columns: ["ID", "Voornaam", "tussenvoegsel", "Achternaam", "Geboren in"]},
+    ]
+  },
   propertyMappings: [
     {
       property: "givenName",
@@ -48,6 +58,12 @@ const initialData = {
     }, {
       property: "custom",
       variable: [{variableName: "Alternatief"}],
+    }, {
+      property: "hasDeathPlace",
+      variable: [{variableName: "Sterfplaats", targetCollection: "Alternatieve Lokaties", targetVariableName: "naam"}],
+    }, {
+      property: "hasBirthPlace",
+      variable: [{variableName: "Achternaam"}],
     }
   ],
   customPropertyMappings: [
@@ -56,11 +72,15 @@ const initialData = {
       type: "text",
     },
     {
-      name: "custom-2",
-      type: "text",
+      name: "hasDeathPlace",
+      type: "relation",
+    },
+    {
+      name: "hasSibling",
+      type: "relation"
     }
   ],
-  collectionName: "persons"
+  collectionName: "Migranten"
 };
 
 const actions = {

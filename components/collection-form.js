@@ -11,7 +11,8 @@ class CollectionForm extends React.Component {
       propertyMappings,
       customPropertyMappings,
       collectionName,
-      availableArchetypes
+      availableArchetypes,
+      availableCollectionColumnsPerArchetype
     } = this.props;
 
     const {
@@ -32,12 +33,15 @@ class CollectionForm extends React.Component {
                       onSetFieldMapping={(field, value) => onSetFieldMapping(collectionName, field, value)}
                       onConfirmFieldMappings={(field) => onConfirmFieldMappings(collectionName, field)}
                       onUnconfirmFieldMappings={(field) => onUnconfirmFieldMappings(collectionName, field)}
+                      onClearFieldMapping={(field, valueIdx) => onClearFieldMapping(collectionName, field, valueIdx) }
         />
       ));
 
     const customPropertyForms = customPropertyMappings
       .map((customProp, i) => (
         <PropertyForm columns={columns} custom={true} key={i} name={customProp.name} type={customProp.type}
+                      archetypeFields={archetypeFields}
+                      availableCollectionColumnsPerArchetype={availableCollectionColumnsPerArchetype}
                       propertyMapping={propertyMappings.find((m) => m.property === customProp.name)}
                       onRemoveCustomProperty={(field) => onRemoveCustomProperty(collectionName, field)}
                       onSetFieldMapping={(field, value) => onSetFieldMapping(collectionName, field, value)}
