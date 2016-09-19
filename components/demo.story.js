@@ -94,6 +94,7 @@ function connectDataStepData(patch) {
   baseData.importData = {
     activeCollection: 'migranten',
     isUploading: false,
+    publishErrors: false,
     sheets: [
       {
         collection: 'migranten',
@@ -106,7 +107,8 @@ function connectDataStepData(patch) {
             {value: "Achterberg"},
             {value: "Den Hoorn", error: "niet correct"}
           ]
-        ]
+        ],
+        nextUrl: "//migranten.next"
       },
       {
         collection: 'locaties',
@@ -117,7 +119,8 @@ function connectDataStepData(patch) {
             {value: "Nederland"},
             {value: "correct"}
           ]
-        ]
+        ],
+        nextUrl: "//locaties.next"
       }
     ],
     uploadedFileName: "data.xls",
@@ -169,7 +172,11 @@ const connectDataActions = {
   onIgnoreColumnToggle: action("toggling ignore on column"),
   onSelectCollection: action("selecting collection"),
   onAddCustomProperty: action("adding custom property"),
-  onClearFieldMapping: action("clearing field mapping")
+  onClearFieldMapping: action("clearing field mapping"),
+  onUploadFileSelect: action("reuploading file"),
+  onLoadMoreClick: action("loads more data"),
+  onPublishData: action("publishes data")
+
 };
 
 storiesOf('demo walkthrough', module)
@@ -226,4 +233,10 @@ storiesOf('demo walkthrough', module)
   .add('connect data 1', () => (
     <App {...connectDataStepData()} {...transformConnectDataProps(connectDataStepData())} {...connectDataActions}
          onCloseMessage={action("closing message")}/>
-  ));
+  ))
+  .add('connect data with errors 1', () => (
+    <App {...connectDataStepData({importData: {publishErrors: true}, showCollectionsAreConnectedMessage: false})}
+         {...transformConnectDataProps(connectDataStepData())}
+         {...connectDataActions}
+         onCloseMessage={action("closing message")} />
+  ));;

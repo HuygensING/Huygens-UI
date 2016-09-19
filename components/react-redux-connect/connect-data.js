@@ -58,6 +58,7 @@ function transformProps(props) {
       isConfirmed: ignoredColumns.indexOf(i) < 0 && confirmedCols.indexOf(i) > -1,
       isIgnored: ignoredColumns.indexOf(variable) > -1
     })),
+    nextUrl: sheets.find((sheet) => sheet.collection === activeCollection).nextUrl,
     archetypeFields: archetype[mappings.collections[activeCollection].archetypeName],
     propertyMappings: mappings.collections[activeCollection].mappings,
     customPropertyMappings: mappings.collections[activeCollection].customProperties,

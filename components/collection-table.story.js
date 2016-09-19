@@ -16,12 +16,14 @@ const initialData = {
     {name: "achternaam", isConfirmed: false, isIgnored: false},
     {name: "geboortejaar", isConfirmed: true, isIgnored: false},
     {name: "hasBirthPlace", isConfirmed: false, isIgnored: true}
-  ]
+  ],
+  nextUrl: "//next.url",
+
 };
 
 
 storiesOf('CollectionTable', module)
   .add('we enter with some data', () => (
-    <CollectionTable {...initialData} onIgnoreColumnToggle={action('toggling ignore on column')} />
+    <CollectionTable {...initialData} onIgnoreColumnToggle={action('toggling ignore on column')} onLoadMoreClick={action("loads more data")} />
   ));
 
