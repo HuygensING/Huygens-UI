@@ -3,13 +3,14 @@ import Page from './page.jsx'
 import FirstUpload from './firstUpload.jsx'
 import ConnectToArchetype from "./connect-to-archetype";
 import ConnectData from "./connect-data";
-import Message from "./message"
+import Message from "./message";
+import UploadButton from "./upload-button";
 
 class App extends React.Component {
 
   render() {
     const hasVres = Object.keys(this.props.userdata.myVres).length > 0;
-    const { location: { pathname }, importData: { sheets, uploadedFileName }, onCloseMessage } = this.props;
+    const { location: { pathname }, importData: { sheets, uploadedFileName }, onUploadFileSelect, onCloseMessage } = this.props;
 
     const fileIsUploadedMessage = this.props.showFileIsUploadedMessage ? (
       <Message alertLevel="info" dismissible={true} onCloseMessage={() => onCloseMessage("showFileIsUploadedMessage")}>
@@ -17,6 +18,14 @@ class App extends React.Component {
       </Message>
     ) : null;
 
+    const publishFailedMessage = this.props.importData.publishErrors ? (
+      <Message alertLevel="danger" dismissible={false}>
+        <UploadButton classNames={["btn", "btn-danger", "pull-right", "btn-xs"]} label="Re-upload"
+                      onUploadFileSelect={onUploadFileSelect} />
+        <span className="glyphicon glyphicon-exclamation-sign" />{" "}
+        Publish failed. Please fix the mappings or re-upload the data.
+      </Message>
+    ) : null;
 
     const collectionsAreConnectedMessage = this.props.showCollectionsAreConnectedMessage ?
       <Message alertLevel="info" dismissible={true} onCloseMessage={() => onCloseMessage("showCollectionsAreConnectedMessage")}>
@@ -62,6 +71,7 @@ class App extends React.Component {
           <div className="container basic-margin">
             <h2 className="small-margin">Upload and connect your dataset</h2>
             {collectionsAreConnectedMessage}
+            {publishFailedMessage}
             <p>Connect the excel columns to the properties of the Archetypes</p>
           </div>
           <ConnectData
