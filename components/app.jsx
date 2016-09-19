@@ -5,6 +5,7 @@ import ConnectToArchetype from "./connect-to-archetype";
 import ConnectData from "./connect-data";
 import Message from "./message";
 import UploadButton from "./upload-button";
+import CollectionOverview from "./collection-overview";
 
 class App extends React.Component {
 
@@ -36,14 +37,21 @@ class App extends React.Component {
 
     if (pathname === "/") {
       return (
-        <Page username={this.props.userdata.userId} vres={this.props.userdata.vres} showDatasets={!this.props.importData.isUploading}>
-          {hasVres ? null :
-            <FirstUpload
-              __MockOnLogin={this.props.onLogin}
-              onUploadFileSelect={this.props.onDataSetUpload}
-              isUploading={this.props.importData.isUploading}
-              userId={this.props.userdata.userId}
-            />}
+        <Page username={this.props.userdata.userId} vres={this.props.userdata.vres} showDatasets={true}>
+          {hasVres
+            ? <CollectionOverview
+                onUploadFileSelect={this.props.onDataSetUpload}
+                isUploading={this.props.importData.isUploading}
+                userId={this.props.userdata.userId}
+                vres={this.props.userdata.myVres}
+              />
+            : <FirstUpload
+                __MockOnLogin={this.props.onLogin}
+                onUploadFileSelect={this.props.onDataSetUpload}
+                isUploading={this.props.importData.isUploading}
+                userId={this.props.userdata.userId}
+              />
+          }
         </Page>
       );
     } else if (pathname === "/maparchetypes") {
