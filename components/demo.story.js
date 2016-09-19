@@ -239,4 +239,23 @@ storiesOf('demo walkthrough', module)
          {...transformConnectDataProps(connectDataStepData())}
          {...connectDataActions}
          onCloseMessage={action("closing message")} />
-  ));;
+  ))
+  .add('overview', () => (
+    <App onDataSetUpload={demo("uploading overview")} {...uploadStepsData({
+      userdata: {
+        userId: "asd",
+        myVres: {VreA: {name: "My first VRE" }}
+      }
+    })} />
+  ))
+  .add('uploading overview', () => (
+    <App {...uploadStepsData({
+      userdata: {
+        userId: "asd",
+        myVres: {VreA: {name: "My first VRE" }}
+      },
+      importData: {
+        isUploading: true
+      }
+    })} />
+  ));
