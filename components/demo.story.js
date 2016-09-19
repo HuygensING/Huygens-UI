@@ -107,7 +107,8 @@ function connectDataStepData(patch) {
             {value: "Achterberg"},
             {value: "Den Hoorn", error: "niet correct"}
           ]
-        ]
+        ],
+        nextUrl: "//migranten.next"
       },
       {
         collection: 'locaties',
@@ -118,7 +119,8 @@ function connectDataStepData(patch) {
             {value: "Nederland"},
             {value: "correct"}
           ]
-        ]
+        ],
+        nextUrl: "//locaties.next"
       }
     ],
     uploadedFileName: "data.xls",
@@ -171,7 +173,10 @@ const connectDataActions = {
   onSelectCollection: action("selecting collection"),
   onAddCustomProperty: action("adding custom property"),
   onClearFieldMapping: action("clearing field mapping"),
-  onUploadFileSelect: action("reuploading file")
+  onUploadFileSelect: action("reuploading file"),
+  onLoadMoreClick: action("loads more data"),
+  onPublishData: action("publishes data")
+
 };
 
 storiesOf('demo walkthrough', module)

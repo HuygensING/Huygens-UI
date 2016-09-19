@@ -5,7 +5,7 @@ import DataRow from "./table/data-row";
 class CollectionTable extends React.Component {
   render() {
     const { onIgnoreColumnToggle } = this.props;
-    const { rows, headers } = this.props;
+    const { rows, headers, nextUrl } = this.props;
 
     return (
       <div className="table-responsive">
@@ -22,6 +22,9 @@ class CollectionTable extends React.Component {
             {rows.map((row, i) => <DataRow key={i} row={row} />)}
           </tbody>
         </table>
+        <button onClick={() => this.props.onLoadMoreClick && this.props.onLoadMoreClick(nextUrl)}
+                disabled={!nextUrl}
+                className="btn btn-default pull-right">more...</button>
       </div>
     );
   }

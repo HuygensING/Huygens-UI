@@ -19,7 +19,8 @@ const initialData = {
             {value: "Den Hoorn", error: "niet correct"},
             {value: "2"}
           ]
-        ]
+        ],
+        nextUrl: "//migranten.next"
       },
       {
         collection: 'locaties',
@@ -31,7 +32,8 @@ const initialData = {
             {value: "correct"},
             {value: "1"}
           ]
-        ]
+        ],
+        nextUrl: "//locaties.next"
       }
     ]
   },
@@ -150,7 +152,10 @@ const ignoreLocations = {
 
 const locationsActive = {
   ...initialData,
-  activeCollection: 'locaties',
+  importData: {
+    ...initialData.importData,
+    activeCollection: 'locaties',
+  }
 };
 
 const allMappingsComplete = {
@@ -226,7 +231,9 @@ const actions = {
   onIgnoreColumnToggle: action("toggling ignore on column"),
   onSelectCollection: action("selecting collection"),
   onAddCustomProperty: action("adding custom property"),
-  onClearFieldMapping: action("clearing field mapping")
+  onClearFieldMapping: action("clearing field mapping"),
+  onLoadMoreClick: action("loads more data"),
+  onPublishData: action("publishes data")
 };
 
 

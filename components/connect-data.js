@@ -16,7 +16,8 @@ class ConnectData extends React.Component {
       availableArchetypes,
       propertyMappings,
       customPropertyMappings,
-      availableCollectionColumnsPerArchetype
+      availableCollectionColumnsPerArchetype,
+      nextUrl
     } = this.props;
 
     const {
@@ -27,7 +28,9 @@ class ConnectData extends React.Component {
       onConfirmFieldMappings,
       onUnconfirmFieldMappings,
       onAddCustomProperty,
-      onClearFieldMapping
+      onClearFieldMapping,
+      onLoadMoreClick,
+      onPublishData
     } = this.props;
 
     const allMappingsAreComplete = collectionTabs.filter((tab) => tab.complete).length === collectionTabs.length;
@@ -51,7 +54,7 @@ class ConnectData extends React.Component {
                         onAddCustomProperty={onAddCustomProperty} />
 
         <div className="container big-margin">
-          <button className="btn btn-warning btn-lg pull-right" type="button" disabled={!allMappingsAreComplete}>
+          <button onClick={onPublishData} className="btn btn-warning btn-lg pull-right" type="button" disabled={!allMappingsAreComplete}>
             Publish dataset
           </button>
         </div>
@@ -65,7 +68,9 @@ class ConnectData extends React.Component {
           <CollectionTable
             rows={rows}
             headers={headers}
-            onIgnoreColumnToggle={(header) => onIgnoreColumnToggle(activeCollection, header)} />
+            nextUrl={nextUrl}
+            onIgnoreColumnToggle={(header) => onIgnoreColumnToggle(activeCollection, header)}
+            onLoadMoreClick={(url) => onLoadMoreClick(url, activeCollection)} />
           </div>
       </div>
     );
