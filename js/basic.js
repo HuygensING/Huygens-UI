@@ -17,10 +17,14 @@ $( ".close-left-bar" ).click(function() {
 $(".facet").hover(
     function(e) {
             e.stopPropagation();
-            $(".facet-extra", this).css("visibility", "visible");
+			$(".facet-extra", this).fadeIn( "fast", function() {
+				// Animation complete
+			});
         },
         function() {
-            $(".facet-extra", this).css("visibility", "hidden");
+		$(".facet-extra", this).fadeOut( "fast", function() {
+				// Animation complete
+			});
         }
 );
 
