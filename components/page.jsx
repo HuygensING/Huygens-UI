@@ -20,13 +20,15 @@ function Page(props) {
         </nav>
       </div>
       <div  style={{marginBottom: `${FOOTER_HEIGHT}px`}}>
-        {props.children}
+        {React.Children.toArray(props.children).filter((child) => child.props.type !== "footer-body")}
         {props.vres && props.showDatasets ? (
           <div className="container">
             <DatasetCards caption="Explore all datasets" vres={props.vres} />
           </div>) : null}
       </div>
-      <Footer />
+      <Footer>
+        {React.Children.toArray(props.children).filter((child) => child.props.type === "footer-body")}
+      </Footer>
     </div>
   );
 }
