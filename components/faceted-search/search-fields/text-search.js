@@ -5,7 +5,7 @@ class TextSearch extends React.Component {
     super(props);
 
     this.state = {
-      value: ""
+      value: props.value || ""
     };
   }
 

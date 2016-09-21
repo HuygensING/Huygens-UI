@@ -2,13 +2,15 @@ import React from "react";
 import TextSearch from "./search-fields/text-search";
 
 const components = {
-  text: TextSearch
+  text: TextSearch,
+  "list-facet": () => null,
+  "range-facet": () => null
 };
 
 class SearchFields extends React.Component {
 
   render() {
-    const { fields, onSearchFieldChange } = this.props;
+    const { fields, onSearchFieldChange, results } = this.props;
 
     return (
       <div className="facet-group">

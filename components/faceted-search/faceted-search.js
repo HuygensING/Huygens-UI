@@ -2,6 +2,7 @@ import React from "react";
 import SelectField from "../fields/select-field";
 import SearchFields from "./search-fields";
 import Page from "../page.jsx";
+import CurrentQuery from "./current-query";
 
 class FacetedSearch extends React.Component {
   render() {
@@ -23,7 +24,7 @@ class FacetedSearch extends React.Component {
                   ))}
                 </SelectField>
               </div>
-              <SearchFields fields={activeCollection.searchFields} onSearchFieldChange={onSearchFieldChange} />
+              <SearchFields fields={activeCollection.query.searchFields} results={activeCollection.results} onSearchFieldChange={onSearchFieldChange} />
             </div>
 
             <div className=".hidden-sm col-md-1" />
@@ -39,7 +40,8 @@ class FacetedSearch extends React.Component {
               New Search
             </button>
           </span>
-          <div className="col-sm-10 col-md-10">
+          <div className="col-sm-10 col-md-10 text-right">
+            <CurrentQuery onChange={onSearchFieldChange} searchFields={activeCollection.query.searchFields} />
           </div>
         </span>
         <span type="footer-body">
