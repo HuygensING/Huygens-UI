@@ -20,7 +20,7 @@ const collections = {
         rows: 10
       },
       results: {
-        numFound: 100,
+        numFound: 1320,
         facets: {
         }
       }
@@ -43,11 +43,11 @@ const collectionsWithValues = {
           {label: "Date of birth", field: "gender_s", type: "range-facet", value: [1810, 1820] }
 
         ],
-        start: 20,
+        start: 0,
         rows: 10
       },
       results: {
-        numFound: 100,
+        numFound: 1,
         facets: {
 
         }

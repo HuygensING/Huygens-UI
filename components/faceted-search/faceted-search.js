@@ -31,7 +31,13 @@ class FacetedSearch extends React.Component {
             <div className=".hidden-sm col-md-1" />
 
             <div className="col-sm-8 col-md-8">
-
+              <div className="basic-margin">
+                <strong>Found {activeCollection.results.numFound} {activeCollection.results.numFound === 1
+                  ? activeCollection.label.replace(/s$/, "")
+                  : activeCollection.label
+                }
+                </strong>
+              </div>
             </div>
           </div>
         </div>
