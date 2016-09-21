@@ -1,23 +1,26 @@
 import React from "react";
 import SelectField from "../fields/select-field";
-
+import SearchFields from "./search-fields";
 class FacetedSearch extends React.Component {
   render() {
     const { collections } = this.props;
-    const { onCollectionSelect } = this.props;
-    const selectedCollection = collections.find((collection) => collection.selected).name;
+    const { onCollectionSelect, onSearchFieldChange } = this.props;
+    const activeCollection = collections.find((collection) => collection.selected);
 
     return (
       <div className="container big-margin">
         <div className="row">
           <div className="col-sm-4 col-md-3">
-            <SelectField btnClass="btn-default" onChange={onCollectionSelect} noClear={true} value={selectedCollection}>
-              {collections.map((collection) => (
-                <span key={collection.name} value={collection.name}>
-                  {collection.label}
-                </span>
-              ))}
-            </SelectField>
+            <div className="basic-margin">
+              <SelectField btnClass="btn-default" onChange={onCollectionSelect} noClear={true} value={activeCollection.name}>
+                {collections.map((collection) => (
+                  <span key={collection.name} value={collection.name}>
+                    {collection.label}
+                  </span>
+                ))}
+              </SelectField>
+            </div>
+            <SearchFields fields={activeCollection.searchFields} onSearchFieldChange={onSearchFieldChange} />
           </div>
 
           <div className=".hidden-sm col-md-1" />
