@@ -21,13 +21,14 @@ const collections = {
 
 const actions = {
   onSearchFieldChange: action("setting search field value"),
-  onCollectionSelect: action("selecting collection")
+  onCollectionSelect: action("selecting collection"),
+  onClearSearch: action("clearing search"),
 };
 
 storiesOf('FacetedSearch', module)
+  .add('the search...', () => (
+    <FacetedSearch {...collections} {...actions} />
+  ))
   .add('text search field', () => (
     <TextSearch field="name" label="Type a name" onChange={action("setting value")} />
-  ))
-  .add('the container...', () => (
-    <FacetedSearch {...collections} {...actions} />
   ));
