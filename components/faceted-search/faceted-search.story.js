@@ -2,6 +2,7 @@ import React from 'react';
 import { storiesOf, action } from '@kadira/storybook';
 import FacetedSearch from './faceted-search';
 import TextSearch from "./search-fields/text-search";
+import Pagination from "./results/pagination";
 
 const collections = {
   collections: [
@@ -15,8 +16,11 @@ const collections = {
           {label: "Gender", field: "gender_s", type: "list-facet" },
           {label: "Date of birth", field: "gender_s", type: "range-facet" }
         ],
+        start: 0,
+        rows: 10
       },
       results: {
+        numFound: 100,
         facets: {
         }
       }
@@ -38,9 +42,12 @@ const collectionsWithValues = {
           {label: "Gender", field: "gender_s", type: "list-facet", value: ["Male", "Unknown"]},
           {label: "Date of birth", field: "gender_s", type: "range-facet", value: [1810, 1820] }
 
-        ]
+        ],
+        start: 20,
+        rows: 10
       },
       results: {
+        numFound: 100,
         facets: {
 
         }
@@ -57,6 +64,7 @@ const actions = {
   onSearchFieldChange: action("setting search field value"),
   onCollectionSelect: action("selecting collection"),
   onClearSearch: action("clearing search"),
+  onPageChange: action("changing page")
 };
 
 storiesOf('FacetedSearch', module)
@@ -65,6 +73,9 @@ storiesOf('FacetedSearch', module)
   ))
   .add('...with values', () => (
     <FacetedSearch {...collectionsWithValues} {...actions} />
+  ))
+  .add('pagination', () => (
+    <Pagination onChange={actions.onPageChange} numFound={100} start={0} rows={10} />
   ))
   .add('text search field', () => (
     <TextSearch field="name" label="Type a name" onChange={action("setting value")} />

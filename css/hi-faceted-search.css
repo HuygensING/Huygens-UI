@@ -1,4 +1,7 @@
 
+.pagination > li {
+	cursor: pointer
+}
 
 a {
 			cursor: pointer;

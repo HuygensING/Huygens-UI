@@ -3,11 +3,12 @@ import SelectField from "../fields/select-field";
 import SearchFields from "./search-fields";
 import Page from "../page.jsx";
 import CurrentQuery from "./current-query";
+import Pagination from "./results/pagination";
 
 class FacetedSearch extends React.Component {
   render() {
     const { collections } = this.props;
-    const { onCollectionSelect, onSearchFieldChange, onClearSearch } = this.props;
+    const { onCollectionSelect, onSearchFieldChange, onClearSearch, onPageChange } = this.props;
     const activeCollection = collections.find((collection) => collection.selected);
 
     return (
@@ -45,7 +46,10 @@ class FacetedSearch extends React.Component {
           </div>
         </span>
         <span type="footer-body">
-          [PAGINATION]
+          <Pagination onChange={onPageChange}
+                      numFound={activeCollection.results.numFound}
+                      start={activeCollection.query.start}
+                      rows={activeCollection.query.rows} />
         </span>
       </Page>
     )

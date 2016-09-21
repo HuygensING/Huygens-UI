@@ -23,7 +23,7 @@ class CurrentQuery extends React.Component {
 
     switch (searchField.type) {
       case "list-facet": return searchField.value.map((val, i) => (
-        <span key={i}>
+        <span key={`${searchField.field}-${i}`}>
           <span className="btn btn-primary btn-sm" onClick={() => this.removeListFacetValue(searchField.field, searchField.value, val)}
                 title={`${searchField.label}: ${val}`}>
             {val}{" "}
@@ -33,7 +33,7 @@ class CurrentQuery extends React.Component {
       ));
 
       case "range-facet": return (
-        <span>
+        <span key={`${searchField.field}`}>
           <span className="btn btn-primary btn-sm" onClick={() => this.removeRangeFacetValue(searchField.field)}
                 title={`${searchField.label}: ${searchField.value[0]} - ${searchField.value[1]}`} >
             {searchField.value[0]} - {searchField.value[1]}{" "}
@@ -43,7 +43,7 @@ class CurrentQuery extends React.Component {
       );
 
       case "text": return (
-        <span>
+        <span key={`${searchField.field}`}>
           <span className="btn btn-primary btn-sm" onClick={() => this.removeTextValue(searchField.field)}
                 title={`${searchField.label}: ${searchField.value}`}>
             {searchField.value}{" "}
