@@ -5,6 +5,8 @@ import Footer from "./footer";
 const FOOTER_HEIGHT = 81;
 
 function Page(props) {
+  const footers = React.Children.toArray(props.children).filter((child) => child.props.type === "footer-body");
+
   return (
     <div className="page">
       <div className="basic-margin hi-Green container-fluid">
@@ -19,14 +21,16 @@ function Page(props) {
           </div>
         </nav>
       </div>
-      <div  style={{marginBottom: `${FOOTER_HEIGHT}px`}}>
-        {props.children}
+      <div  style={{marginBottom: `${FOOTER_HEIGHT * footers.length}px`}}>
+        {React.Children.toArray(props.children).filter((child) => child.props.type !== "footer-body")}
         {props.vres && props.showDatasets ? (
           <div className="container">
             <DatasetCards caption="Explore all datasets" vres={props.vres} />
           </div>) : null}
       </div>
-      <Footer />
+      <Footer>
+        {footers}
+      </Footer>
     </div>
   );
 }

@@ -19,7 +19,7 @@ function Footer(props) {
         <div className="container">
           {i === React.Children.count(props.children) - 1
             ? (<div className="row">{hiLogo}<div className="col-sm-10 col-md-10 text-center">{child}</div>{clariahLogo}</div>)
-            : (<div className="row"><div className="col-sm-12 col-md-12 text-center">{child}</div></div>)
+            : (<div className="row">{child}</div>)
           }
         </div>
       </div>

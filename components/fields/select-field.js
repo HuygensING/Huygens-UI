@@ -38,7 +38,7 @@ class SelectField extends React.Component {
   }
 
   render() {
-    const { onChange, onClear, value } = this.props;
+    const { onChange, onClear, value, btnClass, noClear } = this.props;
 
     const selectedOption = React.Children.toArray(this.props.children).filter((opt) => opt.props.value === value);
     const placeholder = React.Children.toArray(this.props.children).filter((opt) => opt.props.type === "placeholder");
@@ -47,12 +47,12 @@ class SelectField extends React.Component {
     return (
 
       <div className={cx("dropdown", {open: this.state.isOpen})}>
-        <button className="btn btn-blank dropdown-toggle" onClick={this.toggleSelect.bind(this)}>
+        <button className={cx("btn", "dropdown-toggle", btnClass || "btn-blank")} onClick={this.toggleSelect.bind(this)}>
           {selectedOption.length ? selectedOption : placeholder} <span className="caret" />
         </button>
 
         <ul className="dropdown-menu">
-          { value ? (
+          { value && !noClear ? (
             <li>
               <a onClick={() => { onClear(); this.toggleSelect();}}>
                 - clear -
@@ -69,11 +69,5 @@ class SelectField extends React.Component {
     );
   }
 }
-
-SelectField.propTypes = {
-  onChange: React.PropTypes.func,
-  onClear: React.PropTypes.func,
-  value: React.PropTypes.string
-};
 
 export default SelectField;

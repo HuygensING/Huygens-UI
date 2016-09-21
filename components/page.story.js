@@ -15,7 +15,22 @@ storiesOf('Page', module)
     </Page>
   ))
   .add('with vres', () => (
-    <Page vres={{'WomenWriters': {name: "WomenWriters"}, ckcc: {name: "CKCC"}}}>
-        <img src="http://placekitten.com/g/1280/1024"/>
+    <Page vres={{'WomenWriters': {name: "WomenWriters"}, ckcc: {name: "CKCC"}}} showDatasets={true}>
+      <div className="container">
+        <div className="container basic-margin">Content</div>
+      </div>
+    </Page>
+  ))
+  .add('with extra footer', () => (
+    <Page vres={{'WomenWriters': {name: "WomenWriters"}, ckcc: {name: "CKCC"}}} showDatasets={true}>
+      <div className="container">
+        <div className="container basic-margin">Content</div>
+      </div>
+      <div type="footer-body">
+        FOOTER BODY
+      </div>
+      <div type="footer-body">
+        MORE FOOTER BODY
+      </div>
     </Page>
   ));
