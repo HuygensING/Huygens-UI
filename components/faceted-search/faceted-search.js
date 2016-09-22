@@ -27,7 +27,7 @@ class FacetedSearch extends React.Component {
                   ))}
                 </SelectField>
               </div>
-              <SearchFields fields={activeCollection.query.searchFields} query={activeCollection.query}
+              <SearchFields fields={activeCollection.query.searchFields}query={activeCollection.query}
                             truncateFacetListsAt={truncateFacetListsAt}
                             onSetCollapse={onSetCollapse}
                             onFacetSortChange={onFacetSortChange}

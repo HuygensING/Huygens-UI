@@ -48,8 +48,8 @@ class ListFacet extends React.Component {
     return (
       <div className="facet basic-facet">
          <span onClick={this.toggleExpand.bind(this)} style={{cursor: "pointer"}}
-               className="glyphicon glyphicon-collapse-up pull-right facet-extra hi-light-grey" />
-         <h2>{label}</h2>
+               className={cx("glyphicon", "pull-right", "facet-extra", "hi-light-grey", {"glyphicon-collapse-up" : !collapse, "glyphicon-collapse-down": collapse})} />
+         <h2 onClick={this.toggleExpand.bind(this)} style={{cursor: "pointer"}}>{label}</h2>
         { expanded ? (
           <div>
             <div className="facet-items-box">

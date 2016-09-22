@@ -28,8 +28,8 @@ a {
 			user-drag: none;
 			cursor: pointer;
 			width: 100%;
-			stroke: #f1ebe6;
-			fill: #f1ebe6;
+			stroke: #d5e6f1;
+			fill: #d5e6f1;
 		}
 
 		.facet-range-slider .range-line {
@@ -42,12 +42,12 @@ a {
 
 		.facet-range-slider .range-line circle.hovering,
 		.facet-range-slider .range-line circle:hover {
-			fill: #bda47e;
+			fill: #2e82bb;
 		}
 
 		.facet-range-slider .range-line path.hovering,
 		.facet-range-slider .range-line path:hover {
-			stroke: #bda47e;
+			stroke: #2e82bb;
 		}
 
 		.current-query label,

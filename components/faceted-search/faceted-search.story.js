@@ -35,6 +35,22 @@ const collections = {
             "MALE", 123,
             "UNKNOWN", 50
           ],
+          birthDate_i: [
+            "1805", 10,
+            "1806", 10,
+            "1807", 10,
+            "1808", 10,
+            "1809", 10,
+            "1815", 10,
+            "1816", 10,
+            "1817", 10,
+            "1818", 10,
+            "1819", 10,
+            "1820", 10,
+            "1822", 10,
+            "1850", 10,
+            "1851", 10,
+          ],
           long_field_s: [
             "valuea", 20,
             "valueb", 20,
@@ -82,7 +98,7 @@ const collectionsWithValues = {
           {label: "Type a name", field: "name_t", type: "text", value: "Robert"},
           {label: "Gender", field: "gender_s", type: "list-facet", value: ["MALE", "UNKNOWN"]},
           {label: "Date of birth", field: "birthDate_i", type: "range-facet", value: [1810, 1820] },
-          {label: "Long field", field: "long_field_s", type: "list-facet"}
+          {label: "Long field", field: "long_field_s", type: "list-facet", collapse: true}
         ],
         sortFields: [
           {label: "Name", field: "name_t", value: "asc"},
@@ -99,6 +115,22 @@ const collectionsWithValues = {
             "FEMALE", 1320 - 123 - 50,
             "MALE", 123,
             "UNKNOWN", 50
+          ],
+          birthDate_i: [
+            "1805", 10,
+            "1806", 10,
+            "1807", 10,
+            "1808", 10,
+            "1809", 10,
+            "1815", 10,
+            "1816", 10,
+            "1817", 10,
+            "1818", 10,
+            "1819", 10,
+            "1820", 10,
+            "1822", 10,
+            "1850", 10,
+            "1851", 10,
           ],
           long_field_s: [
             "valuea", 20,
