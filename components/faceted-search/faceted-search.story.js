@@ -3,6 +3,7 @@ import { storiesOf, action } from '@kadira/storybook';
 import FacetedSearch from './faceted-search';
 import TextSearch from "./search-fields/text-search";
 import Pagination from "./results/pagination";
+import SortMenu from "./sort-menu";
 
 const collections = {
   collections: [
@@ -64,7 +65,8 @@ const actions = {
   onSearchFieldChange: action("setting search field value"),
   onCollectionSelect: action("selecting collection"),
   onClearSearch: action("clearing search"),
-  onPageChange: action("changing page")
+  onPageChange: action("changing page"),
+  onSortFieldChange: action("changing sort field")
 };
 
 storiesOf('FacetedSearch', module)
@@ -74,9 +76,17 @@ storiesOf('FacetedSearch', module)
   .add('...with values', () => (
     <FacetedSearch {...collectionsWithValues} {...actions} />
   ))
-  .add('pagination', () => (
+  .add('SortMenu', () => (
+    <SortMenu sortFields={[
+      {label: "Name", field: "koppelnaam_s"},
+      {label: "Date of birth", field: "birthDate_i"},
+      {label: "Date of death", field: "deathDate_i", value: "desc"}]}
+              onChange={actions.onSortFieldChange}
+    />
+  ))
+  .add('Pagination', () => (
     <Pagination onChange={actions.onPageChange} numFound={100} start={0} rows={10} />
   ))
-  .add('text search field', () => (
+  .add('TextSearch', () => (
     <TextSearch field="name" label="Type a name" onChange={action("setting value")} />
   ));

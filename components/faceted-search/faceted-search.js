@@ -4,11 +4,12 @@ import SearchFields from "./search-fields";
 import Page from "../page.jsx";
 import CurrentQuery from "./current-query";
 import Pagination from "./results/pagination";
+import SortMenu from "./sort-menu";
 
 class FacetedSearch extends React.Component {
   render() {
     const { collections } = this.props;
-    const { onCollectionSelect, onSearchFieldChange, onClearSearch, onPageChange } = this.props;
+    const { onCollectionSelect, onSearchFieldChange, onClearSearch, onPageChange, onSortFieldChange } = this.props;
     const activeCollection = collections.find((collection) => collection.selected);
 
     return (
@@ -38,6 +39,7 @@ class FacetedSearch extends React.Component {
                 }
                 </strong>
               </div>
+              <SortMenu onChange={onSortFieldChange} sortFields={activeCollection.query.sortFields} />
             </div>
           </div>
         </div>
