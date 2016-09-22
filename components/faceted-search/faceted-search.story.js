@@ -28,6 +28,18 @@ const collections = {
         rows: 10
       },
       results: {
+        docs: [
+          {"displayName_s": "Margaret Fuller ", "birthDate_i": 1805, "deathDate_i": 1850},
+          {"displayName_s": "Sara Lomannus ", "birthDate_i": 1805, "deathDate_i": 1850},
+          {"displayName_s": "Margaret Fuller ", "birthDate_i": 1805, "deathDate_i": 1850},
+          {"displayName_s": "Sara Lomannus ", "birthDate_i": 1805, "deathDate_i": 1850},
+          {"displayName_s": "Margaret Fuller ", "birthDate_i": 1805, "deathDate_i": 1850},
+          {"displayName_s": "Sara Lomannus ", "birthDate_i": 1805, "deathDate_i": 1850},
+          {"displayName_s": "Margaret Fuller ", "birthDate_i": 1805, "deathDate_i": 1850},
+          {"displayName_s": "Sara Lomannus ", "birthDate_i": 1805, "deathDate_i": 1850},
+          {"displayName_s": "Margaret Fuller ", "birthDate_i": 1805, "deathDate_i": 1850},
+          {"displayName_s": "Sara Lomannus ", "birthDate_i": 1805, "deathDate_i": 1850},
+        ],
         numFound: 1320,
         facets: {
           gender_s: [
@@ -105,11 +117,23 @@ const collectionsWithValues = {
           {label: "Gender", field: "gender_s"},
           {label: "Date of birth", field: "birthDate_i"}
         ],
-        start: 0,
+        start: 20,
         rows: 10
       },
       results: {
-        numFound: 1,
+        docs: [
+          {"displayName_s": "Sara Lomannus ", "birthDate_i": 1805, "deathDate_i": 1850},
+          {"displayName_s": "Margaret Fuller ", "birthDate_i": 1805, "deathDate_i": 1850},
+          {"displayName_s": "Sara Lomannus ", "birthDate_i": 1805, "deathDate_i": 1850},
+          {"displayName_s": "Margaret Fuller ", "birthDate_i": 1805, "deathDate_i": 1850},
+          {"displayName_s": "Sara Lomannus ", "birthDate_i": 1805, "deathDate_i": 1850},
+          {"displayName_s": "Margaret Fuller ", "birthDate_i": 1805, "deathDate_i": 1850},
+          {"displayName_s": "Sara Lomannus ", "birthDate_i": 1805, "deathDate_i": 1850},
+          {"displayName_s": "Margaret Fuller ", "birthDate_i": 1805, "deathDate_i": 1850},
+          {"displayName_s": "Sara Lomannus ", "birthDate_i": 1805, "deathDate_i": 1850},
+          {"displayName_s": "Margaret Fuller ", "birthDate_i": 1805, "deathDate_i": 1850},
+        ],
+        numFound: 1320,
         facets: {
           gender_s: [
             "FEMALE", 1320 - 123 - 50,

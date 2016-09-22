@@ -45,6 +45,16 @@ class FacetedSearch extends React.Component {
                 }
                 </strong>
               </div>
+              <div className="result-list big-margin">
+                <ol start={activeCollection.query.start + 1} style={{counterReset: `step-counter ${activeCollection.query.start}`}}>
+                  {activeCollection.results.docs.map((doc, i) => (
+                    <li key={i + activeCollection.query.start}>
+                      <a>{doc.displayName_s}</a>
+                      <span className="hi-light-grey pull-right">{doc.birthDate_i} - {doc.deathDate_i}</span>
+                    </li>
+                  ))}
+                </ol>
+              </div>
             </div>
           </div>
         </div>
