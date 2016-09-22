@@ -15,12 +15,13 @@ const collections = {
         searchFields: [
           {label: "Type a name", field: "name_t", type: "text" },
           {label: "Gender", field: "gender_s", type: "list-facet" },
-          {label: "Date of birth", field: "birthDate_i", type: "range-facet" }
+          {label: "Date of birth", field: "birthDate_i", type: "range-facet" },
+          {label: "Long field", field: "long_field_s", type: "list-facet"}
         ],
         sortFields: [
           {label: "Name", field: "name_t"},
           {label: "Gender", field: "gender_s"},
-          {label: "Date of birth", field: "birthDate_i"}
+          {label: "Date of birth", field: "birthDate_i"},
         ],
         start: 0,
         rows: 10
@@ -28,6 +29,11 @@ const collections = {
       results: {
         numFound: 1320,
         facets: {
+          gender_s: [
+            "FEMALE", 1320 - 123 - 50,
+            "MALE", 123,
+            "UNKNOWN", 50
+          ]
         }
       }
     },
@@ -45,8 +51,9 @@ const collectionsWithValues = {
       query: {
         searchFields: [
           {label: "Type a name", field: "name_t", type: "text", value: "Robert"},
-          {label: "Gender", field: "gender_s", type: "list-facet", value: ["Male", "Unknown"]},
-          {label: "Date of birth", field: "birthDate_i", type: "range-facet", value: [1810, 1820] }
+          {label: "Gender", field: "gender_s", type: "list-facet", value: ["MALE", "UNKNOWN"]},
+          {label: "Date of birth", field: "birthDate_i", type: "range-facet", value: [1810, 1820] },
+          {label: "Long field", field: "long_field_s", type: "list-facet"}
         ],
         sortFields: [
           {label: "Name", field: "name_t", value: "asc"},
@@ -59,7 +66,39 @@ const collectionsWithValues = {
       results: {
         numFound: 1,
         facets: {
-
+          gender_s: [
+            "FEMALE", 1320 - 123 - 50,
+            "MALE", 123,
+            "UNKNOWN", 50
+          ],
+          long_field_s: [
+            "valuea", 20,
+            "valueb", 20,
+            "valuec", 20,
+            "valued", 20,
+            "valuee", 20,
+            "valuef", 20,
+            "valueg", 20,
+            "valueh", 20,
+            "valuei", 20,
+            "valuej", 20,
+            "valuek", 20,
+            "valuel", 20,
+            "valuem", 20,
+            "baluea", 20,
+            "balueb", 20,
+            "baluec", 20,
+            "balued", 20,
+            "baluee", 20,
+            "baluef", 20,
+            "balueg", 20,
+            "balueh", 20,
+            "baluei", 20,
+            "baluej", 20,
+            "baluek", 20,
+            "baluel", 20,
+            "baluem", 20,
+          ]
         }
       }
     },
@@ -80,10 +119,10 @@ const actions = {
 
 storiesOf('FacetedSearch', module)
   .add('the search...', () => (
-    <FacetedSearch {...collections} {...actions} />
+    <FacetedSearch {...collections} {...actions} truncateFacetListsAt={5}  />
   ))
   .add('...with values', () => (
-    <FacetedSearch {...collectionsWithValues} {...actions} />
+    <FacetedSearch {...collectionsWithValues} {...actions} truncateFacetListsAt={5} />
   ))
   .add('SortMenu', () => (
     <SortMenu sortFields={[

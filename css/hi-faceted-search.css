@@ -90,14 +90,11 @@ a {
 		/* new Bas */
 		
 		.facet-item {
-			text-transform:lowercase;
 			margin-bottom:.3em;
 			}
 		
-		.facet-item:first-letter {
-    		text-transform: uppercase;
-}
-		
+
+
 		.facet-item-amount {
 			display:inline-block;
 			float:right;

@@ -8,7 +8,7 @@ import SortMenu from "./sort-menu";
 
 class FacetedSearch extends React.Component {
   render() {
-    const { collections } = this.props;
+    const { collections, truncateFacetListsAt } = this.props;
     const { onCollectionSelect, onSearchFieldChange, onClearSearch, onPageChange, onSortFieldChange } = this.props;
     const activeCollection = collections.find((collection) => collection.selected);
 
@@ -26,12 +26,15 @@ class FacetedSearch extends React.Component {
                   ))}
                 </SelectField>
               </div>
-              <SearchFields fields={activeCollection.query.searchFields} results={activeCollection.results} onSearchFieldChange={onSearchFieldChange} />
+              <SearchFields fields={activeCollection.query.searchFields} query={activeCollection.query}
+                            truncateFacetListsAt={truncateFacetListsAt}
+                            results={activeCollection.results} onSearchFieldChange={onSearchFieldChange} />
             </div>
 
             <div className=".hidden-sm col-md-1" />
 
             <div className="col-sm-8 col-md-8">
+              <SortMenu onChange={onSortFieldChange} sortFields={activeCollection.query.sortFields} />
               <div className="basic-margin">
                 <strong>Found {activeCollection.results.numFound} {activeCollection.results.numFound === 1
                   ? activeCollection.label.replace(/s$/, "")
@@ -39,7 +42,6 @@ class FacetedSearch extends React.Component {
                 }
                 </strong>
               </div>
-              <SortMenu onChange={onSortFieldChange} sortFields={activeCollection.query.sortFields} />
             </div>
           </div>
         </div>
