@@ -9,7 +9,8 @@ import SortMenu from "./sort-menu";
 class FacetedSearch extends React.Component {
   render() {
     const { collections, truncateFacetListsAt } = this.props;
-    const { onCollectionSelect, onSearchFieldChange, onClearSearch, onPageChange, onSortFieldChange } = this.props;
+    const { onCollectionSelect, onSearchFieldChange, onClearSearch,
+      onPageChange, onSortFieldChange, onSetCollapse, onFacetSortChange } = this.props;
     const activeCollection = collections.find((collection) => collection.selected);
 
     return (
@@ -28,6 +29,8 @@ class FacetedSearch extends React.Component {
               </div>
               <SearchFields fields={activeCollection.query.searchFields} query={activeCollection.query}
                             truncateFacetListsAt={truncateFacetListsAt}
+                            onSetCollapse={onSetCollapse}
+                            onFacetSortChange={onFacetSortChange}
                             results={activeCollection.results} onSearchFieldChange={onSearchFieldChange} />
             </div>
 

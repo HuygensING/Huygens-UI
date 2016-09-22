@@ -114,7 +114,9 @@ const actions = {
   onCollectionSelect: action("selecting collection"),
   onClearSearch: action("clearing search"),
   onPageChange: action("changing page"),
-  onSortFieldChange: action("changing sort field")
+  onSortFieldChange: action("changing sort field"),
+  onFacetSortChange: action("changing facet sort"),
+  onSetCollapse: action("setting collapse")
 };
 
 storiesOf('FacetedSearch', module)

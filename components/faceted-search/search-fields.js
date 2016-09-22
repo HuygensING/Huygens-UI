@@ -11,7 +11,8 @@ const components = {
 class SearchFields extends React.Component {
 
   render() {
-    const { fields, onSearchFieldChange, results, query, truncateFacetListsAt } = this.props;
+    const { onSetCollapse, onFacetSortChange, onSearchFieldChange} = this.props;
+    const { fields, results, query, truncateFacetListsAt } = this.props;
 
     return (
       <div className="facet-group">
@@ -20,6 +21,7 @@ class SearchFields extends React.Component {
           const SearchComponent = components[type];
           const facets = type === "list-facet" || type === "range-facet" ? results.facets[field] || [] : null;
           return (<SearchComponent key={`${i}_${field}`} facets={facets} onChange={onSearchFieldChange}
+                                   onFacetSortChange={onFacetSortChange} onSetCollapse={onSetCollapse}
                                    query={query} truncateFacetListsAt={truncateFacetListsAt}
                                    field={searchField.field} label={searchField.label} value={searchField.value} />)
         })}

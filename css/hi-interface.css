@@ -255,7 +255,7 @@ table .ignored {
 	border-top:1px solid #eeeeee;
 	padding-top:.7em;
 	overflow-y: auto;
-	max-height: 150px;
+	max-height: 175px;
 	}
 	
 .facet-item {
@@ -283,12 +283,13 @@ svg.facet-check-box.checked {
 	}
 
 .facet-extra {
-	display:none;
-	
-	}
+	opacity: 0;
+	transition: opacity 0.2s ease-in-out;
 
-.basic-facet:hover > .facet-extra {
-	display: block;
+}
+
+.basic-facet:hover .facet-extra {
+	opacity: 1;
 }
 .facet-extra-space {
 	padding-top:10px;
