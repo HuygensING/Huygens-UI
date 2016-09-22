@@ -70,4 +70,12 @@ class SelectField extends React.Component {
   }
 }
 
+SelectField.propTypes = {
+  onChange: React.PropTypes.func,
+  onClear: React.PropTypes.func,
+  value: React.PropTypes.any,
+  btnClass: React.PropTypes.string,
+  noClear: React.PropTypes.bool
+};
+
 export default SelectField;

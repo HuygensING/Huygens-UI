@@ -4,11 +4,13 @@ import SearchFields from "./search-fields";
 import Page from "../page.jsx";
 import CurrentQuery from "./current-query";
 import Pagination from "./results/pagination";
+import SortMenu from "./sort-menu";
 
 class FacetedSearch extends React.Component {
   render() {
-    const { collections } = this.props;
-    const { onCollectionSelect, onSearchFieldChange, onClearSearch, onPageChange } = this.props;
+    const { collections, truncateFacetListsAt } = this.props;
+    const { onCollectionSelect, onSearchFieldChange, onClearSearch,
+      onPageChange, onSortFieldChange, onSetCollapse, onFacetSortChange } = this.props;
     const activeCollection = collections.find((collection) => collection.selected);
 
     return (
@@ -25,13 +27,34 @@ class FacetedSearch extends React.Component {
                   ))}
                 </SelectField>
               </div>
-              <SearchFields fields={activeCollection.query.searchFields} results={activeCollection.results} onSearchFieldChange={onSearchFieldChange} />
+              <SearchFields fields={activeCollection.query.searchFields}query={activeCollection.query}
+                            truncateFacetListsAt={truncateFacetListsAt}
+                            onSetCollapse={onSetCollapse}
+                            onFacetSortChange={onFacetSortChange}
+                            results={activeCollection.results} onSearchFieldChange={onSearchFieldChange} />
             </div>
 
             <div className=".hidden-sm col-md-1" />
 
             <div className="col-sm-8 col-md-8">
-
+              <SortMenu onChange={onSortFieldChange} sortFields={activeCollection.query.sortFields} />
+              <div className="basic-margin">
+                <strong>Found {activeCollection.results.numFound} {activeCollection.results.numFound === 1
+                  ? activeCollection.label.replace(/s$/, "")
+                  : activeCollection.label
+                }
+                </strong>
+              </div>
+              <div className="result-list big-margin">
+                <ol start={activeCollection.query.start + 1} style={{counterReset: `step-counter ${activeCollection.query.start}`}}>
+                  {activeCollection.results.docs.map((doc, i) => (
+                    <li key={i + activeCollection.query.start}>
+                      <a>{doc.displayName_s}</a>
+                      <span className="hi-light-grey pull-right">{doc.birthDate_i} - {doc.deathDate_i}</span>
+                    </li>
+                  ))}
+                </ol>
+              </div>
             </div>
           </div>
         </div>

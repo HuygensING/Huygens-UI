@@ -254,6 +254,8 @@ table .ignored {
 .facet-items-box {
 	border-top:1px solid #eeeeee;
 	padding-top:.7em;
+	overflow-y: auto;
+	max-height: 175px;
 	}
 	
 .facet-item {
@@ -264,25 +266,42 @@ table .ignored {
 .facet-check-box {
 	width:1em;
 	height:auto;
-	margin-top:-3px;
+	padding-top: 3px;
 	margin-right:.5em;
-	}
-	
+	float: left;
+	fill: #f9f9f9;
+	stroke: #414042;
+	stroke-width: 1;
+}
+
+
+svg.facet-check-box.checked {
+	fill: #d5e6f1
+}
+
 .facet-item-count {
 	}
 
 .facet-extra {
-	display:none;
-	
-	}
+	opacity: 0;
+	transition: opacity 0.2s ease-in-out;
 
+}
+
+.basic-facet:hover .facet-extra {
+	opacity: 1;
+}
 .facet-extra-space {
 	padding-top:10px;
 	height:40px;
 	}
+.downcase-then-capitalize {
+	text-transform:lowercase;
+}
 
-
-
+.downcase-then-capitalize:first-letter {
+	text-transform:uppercase;
+}
 
 
 /* results */
