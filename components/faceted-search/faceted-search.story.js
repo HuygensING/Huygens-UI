@@ -15,7 +15,12 @@ const collections = {
         searchFields: [
           {label: "Type a name", field: "name_t", type: "text" },
           {label: "Gender", field: "gender_s", type: "list-facet" },
-          {label: "Date of birth", field: "gender_s", type: "range-facet" }
+          {label: "Date of birth", field: "birthDate_i", type: "range-facet" }
+        ],
+        sortFields: [
+          {label: "Name", field: "name_t"},
+          {label: "Gender", field: "gender_s"},
+          {label: "Date of birth", field: "birthDate_i"}
         ],
         start: 0,
         rows: 10
@@ -41,8 +46,12 @@ const collectionsWithValues = {
         searchFields: [
           {label: "Type a name", field: "name_t", type: "text", value: "Robert"},
           {label: "Gender", field: "gender_s", type: "list-facet", value: ["Male", "Unknown"]},
-          {label: "Date of birth", field: "gender_s", type: "range-facet", value: [1810, 1820] }
-
+          {label: "Date of birth", field: "birthDate_i", type: "range-facet", value: [1810, 1820] }
+        ],
+        sortFields: [
+          {label: "Name", field: "name_t", value: "asc"},
+          {label: "Gender", field: "gender_s"},
+          {label: "Date of birth", field: "birthDate_i"}
         ],
         start: 0,
         rows: 10

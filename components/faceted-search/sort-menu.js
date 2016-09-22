@@ -25,7 +25,7 @@ class SortMenu extends React.Component {
         </span> : null}
         <span className="pull-right">
         <SelectField btnClass="btn-blank" onChange={(sortField) => onChange(sortField, "asc")}
-                     onClear={() => onChange(value.field, null)} value={value.field}>
+                     onClear={() => onChange(value.field, null)} value={value ? value.field : null}>
           <span type="placeholder">Order</span>
           {sortFields.map((sortField) => (
             <span key={sortField.field} value={sortField.field}>{sortField.label}</span>
