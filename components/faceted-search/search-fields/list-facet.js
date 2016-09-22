@@ -1,7 +1,5 @@
 import React from "react";
 import cx from "classnames";
-import CheckedIcon from "./list-facet/checked";
-import UncheckedIcon from "./list-facet/unchecked";
 
 class ListFacet extends React.Component {
 
@@ -44,7 +42,7 @@ class ListFacet extends React.Component {
 
     const showMoreLink = truncateFacetListsAt > -1 && truncateFacetListsAt < facetValues.length ?
       <li className={cx({"list-group-item": bootstrapCss})} onClick={() => this.setState({truncateFacetListsAt: -1})}>
-        Show all ({facetValues.length})
+        Show all {facetValues.length} items
       </li> : null;
 
     return (
