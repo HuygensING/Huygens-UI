@@ -108,7 +108,7 @@ ListFacet.propTypes = {
   onChange: React.PropTypes.func,
   onFacetSortChange: React.PropTypes.func,
   onSetCollapse: React.PropTypes.func,
-  query: React.PropTypes.object,
+  query: React.PropTypes.object.isRequired,
   truncateFacetListsAt: React.PropTypes.number,
   value: React.PropTypes.array
 };

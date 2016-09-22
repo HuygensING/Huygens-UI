@@ -4,6 +4,7 @@ import FacetedSearch from './faceted-search';
 import TextSearch from "./search-fields/text-search";
 import Pagination from "./results/pagination";
 import SortMenu from "./sort-menu";
+import ListFacet from "./search-fields/list-facet";
 
 const collections = {
   collections: [
@@ -33,6 +34,34 @@ const collections = {
             "FEMALE", 1320 - 123 - 50,
             "MALE", 123,
             "UNKNOWN", 50
+          ],
+          long_field_s: [
+            "valuea", 20,
+            "valueb", 20,
+            "valuec", 20,
+            "valued", 20,
+            "valuee", 20,
+            "valuef", 20,
+            "valueg", 20,
+            "valueh", 20,
+            "valuei", 20,
+            "valuej", 20,
+            "valuek", 20,
+            "valuel", 20,
+            "valuem", 20,
+            "baluea", 20,
+            "balueb", 20,
+            "baluec", 20,
+            "balued", 20,
+            "baluee", 20,
+            "baluef", 20,
+            "balueg", 20,
+            "balueh", 20,
+            "baluei", 20,
+            "baluej", 20,
+            "baluek", 20,
+            "baluel", 20,
+            "baluem", 20,
           ]
         }
       }
@@ -132,6 +161,12 @@ storiesOf('FacetedSearch', module)
       {label: "Date of birth", field: "birthDate_i"},
       {label: "Date of death", field: "deathDate_i", value: "desc"}]}
               onChange={actions.onSortFieldChange}
+    />
+  ))
+  .add('ListFacet', () => (
+    <ListFacet field="long_field_s" facets={collections.collections[0].results.facets["long_field_s"]}
+               query={collections.collections[0].query} label="Long field" truncateFacetListsAt={5}
+               {...actions} onChange={actions.onSearchFieldChange}
     />
   ))
   .add('Pagination', () => (
