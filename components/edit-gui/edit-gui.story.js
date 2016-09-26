@@ -3,14 +3,6 @@ import { storiesOf, action } from '@kadira/storybook';
 import EditGui from "./edit-gui";
 import Paginate from "./entity-index/paginate";
 
-const actions = {
-    onPaginateLeft: action("paginating left"),
-    onPaginateRight: action("paginating right"),
-    onSave: action("saving"),
-    onSelect: action("selecting"),
-    onNew: action("making new")
-};
-
 const data = {
   quickSearch: {
     start: 0,
@@ -20,8 +12,36 @@ const data = {
   },
   entity: {
     data: {},
-    domain: "person",
+    domain: "persons",
     errorMessage: null
+  },
+  vre: {
+    collections: {
+      locations: {
+        collectionName: "locations",
+        collectionLabel: "Locations",
+        unknown: false,
+        relationCollection: false
+      },
+      persons: {
+        collectionName: "persons",
+        collectionLabel: "Persons",
+        unknown: false,
+        relationCollection: false
+      },
+      relations: {
+        collectionName: "relations",
+        collectionLabel: "rels",
+        unknown: false,
+        relationCollection: true
+      },
+      unknowns: {
+        collectionName: "unknowns",
+        collectionLabel: "unknowns",
+        unknown: true,
+        relationCollection: false
+      }
+    }
   }
 };
 
@@ -35,6 +55,14 @@ const dataInEditMode = {
   }
 };
 
+const actions = {
+    onPaginateLeft: action("paginating left"),
+    onPaginateRight: action("paginating right"),
+    onSave: action("saving"),
+    onSelect: action("selecting entity"),
+    onNew: action("making new"),
+    onSelectDomain: action("selecting domain")
+};
 
 storiesOf('EditGui', module)
   .add('paginate entries start', () => (
