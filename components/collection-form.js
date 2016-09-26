@@ -55,6 +55,7 @@ class CollectionForm extends React.Component {
       <div className="container basic-margin">
         {propertyForms}
         {customPropertyForms}
+        hrllo
         <AddProperty
           archetypeFields={archetypeFields}
           availableArchetypes={availableArchetypes}

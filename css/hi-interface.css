@@ -43,7 +43,7 @@
 	right:0px;
 	position:absolute;
 	display:block;
-	
+
 	}
 
 
@@ -58,7 +58,7 @@
 .card-title {
 	padding-top:50px;
 	}
-	
+
 .card-body {
 	padding:20px;
 	}
@@ -72,7 +72,7 @@
 /* Bootstrap OVERRIDE */
 
 
-	
+
 .pagination {
     margin: 0px 0;
 }
@@ -89,7 +89,7 @@
 .white-bar {
 	background-color: #ffffff;
   padding:1.5em 0 1.2em 0;
-  border-top:1px solid #dddddd; 
+  border-top:1px solid #dddddd;
 }
 
 
@@ -120,7 +120,7 @@
 	font-weight:500;
 	}
 
-	
+
 .card-dataset {
 	width:150px;
 	float:left;
@@ -131,12 +131,12 @@
 .card-dataset .btn {
 	margin-bottom:.5em ;
 	}
-	
+
 .card-dataset .explore {
 	padding-top:2em ;
 	padding-bottom:2em ;
 	}
-	
+
  .btn-primary {
 	 font-weight:500;
 	 }
@@ -146,12 +146,12 @@
 	 border-color:#595959;
 	 color:#595959;
 	 }
-	 
+
 .btn-blank {
 	 background:none;
 	 color:#595959;
 	}
-	 
+
 .list-group {
     list-style: decimal inside;
 	border:none;
@@ -169,7 +169,7 @@
 .nav-tabs .active {
 	font-weight:500;
 	}
-	
+
 .names-form {
 	display:inline-block;
 	}
@@ -182,7 +182,7 @@
 	list-style:none;
 	margin-bottom:2px;
 	padding: .2em 0px;
-	
+
 	}
 
 .item-element {
@@ -193,7 +193,7 @@
 	border-radius:6px;
 	color:#269075;
 	}
-	
+
 .from-excel {
 	color:#486B61;
 }
@@ -217,9 +217,9 @@
 }
 
 .excel-icon {
-	
+
 	fill: #a9a9a9;
-		} 
+		}
 
 .table-obtrusive th, .table-obtrusive td{
 	color:#a9a9a9;
@@ -231,7 +231,7 @@
 	background-size:contain;
 	background-repeat:no-repeat;
 	}
-	
+
 
 table .ignored {
 	opacity: 0.2;
@@ -242,7 +242,7 @@ table .ignored {
 }
 
 /* Facets */
-	
+
 .facet {
 	margin-bottom:2em;
 	}
@@ -257,7 +257,7 @@ table .ignored {
 	overflow-y: auto;
 	max-height: 175px;
 	}
-	
+
 .facet-item {
 	margin-bottom:.5em;
 	cursor:pointer;
@@ -316,21 +316,24 @@ svg.facet-check-box.checked {
 	counter-increment: step-counter;
 	border-top:1px solid #eeeeee;
 	cursor:pointer;
-  	
+
 	}
+.result-list-edit li:first-of-type {
+	border: none
+}
 
 .result-list li:hover{
 	font-weight:500;
-  	
+
 	}
-	
+
 .result-list li::before {
   content: counter(step-counter);
   font-size:.8em;
   color:#cccccc;
   width:30px;
   display:inline-block;
-  
+
 }
 
 /* detail page */
@@ -338,10 +341,9 @@ svg.facet-check-box.checked {
 .img-portrait  {
 	height:150px;
 	width:auto;
-	
+
 	}
 #born-died {
 	width:45px;
 	height:auto;
 	}
-
