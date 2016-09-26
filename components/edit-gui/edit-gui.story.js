@@ -18,6 +18,13 @@ const data = {
     domain: "persons",
     errorMessage: null
   },
+  messages: {
+    log: [
+      {type: "ERROR_MESSAGE", message: "Something went wrong on the server"},
+      {type: "SUCCESS_MESSAGE", message: "Something went ok on the server"},
+      {type: "OTHER_TYPE", message: "invisible"}
+    ]
+  },
   vre: {
     collections: {
       locations: {
@@ -55,7 +62,8 @@ const dataInEditMode = {
     data: {
       _id: "some id"
     }
-  }
+  },
+  messages: { log: [] }
 };
 
 const actions = {
@@ -66,7 +74,8 @@ const actions = {
     onNew: action("making new"),
     onSelectDomain: action("selecting domain"),
     onQuickSearchQueryChange: action("setting quick search query"),
-    onQuickSearch: action("starting quick search")
+    onQuickSearch: action("starting quick search"),
+    onDismissMessage: action("dismissing message")
 };
 
 storiesOf('EditGui', module)
