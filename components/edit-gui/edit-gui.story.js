@@ -5,7 +5,10 @@ import Paginate from "./entity-index/paginate";
 
 const actions = {
     onPaginateLeft: action("paginating left"),
-    onPaginateRight: action("paginating right")
+    onPaginateRight: action("paginating right"),
+    onSave: action("saving"),
+    onSelect: action("selecting"),
+    onNew: action("making new")
 };
 
 const data = {
@@ -14,8 +17,24 @@ const data = {
     list: [],
     rows: 50,
     query: ""
+  },
+  entity: {
+    data: {},
+    domain: "person",
+    errorMessage: null
   }
 };
+
+const dataInEditMode = {
+  ...data,
+  entity: {
+    ...data.entity,
+    data: {
+      _id: "some id"
+    }
+  }
+};
+
 
 storiesOf('EditGui', module)
   .add('paginate entries start', () => (
@@ -27,6 +46,9 @@ storiesOf('EditGui', module)
   .add('paginate entries end', () => (
     <Paginate {...actions} start={100} listLength={25} rows={50} />
   ))
-  .add('the gui...', () => (
+  .add('the gui in new mode...', () => (
     <EditGui  {...actions} {...data} />
+  ))
+  .add('... in edit mode', () => (
+    <EditGui  {...actions} {...dataInEditMode} />
   ));
