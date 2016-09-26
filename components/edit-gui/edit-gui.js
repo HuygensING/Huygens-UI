@@ -5,18 +5,19 @@ import Paginate from "./entity-index/paginate";
 import QuickSearch from "./entity-index/quicksearch";
 import EntityList from "./entity-index/list";
 
-import SaveFooter from "./entity-form/save-footer"
+import SaveFooter from "./entity-form/save-footer";
+import EntityForm from "./entity-form/form";
+
 import CollectionTabs from "./collection-tabs";
 import Messages from "./messages/list";
 
 class EditGui extends React.Component {
 
 	render() {
-		const { onSelect, onNew, onSave, onSelectDomain, onDismissMessage } = this.props;
+		const { onSelect, onNew, onSave, onDelete, onSelectDomain, onDismissMessage } = this.props;
 		const { onQuickSearchQueryChange, onQuickSearch, onPaginateLeft, onPaginateRight } = this.props;
 		const { quickSearch, entity, vre, messages } = this.props;
 		const currentMode = entity.domain && entity.data._id ? "edit" : "new";
-
 
 		return (
 			<Page>
@@ -39,8 +40,8 @@ class EditGui extends React.Component {
 								onSelect={onSelect}
 								domain={entity.domain} />
 						</div>
-						<div className="col-sm-6 col-md-8">
-						</div>
+
+						<EntityForm entity={entity} onNew={onNew} onDelete={onDelete} />
 					</div>
 				</div>
 

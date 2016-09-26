@@ -69,13 +69,14 @@ const dataInEditMode = {
 const actions = {
     onPaginateLeft: action("paginating left"),
     onPaginateRight: action("paginating right"),
-    onSave: action("saving"),
+    onSave: action("saving current entity"),
     onSelect: action("selecting entity"),
-    onNew: action("making new"),
+    onNew: action("making new entity"),
     onSelectDomain: action("selecting domain"),
     onQuickSearchQueryChange: action("setting quick search query"),
     onQuickSearch: action("starting quick search"),
-    onDismissMessage: action("dismissing message")
+    onDismissMessage: action("dismissing message"),
+    onDelete: action("deleting current entity")
 };
 
 storiesOf('EditGui', module)
