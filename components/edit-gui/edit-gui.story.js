@@ -61,7 +61,9 @@ const actions = {
     onSave: action("saving"),
     onSelect: action("selecting entity"),
     onNew: action("making new"),
-    onSelectDomain: action("selecting domain")
+    onSelectDomain: action("selecting domain"),
+    onQuickSearchQueryChange: action("setting quick search query"),
+    onQuickSearch: action("starting quick search")
 };
 
 storiesOf('EditGui', module)
