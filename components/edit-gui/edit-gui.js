@@ -9,6 +9,9 @@ class EditGui extends React.Component {
 			<Page>
 				
 				<div type="footer-body">
+					
+				</div>
+				<div type="footer-body">
 				</div>
 			</Page>
 		)
