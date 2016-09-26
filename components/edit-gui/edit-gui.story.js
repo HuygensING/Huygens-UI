@@ -5,8 +5,11 @@ import Paginate from "./entity-index/paginate";
 
 const data = {
   quickSearch: {
-    start: 0,
-    list: [],
+    start: 50,
+    list: [
+      {_id: "id1", "@displayName": "Sara Lomannus"},
+      {_id: "id2", "@displayName": "Margareth Fuller"}
+    ],
     rows: 50,
     query: ""
   },

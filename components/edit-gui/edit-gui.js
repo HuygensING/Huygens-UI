@@ -3,14 +3,16 @@ import Page from "../page.jsx";
 
 import Paginate from "./entity-index/paginate";
 import QuickSearch from "./entity-index/quicksearch";
+import EntityList from "./entity-index/list";
+
 import SaveFooter from "./entity-form/save-footer"
 import CollectionTabs from "./collection-tabs";
 
 class EditGui extends React.Component {
 
 	render() {
-		const { onSelect, onNew, onSave, onSelectDomain,
-			onQuickSearchQueryChange, onQuickSearch } = this.props;
+		const { onSelect, onNew, onSave, onSelectDomain } = this.props;
+		const { onQuickSearchQueryChange, onQuickSearch, onPaginateLeft, onPaginateRight } = this.props;
 		const { quickSearch, entity, vre } = this.props;
 		const currentMode = entity.domain && entity.data._id ? "edit" : "new";
 
@@ -26,6 +28,11 @@ class EditGui extends React.Component {
 								onQuickSearchQueryChange={onQuickSearchQueryChange}
 								onQuickSearch={onQuickSearch}
 								query={quickSearch.query} />
+							<EntityList
+								start={quickSearch.start}
+								list={quickSearch.list}
+								onSelect={onSelect}
+								domain={entity.domain} />
 						</div>
 						<div className="col-sm-6 col-md-8">
 						</div>
@@ -34,7 +41,12 @@ class EditGui extends React.Component {
 
 				<div type="footer-body">
 					<div className="col-sm-6 col-md-4">
-						<Paginate start={quickSearch.start} listLength={quickSearch.list.length} rows={50} />
+						<Paginate
+							start={quickSearch.start}
+							listLength={quickSearch.list.length}
+							rows={50}
+							onPaginateLeft={onPaginateLeft}
+							onPaginateRight={onPaginateRight} />
 					</div>
 					<div className="col-sm-6 col-md-8">
 						<SaveFooter onSave={onSave} onCancel={() => currentMode === "edit" ?
