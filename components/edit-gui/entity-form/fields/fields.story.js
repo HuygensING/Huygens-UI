@@ -4,6 +4,7 @@ import { storiesOf, action } from '@kadira/storybook';
 import StringField from "./string-field";
 import SelectField from "./select";
 import MultiSelect from "./multi-select";
+import RelationField from "./relation";
 
 const onChange = (path, value) =>
   action("changing entity")(JSON.stringify(path), value);
@@ -35,4 +36,15 @@ storiesOf('Edit fields', module)
     <MultiSelect entity={{data: {}}}
       options={["value", "value 1", "value 2"]}
       name="fieldName2" onChange={onChange} />
-  </div>));
+  </div>))
+  .add('Relation', () => (
+    <RelationField entity={{data: {
+        "@relations": {
+          "isRelatedTo": [
+            {displayName: "related thing", id: "asd", accepted: true}
+          ]
+        }
+      }}}
+      name="isRelatedTo" />
+
+  ));
