@@ -8,6 +8,13 @@ import MultiSelect from "./multi-select";
 const onChange = (path, value) =>
   action("changing entity")(JSON.stringify(path), value);
 
+const mockAutoComplete = () => [
+  {key: "a", value: "some value a"},
+  {key: "b", value: "some value b"},
+  {key: "c", value: "some value c"},
+  {key: "d", value: "some value d"},
+];
+
 storiesOf('Edit fields', module)
   .add('StringField', () => (<div>
       <StringField entity={{data: {fieldName: "value"}}} name="fieldName" onChange={onChange} />

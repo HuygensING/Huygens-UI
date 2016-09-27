@@ -12,7 +12,7 @@ class StringField extends React.Component {
 				<input className="form-control"
 					onChange={(ev) => onChange([name], ev.target.value)}
 					value={entity.data[name] || ""}
-					placeholder={label}
+					placeholder={`Enter ${label.toLowerCase()}`}
 				/>
 			</div>
 		);
