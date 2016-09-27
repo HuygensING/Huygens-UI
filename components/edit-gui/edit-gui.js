@@ -41,7 +41,8 @@ class EditGui extends React.Component {
 								domain={entity.domain} />
 						</div>
 
-						<EntityForm entity={entity} onNew={onNew} onDelete={onDelete} />
+						<EntityForm currentMode={currentMode}
+							entity={entity} onNew={onNew} onDelete={onDelete} />
 					</div>
 				</div>
 

@@ -4,7 +4,7 @@ class EntityForm extends React.Component {
 
   render() {
     const { onNew, onDelete } = this.props;
-    const { entity } = this.props;
+    const { entity, currentMode } = this.props;
 
     return (
       <div className="col-sm-6 col-md-8">
@@ -14,12 +14,14 @@ class EntityForm extends React.Component {
           </button>
         </div>
 
-        <div className="basic-margin">
-          <h4>Delete</h4>
-          <buton className="btn btn-danger" onClick={onDelete}>
-            Delete {entity.domain.replace(/s$/, "")}
-          </buton>
-        </div>
+        {currentMode === "edit"
+          ? (<div className="basic-margin">
+              <h4>Delete</h4>
+              <buton className="btn btn-danger" onClick={onDelete}>
+                Delete {entity.domain.replace(/s$/, "")}
+              </buton>
+            </div>
+          ) : null}
       </div>
     )
   }
