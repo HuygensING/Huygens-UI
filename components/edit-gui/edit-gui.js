@@ -14,7 +14,7 @@ import Messages from "./messages/list";
 class EditGui extends React.Component {
 
 	render() {
-		const { onSelect, onNew, onSave, onDelete, onSelectDomain, onDismissMessage } = this.props;
+		const { onSelect, onNew, onSave, onDelete, onSelectDomain, onDismissMessage, onChange } = this.props;
 		const { onQuickSearchQueryChange, onQuickSearch, onPaginateLeft, onPaginateRight } = this.props;
 		const { quickSearch, entity, vre, messages } = this.props;
 		const currentMode = entity.domain && entity.data._id ? "edit" : "new";
@@ -41,7 +41,9 @@ class EditGui extends React.Component {
 								domain={entity.domain} />
 						</div>
 
-						<EntityForm entity={entity} onNew={onNew} onDelete={onDelete} />
+						<EntityForm currentMode={currentMode}
+							entity={entity} onNew={onNew} onDelete={onDelete} onChange={onChange}
+							properties={vre.collections[entity.domain].properties}/>
 					</div>
 				</div>
 

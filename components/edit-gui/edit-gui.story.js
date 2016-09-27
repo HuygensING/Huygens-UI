@@ -37,7 +37,43 @@ const data = {
         collectionName: "persons",
         collectionLabel: "Persons",
         unknown: false,
-        relationCollection: false
+        relationCollection: false,
+        properties: [{
+
+            "name": "types",
+            "type": "multiselect",
+            "options": [
+                "ARCHETYPE",
+                "AUTHOR",
+                "PSEUDONYM",
+                "READER"
+            ]
+
+        },
+        {
+
+            "name": "gender",
+            "type": "select",
+            "options": [
+                "UNKNOWN",
+                "MALE",
+                "FEMALE",
+                "NOT_APPLICABLE"
+            ]
+
+        },
+        {
+
+            "name": "birthDate",
+            "type": "datable"
+
+        },
+        {
+
+            "name": "deathDate",
+            "type": "datable"
+
+        }]
       },
       relations: {
         collectionName: "relations",
@@ -60,7 +96,11 @@ const dataInEditMode = {
   entity: {
     ...data.entity,
     data: {
-      _id: "some id"
+      _id: "some id",
+      birthDate: "1928",
+      deathDate: "1950",
+      gender: "FEMALE",
+      types: ["AUTHOR", "PSEUDONYM"]
     }
   },
   messages: { log: [] }
@@ -76,7 +116,8 @@ const actions = {
     onQuickSearchQueryChange: action("setting quick search query"),
     onQuickSearch: action("starting quick search"),
     onDismissMessage: action("dismissing message"),
-    onDelete: action("deleting current entity")
+    onDelete: action("deleting current entity"),
+    onChange: action("changing field")
 };
 
 storiesOf('EditGui', module)
