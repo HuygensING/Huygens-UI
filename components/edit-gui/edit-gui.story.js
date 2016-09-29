@@ -14,7 +14,9 @@ const data = {
     query: ""
   },
   entity: {
-    data: {},
+    data: {
+      "@relations": {}
+    },
     domain: "persons",
     errorMessage: null
   },
@@ -39,7 +41,6 @@ const data = {
         unknown: false,
         relationCollection: false,
         properties: [{
-
             "name": "types",
             "type": "multiselect",
             "options": [
@@ -48,10 +49,8 @@ const data = {
                 "PSEUDONYM",
                 "READER"
             ]
-
         },
         {
-
             "name": "gender",
             "type": "select",
             "options": [
@@ -60,19 +59,21 @@ const data = {
                 "FEMALE",
                 "NOT_APPLICABLE"
             ]
-
         },
         {
-
             "name": "birthDate",
             "type": "datable"
-
         },
         {
-
             "name": "deathDate",
             "type": "datable"
-
+        },
+        {
+          "name": "isRelatedTo",
+          "type": "relation",
+          "relation": {
+            "quickSearch": "stub",
+          }
         }]
       },
       relations: {
@@ -100,11 +101,32 @@ const dataInEditMode = {
       birthDate: "1928",
       deathDate: "1950",
       gender: "FEMALE",
-      types: ["AUTHOR", "PSEUDONYM"]
+      types: ["AUTHOR", "PSEUDONYM"],
+      "@relations": {
+        "isRelatedTo": [
+          {displayName: "related thing", id: "asd", accepted: true},
+          {displayName: "another related thing", id: "asds", accepted: true}
+        ]
+      }
     }
   },
   messages: { log: [] }
 };
+
+const mockAutoComplete = (p, f, cb) => cb([
+  {key: "a", value: "abc"},
+  {key: "b", value: "def"},
+  {key: "c", value: "ghi"},
+  {key: "d", value: "jkl"},
+  {key: "ac", value: "abc"},
+  {key: "bc", value: "def"},
+  {key: "cc", value: "ghi"},
+  {key: "dc", value: "jkl"},
+  {key: "aa", value: "abc"},
+  {key: "ba", value: "def"},
+  {key: "ca", value: "ghi"},
+  {key: "da", value: "jkl"}
+].filter((v) => v.value.indexOf(f) > -1));
 
 const actions = {
     onPaginateLeft: action("paginating left"),
@@ -131,8 +153,8 @@ storiesOf('EditGui', module)
     <Paginate {...actions} start={100} listLength={25} rows={50} />
   ))
   .add('the gui in new mode...', () => (
-    <EditGui  {...actions} {...data} />
+    <EditGui  {...actions} {...data}  getAutocompleteValues={mockAutoComplete} />
   ))
   .add('... in edit mode', () => (
-    <EditGui  {...actions} {...dataInEditMode} />
+    <EditGui  {...actions} {...dataInEditMode} getAutocompleteValues={mockAutoComplete} />
   ));
