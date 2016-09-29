@@ -21,7 +21,7 @@ class Field extends React.Component {
 		const label = camel2label(name);
 		const values = (entity.data[name] || []);
     const itemElements = values.map((value) => (
-      <div className="item-element">
+      <div key={value} className="item-element">
         <strong>{value}</strong>
         <button className="btn btn-blank btn-xs pull-right"
           onClick={() => this.onRemove(value)}>

@@ -7,14 +7,22 @@ import MultiSelect from "./multi-select";
 import RelationField from "./relation";
 
 const onChange = (path, value) =>
-  action("changing entity")(JSON.stringify(path), value);
+  action("changing entity")(JSON.stringify(path), JSON.stringify(value));
 
-const mockAutoComplete = () => [
-  {key: "a", value: "some value a"},
-  {key: "b", value: "some value b"},
-  {key: "c", value: "some value c"},
-  {key: "d", value: "some value d"},
-];
+const mockAutoComplete = (p, f, cb) => cb([
+  {key: "a", value: "abc"},
+  {key: "b", value: "def"},
+  {key: "c", value: "ghi"},
+  {key: "d", value: "jkl"},
+  {key: "ac", value: "abc"},
+  {key: "bc", value: "def"},
+  {key: "cc", value: "ghi"},
+  {key: "dc", value: "jkl"},
+  {key: "aa", value: "abc"},
+  {key: "ba", value: "def"},
+  {key: "ca", value: "ghi"},
+  {key: "da", value: "jkl"}
+].filter((v) => v.value.indexOf(f) > -1));
 
 storiesOf('Edit fields', module)
   .add('StringField', () => (<div>
@@ -41,10 +49,11 @@ storiesOf('Edit fields', module)
     <RelationField entity={{data: {
         "@relations": {
           "isRelatedTo": [
-            {displayName: "related thing", id: "asd", accepted: true}
+            {displayName: "related thing", id: "asd", accepted: true},
+            {displayName: "another related thing", id: "asds", accepted: true}
           ]
         }
-      }}}
-      name="isRelatedTo" />
+      }}} getAutocompleteValues={mockAutoComplete}
+      name="isRelatedTo" onChange={onChange} />
 
   ));

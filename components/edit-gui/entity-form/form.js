@@ -3,19 +3,21 @@ import React from "react"
 import StringField from "./fields/string-field";
 import SelectField from "./fields/select";
 import MultiSelectField from "./fields/multi-select";
+import RelationField from "./fields/relation";
 
 const fieldMap = {
 	"string": (fieldDef, props) => (<StringField {...props} name={fieldDef.name} />),
 	"text": (fieldDef, props) => (<StringField {...props} name={fieldDef.name} />),
 	"datable": (fieldDef, props) => (<StringField {...props} name={fieldDef.name} />),
 	"multiselect": (fieldDef, props) => (<MultiSelectField {...props} name={fieldDef.name} options={fieldDef.options} />),
-	"select": (fieldDef, props) => (<SelectField {...props} name={fieldDef.name} options={fieldDef.options} />)
+	"select": (fieldDef, props) => (<SelectField {...props} name={fieldDef.name} options={fieldDef.options} />),
+	"relation": (fieldDef, props) => (<RelationField {...props} name={fieldDef.name} path={fieldDef.path} />),
 };
 
 class EntityForm extends React.Component {
 
   render() {
-    const { onNew, onDelete, onChange } = this.props;
+    const { onNew, onDelete, onChange, getAutocompleteValues } = this.props;
     const { entity, currentMode, properties } = this.props;
 
 
@@ -27,7 +29,12 @@ class EntityForm extends React.Component {
           </button>
         </div>
         {properties.map((fieldDef) =>
-          fieldMap[fieldDef.type](fieldDef, {key: fieldDef.name, entity: entity, onChange: onChange})
+          fieldMap[fieldDef.type](fieldDef, {
+						key: fieldDef.name,
+						entity: entity,
+						onChange: onChange,
+						getAutocompleteValues: getAutocompleteValues
+					})
         )}
         {currentMode === "edit"
           ? (<div className="basic-margin">
