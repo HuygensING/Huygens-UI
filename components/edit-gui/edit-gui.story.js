@@ -41,6 +41,11 @@ const data = {
         unknown: false,
         relationCollection: false,
         properties: [{
+          "name": "names",
+          "type": "names",
+          "options": ["FORENAME", "SURNAME", "NAME_LINK", "ROLE_NAME", "GEN_NAME"]
+        },
+        {
             "name": "types",
             "type": "multiselect",
             "options": [
@@ -67,6 +72,14 @@ const data = {
         {
             "name": "deathDate",
             "type": "datable"
+        },
+        {
+          "name": "links",
+          "type": "links"
+        },
+        {
+          "name": "listOfStuff",
+          "type": "list-of-strings"
         },
         {
           "name": "isRelatedTo",
@@ -102,6 +115,12 @@ const dataInEditMode = {
       deathDate: "1950",
       gender: "FEMALE",
       types: ["AUTHOR", "PSEUDONYM"],
+      "names":[{"components":[{"type":"FORENAME","value":"Sara"},{"type":"SURNAME","value":"Lomannus"}]},{"components":[{"type":"FORENAME","value":"Sara"},{"type":"SURNAME","value":"Lomanus"}]}],
+      links: [{
+        "label": "To example domain",
+        "url": "http://example.com"
+      }],
+      listOfStuff: ["something", "something else"],
       "@relations": {
         "isRelatedTo": [
           {displayName: "related thing", id: "asd", accepted: true},

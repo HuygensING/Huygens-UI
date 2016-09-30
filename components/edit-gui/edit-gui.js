@@ -41,10 +41,12 @@ class EditGui extends React.Component {
 								onSelect={onSelect}
 								domain={entity.domain} />
 						</div>
-
-						<EntityForm currentMode={currentMode} getAutocompleteValues={getAutocompleteValues}
-							entity={entity} onNew={onNew} onDelete={onDelete} onChange={onChange}
-							properties={vre.collections[entity.domain].properties}/>
+						{ entity.domain ? (
+							<EntityForm currentMode={currentMode} getAutocompleteValues={getAutocompleteValues}
+								entity={entity} onNew={onNew} onDelete={onDelete} onChange={onChange}
+								properties={vre.collections[entity.domain].properties} 
+								entityLabel={vre.collections[entity.domain].collectionLabel.replace(/s$/, "") } />
+						) : null }
 					</div>
 				</div>
 
