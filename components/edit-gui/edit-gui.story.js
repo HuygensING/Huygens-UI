@@ -73,6 +73,10 @@ const data = {
           "type": "links"
         },
         {
+          "name": "listOfStuff",
+          "type": "list-of-strings"
+        },
+        {
           "name": "isRelatedTo",
           "type": "relation",
           "relation": {
@@ -110,6 +114,7 @@ const dataInEditMode = {
         "label": "To example domain",
         "url": "http://example.com"
       }],
+      listOfStuff: ["something", "something else"],
       "@relations": {
         "isRelatedTo": [
           {displayName: "related thing", id: "asd", accepted: true},
