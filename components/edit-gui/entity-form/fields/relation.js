@@ -19,10 +19,13 @@ class RelationField extends React.Component {
       currentValues.filter((curVal) => curVal.id !== value.id)
     );
 
-	}
+  }
 
   onAdd(suggestion) {
     const currentValues = this.props.entity.data["@relations"][this.props.name] || [];
+    if (currentValues.map((val) => val.id).indexOf(suggestion.key) > -1) {
+      return;
+    }
     this.props.onChange(
       ["@relations", this.props.name],
       currentValues.concat({
@@ -44,8 +47,8 @@ class RelationField extends React.Component {
   render() {
     const { name, entity, onChange } = this.props;
     const values = entity.data["@relations"][this.props.name] || [];
-    const itemElements = values.filter((val) => val.accepted).map((value) => (
-      <div key={value.id} className="item-element">
+    const itemElements = values.filter((val) => val.accepted).map((value, i) => (
+      <div key={`${i}-${value.id}`} className="item-element">
         <strong>{value.displayName}</strong>
         <button className="btn btn-blank btn-xs pull-right"
           onClick={() => this.onRemove(value)}>
