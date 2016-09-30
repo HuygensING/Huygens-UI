@@ -347,3 +347,9 @@ svg.facet-check-box.checked {
 	width:45px;
 	height:auto;
 	}
+
+.input-group-btn:first-child > * > .btn {
+	margin-right: -1px;
+	border-bottom-right-radius: 0;
+	border-top-right-radius: 0;
+}

@@ -41,6 +41,11 @@ const data = {
         unknown: false,
         relationCollection: false,
         properties: [{
+          "name": "names",
+          "type": "names",
+          "options": ["FORENAME", "SURNAME", "NAME_LINK", "ROLE_NAME", "GEN_NAME"]
+        },
+        {
             "name": "types",
             "type": "multiselect",
             "options": [
@@ -110,6 +115,7 @@ const dataInEditMode = {
       deathDate: "1950",
       gender: "FEMALE",
       types: ["AUTHOR", "PSEUDONYM"],
+      "names":[{"components":[{"type":"FORENAME","value":"Sara"},{"type":"SURNAME","value":"Lomannus"}]},{"components":[{"type":"FORENAME","value":"Sara"},{"type":"SURNAME","value":"Lomanus"}]}],
       links: [{
         "label": "To example domain",
         "url": "http://example.com"

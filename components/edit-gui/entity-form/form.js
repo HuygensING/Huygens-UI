@@ -6,6 +6,7 @@ import MultiSelectField from "./fields/multi-select";
 import RelationField from "./fields/relation";
 import StringListField from "./fields/list-of-strings";
 import LinkField from "./fields/links";
+import NamesField from "./fields/names";
 
 const fieldMap = {
 	"string": (fieldDef, props) => (<StringField {...props} name={fieldDef.name} />),
@@ -15,8 +16,8 @@ const fieldMap = {
 	"select": (fieldDef, props) => (<SelectField {...props} name={fieldDef.name} options={fieldDef.options} />),
 	"relation": (fieldDef, props) => (<RelationField {...props} name={fieldDef.name} path={fieldDef.quicksearch} />),
   "list-of-strings": (fieldDef, props) => (<StringListField {...props} name={fieldDef.name} />),
-  "links": (fieldDef, props) => (<LinkField {...props} name={fieldDef.name} />)
-
+  "links": (fieldDef, props) => (<LinkField {...props} name={fieldDef.name} />),
+	"names": (fieldDef, props) => (<NamesField {...props} name={fieldDef.name} options={fieldDef.options} />)
 };
 
 class EntityForm extends React.Component {
@@ -35,7 +36,7 @@ class EntityForm extends React.Component {
         </div>
         {properties
           .filter((fieldDef) => !fieldMap.hasOwnProperty(fieldDef.type))
-          .map((fieldDef, i) => (<div key={i} style={{"color": "red"}}><strong>Field type not supported {fieldDef.type}</strong></div>))}
+          .map((fieldDef, i) => (<div key={i} style={{"color": "red"}}><strong>Field type not supported: {fieldDef.type}</strong></div>))}
         {properties
           .filter((fieldDef) => fieldMap.hasOwnProperty(fieldDef.type))
           .map((fieldDef, i) =>
