@@ -5,6 +5,8 @@ import StringField from "./string-field";
 import SelectField from "./select";
 import MultiSelect from "./multi-select";
 import RelationField from "./relation";
+import StringListField from "./list-of-strings";
+import LinksField from "./links";
 
 const onChange = (path, value) =>
   action("changing entity")(JSON.stringify(path), JSON.stringify(value));
@@ -43,6 +45,21 @@ storiesOf('Edit fields', module)
       name="fieldName" onChange={onChange} />
     <MultiSelect entity={{data: {}}}
       options={["value", "value 1", "value 2"]}
+      name="fieldName2" onChange={onChange} />
+  </div>))
+  .add('StringListField', () => (<div>
+    <StringListField entity={{data: {fieldName: ["value", "value 1"]}}}
+      name="fieldName" onChange={onChange} />
+    <StringListField entity={{data: {}}}
+      name="fieldName2" onChange={onChange} />
+  </div>))
+  .add('LinksField', () => (<div>
+    <LinksField entity={{data: {fieldName: [
+        {url: "http://example.com", label: "example 1"},
+        {url: "http://nu.nl", label: "example 2"}
+      ]}}}
+      name="fieldName" onChange={onChange} />
+    <LinksField entity={{data: {}}}
       name="fieldName2" onChange={onChange} />
   </div>))
   .add('Relation', () => (

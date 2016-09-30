@@ -6,8 +6,8 @@ export default function(props) {
     <div className="result-list result-list-edit">
       <ol start={start + 1} style={{counterReset: `step-counter ${start}`}}>
         {list.map((entry, i) => (
-          <li key={entry._id}>
-            <a onClick={() => onSelect({domain: domain, id: entry._id})} >
+          <li key={entry._id} onClick={() => onSelect({domain: domain, id: entry._id})}>
+            <a>
               {entry["@displayName"]}
             </a>
           </li>

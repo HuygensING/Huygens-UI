@@ -69,6 +69,10 @@ const data = {
             "type": "datable"
         },
         {
+          "name": "links",
+          "type": "links"
+        },
+        {
           "name": "isRelatedTo",
           "type": "relation",
           "relation": {
@@ -102,6 +106,10 @@ const dataInEditMode = {
       deathDate: "1950",
       gender: "FEMALE",
       types: ["AUTHOR", "PSEUDONYM"],
+      links: [{
+        "label": "To example domain",
+        "url": "http://example.com"
+      }],
       "@relations": {
         "isRelatedTo": [
           {displayName: "related thing", id: "asd", accepted: true},

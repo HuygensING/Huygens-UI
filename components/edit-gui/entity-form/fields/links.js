@@ -5,18 +5,24 @@ class Field extends React.Component {
 	constructor(props) {
 		super(props);
 
-		this.state = { newValue: "" };
+		this.state = { newLabel: "", newUrl: "" };
 	}
 
 	componentWillReceiveProps(nextProps) {
 		if (nextProps.entity.data._id !== this.props.entity.data._id) {
-			this.setState({newValue: ""})
+			this.setState({newLabel: "", newUrl: ""})
 		}
 	}
 
-	onAdd(value) {
+	onAdd() {
 		const { name, entity, onChange } = this.props;
-		onChange([name], (entity.data[name] || []).concat(value));
+		if (this.state.newLabel.length > 0 && this.state.newUrl.length > 0) {
+			onChange([name], (entity.data[name] || []).concat({
+				label: this.state.newLabel,
+				url: this.state.newUrl
+			}));
+			this.setState({newLabel: "", newUrl: ""});
+		}
 	}
 
 	onRemove(value) {
@@ -47,9 +53,22 @@ class Field extends React.Component {
 			<div className="basic-margin">
 				<h4>{label}</h4>
 				{itemElements}
-{/*				<input type="text" className="form-control" value={this.state.newValue}
-					onChange={(ev) => this.setState({newValue: ev.target.value})}
-					onKeyPress={(ev) => ev.key === "Enter" ? this.onAdd(ev.target.value) : false} />*/}
+				<div style={{width: "100%"}}>
+					<input type="text" className="form-control pull-left" value={this.state.newLabel}
+						onChange={(ev) => this.setState({newLabel: ev.target.value})}
+						placeholder="Label for url..."
+						style={{display: "inline-block", maxWidth: "50%"}} />
+					<input type="text" className="form-control pull-left" value={this.state.newUrl}
+						onChange={(ev) => this.setState({newUrl: ev.target.value})}
+						onKeyPress={(ev) => ev.key === "Enter" ? this.onAdd() : false}
+						placeholder="Url..."
+						style={{display: "inline-block", maxWidth: "calc(50% - 80px)"}} />
+					<span className="input-group-btn pull-left">
+						<button className="btn btn-default" onClick={this.onAdd.bind(this)}>Add link</button>
+					</span>
+				</div>
+
+				<div style={{width: "100%", clear: "left"}} />
 			</div>
 		);
 	}
