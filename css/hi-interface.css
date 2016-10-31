@@ -25,6 +25,9 @@
 	height:100%;
 	}
 
+.top-green {
+	height: 5px;
+}
 .hit-canvas{
 	background-color:rgba(0,0,0,0.05);
 	top:75px;
@@ -106,6 +109,10 @@
 
 .navbar-brand img {
 	margin-top:-5px;
+	}
+
+.navbar {
+	margin-bottom: 0;
 	}
 
 
@@ -331,9 +338,26 @@ svg.facet-check-box.checked {
   content: counter(step-counter);
   font-size:.8em;
   color:#cccccc;
+<<<<<<< Updated upstream
   width:30px;
   display:inline-block;
 
+=======
+  width:20px;
+  display: inline-block;
+
+  
+>>>>>>> Stashed changes
+}
+
+.result-list .row {
+	margin: 0;
+	width: calc(100% - 21px);
+	display: block;
+}
+
+.result-list .col-md-6 {
+	padding: 0;
 }
 
 /* detail page */
