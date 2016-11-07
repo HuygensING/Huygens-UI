@@ -42,7 +42,7 @@
   <div class="alert alert-info alert-dismissible" role="alert">
     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
     <em>Lokaties</em> en <em>migranten</em> from <em>migrants.xlsx</em> are connected to the Timbuctoo Archetypes.</div>
-  <p>Configutate the columns to the properties of the Archetypes</p>
+  <p>Connect the Timbuctoo Archytype properties (first column) to your Excel sheet values (second column).You can also add your own custom properties.</p>
 </div>
 <div class="container basic-margin">
   <ul class="nav nav-tabs" role="tablist">
@@ -51,6 +51,15 @@
   </ul>
 </div>
 <div class="container basic-margin">
+
+  <div class="row small-margin">
+	  <div class="col-sm-2 hi-light-grey">Archytype properties</div>
+	  <div class="col-sm-2 hi-light-grey"></div>
+	  <div class="col-sm-5 hi-light-grey">Your Excel columns</div>
+	  <div class="col-sm-2 hi-light-grey"></div>
+	  <div class="col-sm-1 hi-light-grey"></div>
+  </div>
+
 
   <div class="row small-margin">
     <div class="col-sm-2 hi-success"><strong>Names</strong></div>
@@ -79,7 +88,7 @@
     <div class="col-sm-2"><strong>Types</strong></div>
     <div class="col-sm-2" ></div>
     <div class="col-sm-5">
-      <button type="button" class="btn btn-blank dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="from-excel"><img src="images/icon-excel.svg" alt=""/> Select a excel column</span> <span class="caret"></span></button>
+      <button type="button" class="btn btn-blank dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="from-excel"><img src="images/icon-excel.svg" alt=""/> Select a column from excel </span> <span class="caret"></span></button>
       <ul class="dropdown-menu">
         <li><a href="#"><span class="from-excel"><img src="images/icon-excel.svg" alt=""/> achternaam</span></a></li>
         <li><a href="#"><span class="from-excel"><img src="images/icon-excel.svg" alt=""/> geboortejaar</span></a></li>
@@ -94,7 +103,7 @@
     <div class="col-sm-2"><strong>Gender</strong></div>
     <div class="col-sm-2" ></div>
     <div class="col-sm-5">
-      <button type="button" class="btn btn-blank dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="from-excel"><img src="images/icon-excel.svg" alt=""/> Select a excel column</span> <span class="caret"></span></button>
+      <button type="button" class="btn btn-blank dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="from-excel"><img src="images/icon-excel.svg" alt=""/> Select a column from excel </span> <span class="caret"></span></button>
       <ul class="dropdown-menu">
         <li><a href="#"><span class="from-excel"><img src="images/icon-excel.svg" alt=""/> achternaam</span></a></li>
         <li><a href="#"><span class="from-excel"><img src="images/icon-excel.svg" alt=""/> geboortejaar</span></a></li>
@@ -118,15 +127,14 @@
       <button class="btn btn-blank pull-right" type="button"><span class="glyphicon glyphicon-remove"></span></button>
     </div>
     <div class="col-sm-2"></div>
-    <div class="col-sm-1" >
-      <button class="btn btn-success pull-right" type="button">Confirm</button>
-    </div>
+    <div class="col-sm-1 hi-success"><span class="glyphicon glyphicon-ok pull-right" aria-hidden="true"></span></div>
+
   </div>
   <div class="row small-margin">
     <div class="col-sm-2"><strong>Death date</strong></div>
     <div class="col-sm-2" ></div>
     <div class="col-sm-5">
-      <button type="button" class="btn btn-blank dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="from-excel"><img src="images/icon-excel.svg" alt=""/> Select a excel column</span> <span class="caret"></span></button>
+      <button type="button" class="btn btn-blank dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="from-excel"><img src="images/icon-excel.svg" alt=""/> Select a column from excel </span> <span class="caret"></span></button>
       <ul class="dropdown-menu">
         <li><a href="#"><span class="from-excel"><img src="images/icon-excel.svg" alt=""/> achternaam</span></a></li>
         <li><a href="#"><span class="from-excel"><img src="images/icon-excel.svg" alt=""/> geboortejaar</span></a></li>
@@ -141,7 +149,7 @@
     <div class="col-sm-2"><strong>Floruit</strong></div>
     <div class="col-sm-2" ></div>
     <div class="col-sm-5">
-      <button type="button" class="btn btn-blank dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="from-excel"><img src="images/icon-excel.svg" alt=""/> Select a excel column</span> <span class="caret"></span></button>
+      <button type="button" class="btn btn-blank dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="from-excel"><img src="images/icon-excel.svg" alt=""/> Select a column from excel </span> <span class="caret"></span></button>
       <ul class="dropdown-menu">
         <li><a href="#"><span class="from-excel"><img src="images/icon-excel.svg" alt=""/> achternaam</span></a></li>
         <li><a href="#"><span class="from-excel"><img src="images/icon-excel.svg" alt=""/> geboortejaar</span></a></li>
@@ -152,6 +160,14 @@
     <div class="col-sm-2"></div>
     <div class="col-sm-1" ></div>
   </div>
+  
+      <div class="row small-margin">
+	  <div class="col-sm-9 hi-light-grey">Need more properties? You can add your own custom properties.</div>
+	  <div class="col-sm-2 hi-light-grey"></div>
+	  <div class="col-sm-1 hi-light-grey"></div>
+  </div>
+  
+  
   <div class="row basic-margin">
     <div class="col-sm-2">
       <input type="text" class="form-control" id="exampleInputName2" placeholder="Property name">
@@ -159,10 +175,13 @@
     <div class="col-sm-2">
       <button type="button" class="btn btn-blank dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span> Choose a type</span> <span class="caret"></span></button>
       <ul class="dropdown-menu">
-        <li><a href="#"><span>Text</span></a></li>
-        <li><a href="#"><span>Relation</span></a></li>
+		<li><a href="#"><span>Text <br><span class="regular">Connect to an Excel Column</span></span></a></li>
+        <li><a href="#"><span>Internal relation <br><span class="regular">Connect to another Archytype wthin this dataset</span></span></a></li>
+        <li><a href="#"><span>External relation  <br><span class="regular">Connect to another Timbuctoo collection</span></span></a></li>
+
       </ul>
-    </div>
+	  </div>
+    
     <div class="col-sm-5">
       <button class="btn btn-blank pull-right" type="button"><span class="glyphicon glyphicon-remove"></span></button>
     </div>
