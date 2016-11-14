@@ -338,16 +338,10 @@ svg.facet-check-box.checked {
   content: counter(step-counter);
   font-size:.8em;
   color:#cccccc;
-<<<<<<< Updated upstream
-  width:30px;
-  display:inline-block;
-
-=======
   width:20px;
   display: inline-block;
 
-  
->>>>>>> Stashed changes
+
 }
 
 .result-list .row {
@@ -376,4 +370,15 @@ svg.facet-check-box.checked {
 	margin-right: -1px;
 	border-bottom-right-radius: 0;
 	border-top-right-radius: 0;
+}
+
+.result-list-dataset-info {
+	display: block;
+	margin-top: 1em;
+	margin-bottom: .5em
+}
+
+.no-lr-padding {
+	padding-left: 0 !important;
+	padding-right: 0 !important;
 }
