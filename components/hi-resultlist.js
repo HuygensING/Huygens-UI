@@ -22,7 +22,9 @@ export function FacetDatasetToggles(props) {
 		  <div className="col-sm-4 col-md-3">
 			<h2>Dataset</h2>
 		  </div>
-		  <div className="col-sm-8 col-md-9 text-right"> <span className="btn btn-primary btn-sm">DBpedia <span className="glyphicon glyphicon-remove-sign hi-half-transp"></span></span> <span className="btn btn-primary btn-sm">CKCC <span className="glyphicon glyphicon-remove-sign hi-half-transp"></span></span>
+		  <div className="col-sm-8 col-md-9 text-right">
+	  		<span className="btn toggleTag toggleTag--active">DBpedia <span className="glyphicon glyphicon-remove-sign hi-half-transp"></span></span>
+     		<span className="btn toggleTag toggleTag--inactive">CKCC</span>
 			<button type="button" className="btn btn-default btn-sm"  aria-haspopup="true" aria-expanded="false">Show all datasets</button>
 		  </div>
 		</div>
@@ -36,13 +38,13 @@ export function ResultslistDatasets(props) {
        <div className="result-list-dataset-info clearfix">
        <span className="row pull-right "> <span className="col-md-12 small text-right no-lr-padding"><a href="Tim-faceted-search-detail.html">Go to CKCC dataset</a></span> </span>
 		  </div>
-        <ol className="clearfix">
+        <ol className="clearfix begin">
           <li className="clearfix"> <a href="Tim-faceted-search-detail.html"> <span className="row pull-right clearfix"> <span className="col-md-6 ">Christiaan Huygens</span> <span className="col-md-6 hi-light-grey text-right small">CKCC</span> </span> <span className="row pull-right clearfix"> <span className="col-md-12 hi-light-grey small no-lr-padding">14 April 1629 – 8 July 1695</span> </span> </a> </li>
           <li className="clearfix"> <a href="Tim-faceted-search-detail.html"> <span className="row pull-right clearfix"> <span className="col-md-6 ">Constantijn Huygens</span> <span className="col-md-6 hi-light-grey text-right small">CKCC</span> </span> <span className="row pull-right clearfix"> <span className="col-md-12 hi-light-grey small no-lr-padding">14 April 1629 – 8 July 1695</span> </span> </a> </li>
         </ol>
       <div className="result-list-dataset-info clearfix">
        <span className="row pull-right"> <span className="col-md-12 small text-right no-lr-padding"><a href="Tim-faceted-search-detail.html">Go to DBpedia dataset</a></span> </span>
-		  </div>        <ol className="clearfix">
+		  </div>        <ol className="clearfix continue">
           <li className="clearfix"> <a href="Tim-faceted-search-detail.html"> <span className="row pull-right clearfix"> <span className="col-md-6 ">Christiaan Huygens</span> <span className="col-md-6 hi-light-grey text-right small">DBpedia</span> </span> <span className="row pull-right clearfix"> <span className="col-md-12 hi-light-grey small no-lr-padding">14 April 1629 – 8 July 1695</span> </span> </a> </li>
           <li className="clearfix"> <a href="Tim-faceted-search-detail.html"> <span className="row pull-right clearfix"> <span className="col-md-6 ">Constantijn Huygens</span> <span className="col-md-6 hi-light-grey text-right small">DBpedia</span> </span> <span className="row pull-right clearfix"> <span className="col-md-12 hi-light-grey small no-lr-padding">14 April 1629 – 8 July 1695</span> </span> </a> </li>
         </ol>

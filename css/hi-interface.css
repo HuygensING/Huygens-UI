@@ -312,6 +312,17 @@ svg.facet-check-box.checked {
 
 
 /* results */
+ol.begin {
+  counter-reset: listcounter;
+}
+
+ol.begin li:before,
+ol.continue li:before {
+  content: counter(listcounter) ". ";
+  
+}
+
+
 .result-list ol{
 	padding:0px;
 	margin:0 0 0 0;
@@ -320,7 +331,7 @@ svg.facet-check-box.checked {
 
 .result-list li{
 	padding:.5em 0 .5em 0;
-	counter-increment: step-counter;
+	counter-increment: listcounter;
 	border-top:1px solid #eeeeee;
 	cursor:pointer;
 
@@ -335,7 +346,7 @@ svg.facet-check-box.checked {
 	}
 
 .result-list li::before {
-  content: counter(step-counter);
+  content: counter(listcounter);
   font-size:.8em;
   color:#cccccc;
   width:20px;
@@ -353,6 +364,25 @@ svg.facet-check-box.checked {
 .result-list .col-md-6 {
 	padding: 0;
 }
+
+.toggleTag {
+	border-radius: 45px;
+	margin-bottom: .4em;
+	margin-right: .4em;
+	
+}
+
+.toggleTag--active {
+	background-color: #e6e6e6;
+}
+
+.toggleTag--inactive {
+	background-color: #ffff;
+	border: 1px solid #e6e6e6;
+	color: #808080;
+	
+}
+
 
 /* detail page */
 
@@ -377,6 +407,8 @@ svg.facet-check-box.checked {
 	margin-top: 1em;
 	margin-bottom: .5em
 }
+
+
 
 .no-lr-padding {
 	padding-left: 0 !important;
